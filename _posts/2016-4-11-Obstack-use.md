@@ -3,12 +3,13 @@ title: GNU Obstack Use
 updated: 2016-04-11 12:00
 ---
 
-## obstack use
+## General Instroduce
 
 obstack主要的功能是用来申请一块大内存，每次从这个内存中分配内存，在内存不够时，会继续自动的扩大内存，
 这个适合于在长时间使用一个内存，且需要一次性释放的。
 
 主要的结构：
+
 ```c
     struct obstack
 ```
@@ -18,15 +19,17 @@ obstack主要的功能是用来申请一块大内存，每次从这个内存中�
 + chunk  <-- The objects in the obstack are packed into large blocks
 
 
-## 使用前
+## Before Use
 
 + 直接引用头文件：
+
 ```c
     #include <obstack.h>
 ```
 
 + 如果定义了 `obstack_init` 这个宏
 仍需要定义如下的宏
+
 ```c
     #define obstack_chunk_alloc  xmalloc
     #define obstack_chunk_free   free
@@ -37,17 +40,19 @@ obstack主要的功能是用来申请一块大内存，每次从这个内存中�
 这个函数用来初始化一个`obstack_ptr` 这个函数是调用了`obstack_chunk_alloc`。如果分配失败，那么会调用`obstack_alloc_failed_handler` 这个函数永远只返回1（意味着不需要检查返回值）
 
 可以这么使用：
+
 ```c
-    static struct obstack myobstack;
-    ....
-    obstack_init(&myobstack);
+static struct obstack myobstack;
+....
+obstack_init(&myobstack);
 ```
 
 还可以使用：
+
 ```c
-    struct obstack *myobstack_ptr
-    = (struct obstack *)malloc(sizeof(struct obstack));
-    obstack_init(myobstack_ptr)
+struct obstack *myobstack_ptr
+= (struct obstack *)malloc(sizeof(struct obstack));
+obstack_init(myobstack_ptr)
 ```
 
 
@@ -88,14 +93,14 @@ obstack_alloc_failed_handler = &my_obstack_alloc_failed;
 
 另一个和`obstack_copy`类似的函数`obstack_copy0`函数，会在结尾加上一个`\0`作为结尾。
 
-```
+```c
     char * obstack_savestring(char *addr, int size)
     {
         return obstack_copy0(&myobstack,addr,size);
     }
 ```
 
-## 释放空间
+## Free Space
 
 使用`obstack_free`函数去释放掉在obstack上分配的空间。 释放掉一个，会自动的释放掉在同一个obstack上的最近分配的空间。
 
@@ -111,7 +116,7 @@ obstack_alloc_failed_handler = &my_obstack_alloc_failed;
 如果一个chunk上的所有object都被free了，那么这个chunk也会被自动的free。
 如果其他的obstack或者非obstack分配，可以重复使用其他的chunk。
 
-## 参考
+## Reference
 [GNU obstacks manual](http://www.gnu.org/software/libc/manual/html_node/Obstacks.html#Obstacks)
 
 
