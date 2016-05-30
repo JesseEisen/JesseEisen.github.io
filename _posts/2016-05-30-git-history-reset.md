@@ -50,8 +50,8 @@ checkout大多数情况用在检出branch上，你可以很轻松的使用`git c
 > git中有一个所谓的浮标一样的指针HEAD. 它可以随意的移动，当你切换分支时，他会移动到新的分支上。可以将其理解成指向current版本。
 
 checkout在操作版本的时候就是在操作HEAD.我们的提交历史没有变化，只是将HEAD移动到指定的commit上去，下面的对比图就可以让你看出区别：
-![pic1](image/git_checkout1.jpg)
-![pic2](image/git_checkout2.jpg)
+![pic1](../image/git_checkout1.jpg)
+![pic2](../image/git_checkout2.jpg)
 
 只是HEAD上下浮动了，不过此时git会提示你现在是游离状态。这一点需要注意。
 
