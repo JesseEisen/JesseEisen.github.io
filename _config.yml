@@ -1,6 +1,6 @@
 # Site Info
-title:              "The Diary"
-description:        "My daily keeping"
+title:              "The Blog"
+description:        "My Tech Share"
 google_verify:       # Put your Google Verification here
 google_analytics:    # Put your Google Analytics code
 
@@ -11,7 +11,7 @@ author_gravatar:    190aa3adff4e1451b32c354f0b5fd7f9 # Gravatar md5 hash
 twitter_username:   JesseChen
 
 # Site Settings
-baseurl:            "/DailyKeep" # Base URL must end WITHOUT a slash, default: ""
+baseurl:            "" # Base URL must end WITHOUT a slash, default: ""
 permalink:          /notes/:title # Post permalink
 timezone:           Asia/Shanghai # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
