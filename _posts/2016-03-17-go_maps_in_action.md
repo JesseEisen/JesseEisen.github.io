@@ -3,7 +3,7 @@ title: Go map in action
 updated: 2016-03-17 15:57
 ---
 
-> 本文翻译自 [Golang Blog|Go map in action](https://blog.golang.org/go-maps-in-action)
+> 本文翻译自 [Go map in action](https://blog.golang.org/go-maps-in-action)
 
 ## 介绍
 
@@ -16,7 +16,7 @@ updated: 2016-03-17 15:57
 Go的map类型有如下类似的样子：
 
 ```
-	map[KeyType]ValueType
+map[KeyType]ValueType
 ```
 
 `KeyType`可以是任何**可比较**的类型,`ValueType`可以是任何类型，包括map类型！
@@ -26,7 +26,7 @@ Go的map类型有如下类似的样子：
 下面这个变量`m`就是一个键为`string`类型而值为`int`
 
 ```
-	var m map[string]int
+var m map[string]int
 ```
 
 `Map`类型是引用类型，像：pointer或者slices. 所以上面的`m`的值为`nil`.它并没有指向一个初始化的map。在读一个`nil`的map，就像是在读一个空map， 但是如果尝试去写一个`nil`的map 的时候，将会引发一个运行时panic。
@@ -34,7 +34,7 @@ Go的map类型有如下类似的样子：
 所以最好不要这么做，**初始化**一个map，可以使用内置的`make`函数：
 
 ```
-	m = make(map[string]int)
+m = make(map[string]int)
 ```
 
 `make` 函数分配空间并初始化一个hash map的数据结构，然后返回一个map值指向那个数据结构。
@@ -45,32 +45,32 @@ Go的map类型有如下类似的样子：
 Go 提供通用的语法来使用maps， 下面这个表达式而设置了键`route`的值为66:
 
 ```
-	m["route"] = 66
+m["route"] = 66
 ```
 
 下面的这个表达式重新获取到键`route`的值，并把它赋给一个新的变量`i`
 
 ```
-	i := m["route"]
+i := m["route"]
 ```
 
 r如果请求的键不存在，我们将得到一个值类型的`zero value`（不一定就是0），下面这个例子中，值的类型是`int` ，所以它的零值就是`0`
 
 ```
-	j := m["root"]
-	//j == 0
+j := m["root"]
+//j == 0
 ```
 
 内置的函数`len`返回map的项的数量
 
 ```
-	n := len(m)
+n := len(m)
 ```
 
 内置的函数`delete` 从map中移除一个成员
 
 ```go
-	delete(m."route")
+delete(m."route")
 ```
 
 函数`delete`不会返回任何东西，所以如果指定的键不存在，函数也不会做任何事儿。
@@ -78,7 +78,7 @@ r如果请求的键不存在，我们将得到一个值类型的`zero value`（�
 `two-value`表达式测试一个键是否存在
 
 ```go
-	i, ok := m["route"]
+i, ok := m["route"]
 ```
 
 在上面的这个表达式中，i将保存键`route`的值，如果这个键不存在，那i就是`zero value`. 第二个值(ok)是一个`bool`, `true`表示这个键存在，`false`表示这个键不存在。
@@ -86,32 +86,32 @@ r如果请求的键不存在，我们将得到一个值类型的`zero value`（�
 仅仅为了测试这个键的值是否存在，可以使用下划线来代替第一个位置：
 
 ```go
-	_, ok := m["route"]
+_, ok := m["route"]
 ```
 
 可以使用`range`来迭代map的的内容：
 
 ```go
-	for key, value := range m {
-		fmt.Println("Key:",key, "Value:",value)
-	}
+for key, value := range m {
+	fmt.Println("Key:",key, "Value:",value)
+}
 ```
 
 想用一些值初始化一个map，可以使用map字面值来进行：
 
 ```go
-	commits := map[string]int{
-		"rsc":3711,
-		"r":2138
-		"gri":1908
-		"adg":912,
-	}
+commits := map[string]int{
+	"rsc":3711,
+	"r":2138
+	"gri":1908
+	"adg":912,
+}
 ```
 
 可以使用相同的语法来初始化一个空的map，这个和使用`make`是一样的。
 
 ```
-	m = map[string]int{}
+m = map[string]int{}
 ```
 
 ## 探索zero 值
@@ -146,33 +146,33 @@ for n := first; n != nil; n = n.Next {
 下面的这个例子，people是一个`person`的slice， 每一个`Person` 有一个`Name`和一个Like的slice。这个例子创建了一个map来连接喜好和people slice（people所喜欢的）
 
 ``` go 
-	 type Person struct {
-        Name  string
-        Likes []string
-    }
-    var people []*Person
+type Person struct {
+    Name  string
+    Likes []string
+}
+var people []*Person
 
-    likes := make(map[string][]*Person)
-    for _, p := range people {
-        for _, l := range p.Likes {
-            likes[l] = append(likes[l], p)
-        }
+likes := make(map[string][]*Person)
+for _, p := range people {
+    for _, l := range p.Likes {
+        likes[l] = append(likes[l], p)
     }
+}
 
 ```
 
 打印出喜欢chess的人：
 
 ``` go
-	for _, p : reange like["cheese"] {
-			fmt.Println(p.Name, "like cheese")
-	}
+for _, p : reange like["cheese"] {
+		fmt.Println(p.Name, "like cheese")
+}
 ```
 
 打印出喜欢bacon的人的数量：
 
 ```
-	fmt.Println(len(likes["bacon"]), "people like bacon.")
+fmt.Println(len(likes["bacon"]), "people like bacon.")
 ```
 
 需要注意的是，range和len都将nil slice看作是zero-length的slice。 所以在没有人喜欢cheese或者bacon的时候上面的那两个例子也是可以工作的。
@@ -185,13 +185,13 @@ string，int 和其他的基础类型都是可以作为key的，可能对struct�
 struct可以在多维的基础上用作key。 比如，下面的这个map的map可以用在匹配不同国家的网页
 
 ```
-	hits := make(map[string]map[string]int)
+hits := make(map[string]map[string]int)
 ```
 
 这是一个string到`string到int map`的map，每个外部map的键都是网页地址对应这它内部的map。 每个内部的map的键是2个字符的国家码。 下面的这个表达式取出了Australian加载了多少次这个网页
 
 ```
-	n := hits["/doc/"]["au"]
+n := hits["/doc/"]["au"]
 ```
 
 不幸的是，这个方法在添加数据的时候变得比较麻烦。对任意一个给出的外部的键，你必须要检查一下它的内部键是否纯在，并且在需要的时候创建它：
@@ -225,13 +225,13 @@ hits := make(map[Key]int)
 当一个越南(vietnamese)人访问了主页，增加对应的访问量只要一行代码：
 
 ```go
-	hits[Key{"/","vn"}]++
+hits[Key{"/","vn"}]++
 ```
 
 同样，如果想查看多少瑞士人访问了spec：
 
 ```go
-	n := hits[Key{"/ref/spec","ch"}]
+n := hits[Key{"/ref/spec","ch"}]
 ```
 
 ## 并发
@@ -241,28 +241,28 @@ hits := make(map[Key]int)
 下面的语句声明了一个`counter`变量，他是一个匿名的结构体，包含了一个map和一个内嵌的`sync.RWMutex`
 
 ``` go
-	var counter = struct {
-			sync.RWMutex
-			m mapp[string]int
-	}{m: make(map[string]int)}
+var counter = struct {
+		sync.RWMutex
+		m mapp[string]int
+}{m: make(map[string]int)}
 ```
 
 想要从counter中读数据，设置一个读锁
 
 ```go
-	counter.RLock()
-	n := counter.m["some_key"]
-	counter.RUnlock()
-	fmt.Println("some_key",n)
+counter.RLock()
+n := counter.m["some_key"]
+counter.RUnlock()
+fmt.Println("some_key",n)
 ```
 
 想往counter中写数据，设置一个写锁
 
 ```go
 
-	counter.Lock()
-	counter.m["some_key"]++
-	counter.Unlock()
+counter.Lock()
+counter.m["some_key"]++
+counter.Unlock()
 ```
 
 ## 迭代顺序
@@ -274,20 +274,20 @@ hits := make(map[Key]int)
 
 ```go
 
-	import "sort"
+import "sort"
 
-	var m map[int]string
-	var keys []int
+var m map[int]string
+var keys []int
 
-	for k := range m {
-			keys = append(keys,k)
-	}
+for k := range m {
+		keys = append(keys,k)
+}
 
-	sort.Ints(keys)
+sort.Ints(keys)
 
-	for _,k := range keys {
-			fmt.Println("key:",k,"value:",m[k])
-	}
+for _,k := range keys {
+		fmt.Println("key:",k,"value:",m[k])
+}
 ```
 
 > 译注：这也许就是为什么key需要是可比较的类型的。
