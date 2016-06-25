@@ -68,7 +68,9 @@ function CreateNewDay()
 最后推送到github便是最常见的一些操作了，实现自动提交，只需要你在clone的时候使用ssh方式。
 不然使用https的方式需要每次输入用户名和密码。
 
-这样每天下班前，使用`gatherUrl -u "xxxx"` 其中`xxx`是用于提交的comment。 这样回到家，只要打开网页，页面最上面便是今天的添加。省去了不少的事儿。
+当这一天的第一次使用时，只要用`gatherUrl -n "page describe" "url"` 便创建了今天的list。如果你还有其他的链接想添加进去。使用`gatherUrl -i "page describe" "url"` 便将这个url添加到今天的list中。每天下班前，使用`gatherUrl -u "xxxx"` 其中`xxx`是用于提交的comment。(当然随时都可以提交) 这样回到家，只要打开网页，页面最上面便是今天的添加。省去了不少的事儿。
+
+使用前还有一个简单的设置，可以去看看这个[工具](https://github.com/JesseEisen/Hub)的README。
 
 ## More
 
