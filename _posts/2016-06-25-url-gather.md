@@ -55,7 +55,7 @@ updated: 2016-6-25 18:00
 ```shell
 function CreateNewDay()
 {
-    LineNo=`grep -n content index.html | cut -b 1,2`
+    LineNo=`grep -n content index.html |head -1|cut -b 1,2`
     sed -i "${LineNo} a${1}" index.html   # h2 tag
     let LineNo=LineNo+1
     sed -i "${LineNo} a${2}" index.html   # link item
