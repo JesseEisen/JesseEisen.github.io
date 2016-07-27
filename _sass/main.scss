@@ -213,6 +213,7 @@ ol {
     border-radius: 5px;
   }
 }
+
 sup {
   vertical-align: top;
   position: relative;
@@ -336,6 +337,8 @@ section {
     li {
       margin: 25px 0;
 	  margin-bottom:0.5em;
+      font-family: Helvetica, Tahoma, Arial, STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体", sans-serif;
+	  font-size: 18px;
       .title {
         max-width: 100%;
         overflow: hidden !important;
@@ -352,6 +355,7 @@ section {
       .post-date {
         float: right;
         margin: 0 0 0 20px;
+		font-size:15px;
       }
       span {
         display: inline-block;
