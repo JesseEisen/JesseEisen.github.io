@@ -1,5 +1,6 @@
 body {
-  font-family: Helvetica, Tahoma, Arial, STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体", sans-serif;
+  /*font-family: Helvetica, Tahoma, Arial, STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体", sans-serif;*/
+  font-family:"Segoe UI","Oxygen",Tahoma, Arial, STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体", sans-serif;
   padding: 20px;
   margin: 0;
   font-weight: 400;
@@ -204,6 +205,8 @@ ol {
   padding-left: 30px;
   li {
     word-wrap: break-word;
+	line-height: 1.5;
+	font-size: 15px;
   }
   img {
     margin: 40px 0;
