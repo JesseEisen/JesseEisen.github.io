@@ -121,7 +121,12 @@ fi
 当然了，这个脚本是用bash写的，可以任意的修改。
 
 ## Summary
-下面贴两张图，第一张是wiki的正常状态：
+wiki的导航页：
+
+![roadmap](../image/roadmap.jpg)
+
+
+下面贴两张内容图，第一张是wiki的正常状态：
 
 ![main](../image/main.jpg)
 
