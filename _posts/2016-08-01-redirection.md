@@ -38,7 +38,7 @@ updated: 2016-08-01 19:00
 
 这边所谓的复制可以这样理解。在`2>&1`后，这两个描述符都指向了同一个地方。所以复制文件描述符可以抽象成`m>&n`,其中`m`和`n`是两个描述符。
 
-通过一个例子更见明确一下复制：
+通过一个例子理解下复制：
 
 ```bash
 $ cat file
@@ -82,7 +82,7 @@ f() {
 f >file 2>&1   # nothing printed out
 f 2>&1 >file   # print "This is stderr" only
 ```
-·
+
 这两种方式没有对错，可以在有需求的时候使用对应的顺序。
 
 ## Some Pratical Usages
