@@ -1,5 +1,5 @@
 ---
-title: LeetCode OJ ——List Prat
+title: LeetCode OJ ——List Part
 updated: 2016-08-03 18:00
 ---
 
