@@ -53,6 +53,7 @@ struct ListNode* swapPairs(struct ListNode* head) {
 	temp->next = head;
 
 	return temp;
+}
 ```
 
 `temp->next = head` 和 `return temp` 是两个比较关键的步骤。这个保证了顺序，此外使用递归，可以避免head的丢失。如果使用迭代的话，head很容易丢失，导致在最后返回链表时找不到第一个节点。 而递归则很完美的解决了这个问题，因为最终递归返回到第一层的时候，正好是最开始的两个。所以这能保证head不丢失。

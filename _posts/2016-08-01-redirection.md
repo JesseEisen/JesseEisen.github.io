@@ -179,6 +179,44 @@ hello/world
 
 这些缩写可以了解一下，目的是为了能够在别人有使用的时候可以能读懂。
 
+## Samll Example
+
+当我们想在脚本中，希望log能够一边输出到终端上，一边又能写入文件中。这时候也可以使用到重定向，在linux中有一个命令`tee`是可以将内容输出到标准输出和文件的。我们可以用`|`来实现，比如：`echo "pass" | tee log`。不过如果有很多的log，每条都用`|tee log` 会比较繁琐。所以可以结合`process substitute` 和重定向来简化这个过程。
+
+```bash
+exec > >(tee log)
+echo "pass" 
+```
+
+这样只要往标准输出的内容，都会被丢给`tee`. 不过这还不能很完美的工作。原因在于`echo`是带有缓冲的，所以如果log只是有关标准输出的，那么这么使用是没有问题的。不过我们一般也会将标准错误的内容也保存到log中的话，可能会出现打印出来的顺序和实际代码中log输出的顺序不一致。
+
+```bash
+exec 1> >(tee log)
+exec 2> >(tee log)
+
+echo "case 1 pass" 
+echo "case 2 error" >&2
+echo "case 3 pass" 
+echo "case 4 error" >&2
+
+#will output 
+case 1 pass
+case 2 pass
+case 3 error
+case 4 error
+```
+
+如果是对log顺序有要求的话，这样的输出明显是不符合条件的。 好在linux中提供了两个命令`stdbuf`和`unbuffer`。这两个命令的原理是不同的，具体的可自行goole。
+
+```bash
+echo_unbuf{
+	stdbuf -O0 echo "$@"
+	#unbuffer echo "$@"
+}
+```
+
+通过封装一个`echo_unbuf`，这样便能保证了log输出的顺序是正确的。最后如果出现了后台命令在程序结束后打印，则可以使用`sync`来同步一下。
+
 ## Reference
 
 1. [Difference between some redirections](http://unix.stackexchange.com/questions/70963/difference-between-2-2-dev-null-dev-null-and-dev-null-21/70971#70971)   
