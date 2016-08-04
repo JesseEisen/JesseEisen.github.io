@@ -179,7 +179,7 @@ hello/world
 
 这些缩写可以了解一下，目的是为了能够在别人有使用的时候可以能读懂。
 
-## Samll Example
+## Small Example
 
 当我们想在脚本中，希望log能够一边输出到终端上，一边又能写入文件中。这时候也可以使用到重定向，在linux中有一个命令`tee`是可以将内容输出到标准输出和文件的。我们可以用`|`来实现，比如：`echo "pass" | tee log`。不过如果有很多的log，每条都用`|tee log` 会比较繁琐。所以可以结合`process substitute` 和重定向来简化这个过程。
 
@@ -201,8 +201,8 @@ echo "case 4 error" >&2
 
 #will output 
 case 1 pass
-case 2 pass
-case 3 error
+case 3 pass
+case 2 error
 case 4 error
 ```
 
@@ -213,6 +213,13 @@ echo_unbuf{
 	stdbuf -O0 echo "$@"
 	#unbuffer echo "$@"
 }
+
+echo_unbuf "case 1 pass"
+echo_unbuf "case 2 error" >&2
+echo_unbuf "case 3 pass"      
+echo_unbuf "case 4 error" >&2
+
+#will output like output
 ```
 
 通过封装一个`echo_unbuf`，这样便能保证了log输出的顺序是正确的。最后如果出现了后台命令在程序结束后打印，则可以使用`sync`来同步一下。
