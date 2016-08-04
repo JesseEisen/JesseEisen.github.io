@@ -138,9 +138,9 @@ for i := len(sep); i < len(s); {
 
 ## Reference
 
-1.[Rabin-Karp Algorithm WikiPedia](https://en.wikipedia.org/wiki/Rabin%E2%80%93Karp_algorithm)
-2.[Golang Strings Source Code](https://github.com/golang/go/blob/master/src/strings/strings.go#L97)
-3.[Golang Slices Usage and Internal](https://blog.golang.org/go-slices-usage-and-internals)
+1.[Rabin-Karp Algorithm WikiPedia](https://en.wikipedia.org/wiki/Rabin%E2%80%93Karp_algorithm)   
+2.[Golang Strings Source Code](https://github.com/golang/go/blob/master/src/strings/strings.go#L97)    
+3.[Golang Slices Usage and Internal](https://blog.golang.org/go-slices-usage-and-internals)    
 
 
 (全文完)
