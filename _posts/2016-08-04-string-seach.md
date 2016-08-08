@@ -34,7 +34,31 @@ int Navie_Search(const char *s,const char *t){
 }
 ```
 
-这就实现好了朴素查找，这个算法的复杂度是`O((n-m)m)`, 效率是不太高的，不过实现起来很简单。接下来看看`Rabin-Karp`算法。
+这就实现好了朴素查找，这个算法的复杂度是`O((n-m)m)`, 效率是不太高的，不过实现起来很简单。实际上`strstr`这个函数在linux源码里面的实现，也是用的朴素的搜索。下面是他的实现：
+
+```c
+char *strstr(const char *s1, const char *s2) 
+{ 
+    size_t l1, l2; 
+    l2 = strlen(s2); 
+
+	if (!l2) 
+        return (char *)s1; 
+    l1 = strlen(s1); 
+
+	while (l1 >= l2) { 
+         l1--; 
+         if (!memcmp(s1, s2, l2)) 
+              return (char *)s1; 
+         s1++; 
+    }  
+   return NULL; 
+} 
+```
+
+利用memcmp来进行比对，实现起来更加的快速，效率上,也是朴素搜索,不过利了memcmp,速度会比较快些的。
+
+接下来看看`Rabin-Karp`算法。
 
 ## Rabin-Karp
 
