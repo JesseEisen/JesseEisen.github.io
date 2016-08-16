@@ -3,12 +3,12 @@ title: Globs In Shell
 date: 2016-08-16 16:00
 ---
 
+## General
+
 "Glob" is the common name for a set of Bash features that match or expand specific types of patterns.It is necessary to know about them. Sometimes it may helps you.
 
 
-## Options which change globbng behavior
-
-+ extglob
+## extglob
 
 In bash, we need to run this command first to use the extend glob
 
@@ -18,15 +18,18 @@ shopt -s extglob
 
 And then, we can use those syntax of glob:
 
-?(pattern-list)   zero or one occurrence of the given patterns   
-*(pattern-list)   zero or more occurrence of the given patterns   
-+(pattern-list)   one or more occurrence of the given patterns    
-@(pattern-list)   one of the given pattern   
-!(pattern-list)   match anything except one of the given patterns   
++ ?(pattern-list)  
+  zero or one occurrence of the given patterns   
++ *(pattern-list)   
+  zero or more occurrence of the given patterns   
++ +(pattern-list)   
+  one or more occurrence of the given patterns    
++ @(pattern-list)   
+  one of the given pattern   
++ !(pattern-list)  
+  match anything except one of the given patterns   
 
-
-For instance
-
+For instance:
 ```bash
 rm !(*.jpg) 
 cp !(04 *).mp3   /mnt   # cp all song to mnt/ except one 
@@ -51,9 +54,7 @@ a subshell command list as the function body
 
 ## nullglob
 
-nullglob expands non-matching globs to zero arguments, rather than to themselves.
-
-To undestand it, there is an example:
+nullglob expands non-matching globs to zero arguments, rather than to themselves.To undestand it, there is an example:
 
 ```bash
 ls *.c   # if this encounter an error, mean: *.c No such file or directory
@@ -62,14 +63,11 @@ shopt -s nullglob
 ls *.c  # this command will like the ls without arguments, and list everything
 ```
 
-**Warning**
+>**Warning**
+>There are some bugs when we use the nullglob. all of those are about the array
 
-There are some bugs when we use the nullglob. all of those are about the array
-
-+ Removing array elements
-
-If you use the nullglob, and you use the `unset array[1]` that may useless. you
-need to use `unset -v "array[1]"` this can work
+To removing array elements, if you use the nullglob, and you use the `unset array[1]` that may useless. you
+need to use `unset -v "array[1]"` this can work.
 
 `nullglob` is not the specified by POSIX, so when you want to port that, you
 should explicitly check that glob match.
@@ -78,21 +76,19 @@ should explicitly check that glob match.
 ## dotglob
 
 With `dotglob` it will show the dot file. Note that, when dotglob is enable,`*`
-will match files like `.bashrc` but not the . or .. dirctories. 
+will match files like `.bashrc` but not the `.` or `..` dirctories. 
 
 
 ## globstar
 
 globstar recursively repeats a pattern contain "**"
-
 Here are some examples:
 
 ```bash
 $ shopt -s globstat ; tree  # this will show all level
 ```
 
-if you use the `files=(**)`  this is equivalent to: files=(* */* */*/*) find all files recursively
-
+if you use the `files=(**)`  this is equivalent to: files=(* */* */*/*) find all files recursively.
 Just like `'*'`, `"**"` followed by a `/` will only match directories:
 
 ```bash
@@ -111,7 +107,7 @@ $ > *.foo  # if can match, doesn't get executed
 
 ```
 
-### GLOBIGNORE
+## GLOBIGNORE
 
 This allows you to specify patterns a glob _should not match_. This lets you work around the infamous "I want to match all of my dot files, but . or .."
 
@@ -120,7 +116,8 @@ echo .*  # will show the . and ..
 GLOBIGNORE=.:..
 echo .*  # will not show . and ..
 ```
-### nocasematch
+
+## nocasematch
 
 Globs inside [[ and case commands are matched case-insensitive. means the capital and lower case alpha will work.
 
@@ -129,4 +126,4 @@ Globs inside [[ and case commands are matched case-insensitive. means the capita
 ```
 
 
-
+(Done)
