@@ -30,6 +30,7 @@ And then, we can use those syntax of glob:
   match anything except one of the given patterns   
 
 For instance:
+
 ```bash
 rm !(*.jpg) 
 cp !(04 *).mp3   /mnt   # cp all song to mnt/ except one 
@@ -63,7 +64,7 @@ shopt -s nullglob
 ls *.c  # this command will like the ls without arguments, and list everything
 ```
 
->**Warning**
+>**Warning**  
 >There are some bugs when we use the nullglob. all of those are about the array
 
 To removing array elements, if you use the nullglob, and you use the `unset array[1]` that may useless. you
