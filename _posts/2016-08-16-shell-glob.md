@@ -58,11 +58,16 @@ a subshell command list as the function body
 nullglob expands non-matching globs to zero arguments, rather than to themselves.To undestand it, there is an example:
 
 ```bash
-ls *.c   # if this encounter an error, mean: *.c No such file or directory
+shopt nullglob
+nullglob    off
+ls *.c   # if there no .c file in this directory, report: *.c No such file or directory
 #with nullglob set
 shopt -s nullglob
-ls *.c  # this command will like the ls without arguments, and list everything
+ls *.c  # if there no .c file in this directory, will list all the files in this diretory
 ```
+
+Take a look at:[why is nullglob not default -- Unix and Linux](http://unix.stackexchange.com/questions/204803/why-is-nullglob-not-default)
+
 
 >**Warning**  
 >There are some bugs when we use the nullglob. all of those are about the array
