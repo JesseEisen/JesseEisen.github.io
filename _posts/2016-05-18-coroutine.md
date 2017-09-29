@@ -176,7 +176,7 @@ Back to main routine
 
 首先我们需要定义两个结构体，一个是用于保存当前协程信息的，另一个是用于保存调度信息的。
 
-{% hightlight c %}
+{% highlight c %}
 typedef struct cothread{
 	ucontext_t ctx;
 	Fun func;
