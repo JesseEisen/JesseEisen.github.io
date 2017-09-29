@@ -1,0 +1,29 @@
+# Site settings
+title: One More Light
+email: lkchan0719@gmail.com
+description: > # this means to ignore newlines until "baseurl:"
+  Who cares if one more light goes out?
+baseurl:  # the subpath of your site, e.g. /blog/
+url:  # the base hostname & protocol for your site
+twitter_username: JesseChen
+github_username:  JesseEisen
+
+# Build settings
+markdown: kramdown
+
+highlighter: rouge
+
+# Pagination
+paginate: 15
+paginate_path: "/blog/page:num/"
+
+
+collections:
+    #  portfolio:
+    #output: true
+    #permalink: /portfolio/:path/
+    #poetry:
+    #output: true
+    #permalink: /poetry/:path/
+
+
