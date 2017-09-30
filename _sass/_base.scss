@@ -111,7 +111,8 @@ figcaption {
  * Lists
  */
 ul, ol {
-    margin-left: $horizontal-spacing-unit;
+    list-style-type: circle;
+    margin-left: 30px;
 }
 
 li {
@@ -194,10 +195,10 @@ blockquote {
  */
 pre,
 code {
-    font-family:"Segoe UI", Arial, "Microsoft YaHei", "微软雅黑", sans-serif, Helvetica;
+    font-family:sans-serif, Helvetica;
     font-size: 15px;
     border-radius: 3px;
-    background-color: #DDD;
+    background-color: rgba(163, 180, 206, 0);
 }
 
 code {

@@ -105,13 +105,14 @@ C语言函数的调用依赖于栈帧的形式，函数调用是在一个栈结�
 ucontext_t的实现对应于不同的平台，不过至少会包含以下四个
 
 {% highlight c %}
-ucontext_t *uc_link     pointer to the context that will be 
-                        resumed when this context returns
-sigset_t    uc_sigmask  the set of signals that are blocked
-                        when this context is active
-stack_t     uc_stack    the stack used by this context
-mcontext_t  uc_mcontext a machine-specific representation of
-                        the saved context
+ucontext_t *uc_link     
+   pointer to the context that will be resumed when this context returns
+sigset_t    uc_sigmask  
+   the set of signals that are blocked when this context is active
+stack_t     uc_stack    
+   the stack used by this context
+mcontext_t  uc_mcontext 
+  a machine-specific representation of the saved context
 
 {% endhighlight %}
 
