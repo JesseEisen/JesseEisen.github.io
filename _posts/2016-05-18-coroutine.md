@@ -6,8 +6,6 @@ description: different way to realize a coroutine
 ---
 
 
-## Coroutine 初探
-
 协程(coroutine)是一种程序组件，比较灵活但是实际使用的不是很多。经典的一个模型就是生产者和消费者的模型。
 
 生产者将相应的"产品"放到队列中，而消费者从这个队列中，获取这个产品。一般使用协程会在合作式多任务，迭代器等地方。
@@ -19,7 +17,7 @@ description: different way to realize a coroutine
 
 目前原生支持协程的语言并不是很多，主流的一些语言中，C#，JavaScript，Go等这些是支持的。同时Lua也是支持协程的，Lua的协程比较容易理解，所以下面从Lua的协程的使用来了解一下协程，同时在C语言中实现相应的协程库。
 
-## Lua协程
+<hr>
 
 上面很书面的说了一下协程的概念，协程拥有自己的栈，局部变量等，同时和其他的协程共享一些全局变量等。这一点和线程比较像，但是和线程有一个很大的区别就是，线程可以同时运行很多个，但是协程则不行，需要其他的协程的配合。正如上面说的生产-消费模型。
 协程在某一个时刻会被挂起，然后等待恢复。不过协程相对于线程就显得很轻量了。
@@ -88,7 +86,7 @@ consumer()
 
 如果你熟悉线程的话，不加任何的同步机制，那么结果会是这两个线程争着跑，打印也是很规则的，可以加以类比。
 
-## C实现协程
+<hr>
 
 通过上面的简单的介绍，协程的整个过程是比较清晰的，就是执行——挂起——唤醒——执行——挂起——唤醒.... 只是协程需要实现的是能够在之前挂起的地方恢复后继续往下执行。这就好比是在函数A的a行处按下暂停，但是函数A的栈空间不能被清除，转而去执行其他函数B，当执行到唤醒的时候，恢复A的现场，继续执行从a行的下一行执行。
 
@@ -123,7 +121,7 @@ mcontext_t  uc_mcontext a machine-specific representation of
 
 话不多说，还是代码比较明确：
 
-```c
+{% highlight c %}
 void func(void *arg)
 {
 	puts("In child routine");	
@@ -161,16 +159,16 @@ int main()
 
 执行结果是：
 
-```shell
+{% highlight shell %}
 In child routine
 Back to main routine
-```
+{% endhighlight %}
 
 因为我们设置了后继上下文，所以程序能够再次回到context_test中，如果将后继设置为NULL，那么程序只会打印出`In child routine`。 
 
 从上面的程序中我们会发现，实际上我们的context_test就是一个类似于Lua中的resume的函数。 如果是第一次执行，则从注册的func的开头开始执行。如果我们对这个函数加以封装，便可以得到一个resume。
 
-### 利用ucontext实现一个简单的协程
+<hr>
 
 我们主要是仿照Lua的样式，实现出对应的：`cothread_create()`, `cothread_resume()`,`cothread_yield()` `cothread_status` 等一系列的函数。
 
@@ -210,9 +208,9 @@ typedef struct schedule{
 
 我实现了一个简单的协程，基本可用。[https://github.com/JesseEisen/coroutine](https://github.com/JesseEisen/coroutine)
 
-### 利用duff device实现的协程
+<hr>
 
-这是利用了C语言的“奇技淫巧” 实现的一个相当之轻量的协程。具体可以参考[protothreads](http://dunkels.com/adam/pt/).主要是利用了switch-case的技巧，然后将其封装成相应的宏。这个可以参考[一个“蝇量级” C 语言协程库](http://coolshell.cn/articles/10975.html) 
+还有一个方式可以实现，duff device 利用了C语言的“奇技淫巧” 实现的一个相当之轻量的协程。具体可以参考[protothreads](http://dunkels.com/adam/pt/).主要是利用了switch-case的技巧，然后将其封装成相应的宏。这个可以参考[一个“蝇量级” C 语言协程库](http://coolshell.cn/articles/10975.html) 
 
 至此，浅显的说明了如何在C中实现一个协程。Go在这方面的处理用到了goroutine，不过和coroutine有所不同。有空研究一下是如何实现的。
 
