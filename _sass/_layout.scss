@@ -156,7 +156,7 @@ font-size: 36px;
 .post-content {
 p {
     font-size: 13px;    
-    font-height:1.8em;
+    line-height:1.9em;
     margin-bottom:10px;
 }
 h2 {
@@ -176,7 +176,8 @@ font-size: 22px;
     }
 h4 {
 font-size: 18px;
-padding-bottom:15px;
+padding-bottom:4px;
+padding-top:15px;
 @include media-query($on-laptop) {
 font-size: 18px;
         }
