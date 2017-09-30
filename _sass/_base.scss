@@ -57,9 +57,11 @@ body {
 */
 
 body {
-    font-family:"Segoe UI",Arial,"Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体", sans-serif, Helvetica;
+    font-family:"Segoe UI",Arial,"Microsoft YaHei", sans-serif, Helvetica;
     padding: 20px;
     margin: 0;
+    line-height: $base-line-height;
+    font-size: 13px;
     -webkit-font-smoothing: antialiased;
     -webkit-text-size-adjust: 100%;
     @media (min-width: 992px) {
@@ -192,7 +194,7 @@ blockquote {
  */
 pre,
 code {
-    font-family:"Segoe UI", Arial, "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体", sans-serif, Helvetica;
+    font-family:"Segoe UI", Arial, "Microsoft YaHei", "微软雅黑", sans-serif, Helvetica;
     font-size: 15px;
     border-radius: 3px;
     background-color: #DDD;
