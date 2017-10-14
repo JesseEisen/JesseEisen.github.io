@@ -3,7 +3,7 @@ layout: page
 title: essay
 permalink: /essay/
 ---
-
+<div class="essays"> 
 <h1><a href="{{ site.baseurl }}">Jesse's Posts </a></h1>
 
 <ul>
@@ -16,3 +16,4 @@ permalink: /essay/
       </li>
     {% endfor %}
 </ul>
+</div>

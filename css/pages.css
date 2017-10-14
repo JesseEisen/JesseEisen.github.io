@@ -1,3 +1,8 @@
+.essays {
+    padding-top: 45px;
+    padding-left: 45px;
+}
+
 ul {
     margin: 0;
     padding: 0 0 10px 0;
@@ -27,7 +32,7 @@ span {
     font-size: 13px;
     margin-top: 4px;
 }
-h1 {
+.essays h1 {
     margin: 5px 0 40px 0;
     font-size: 35px;
     font-weight: 300;
@@ -50,7 +55,7 @@ h1 {
     a:hover b {
         color: #000;
     }
-    h1 {
+    .essays h1 {
         font-size: 40px;
         margin-top: 0;
     }
