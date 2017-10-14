@@ -91,7 +91,7 @@ pre,code {
      font-family: Menlo, Monaco, Lucida Console, Liberation Mono, Courier New, monospace, serif;
  }
 
-.return div {
+div.return {
      position: absolute;
      right: 30px;
      top: 40px;
@@ -99,7 +99,7 @@ pre,code {
      width: 37px;
  }
 
-.return  a {
+a.return {
      font-size: 19px;
      text-align: center;
      background: #efefef;

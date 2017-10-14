@@ -32,7 +32,8 @@ span {
     font-size: 13px;
     margin-top: 4px;
 }
-.essays h1 {
+
+h1.essays {
     margin: 5px 0 40px 0;
     font-size: 35px;
     font-weight: 300;
@@ -72,7 +73,7 @@ span {
     }
 }
 
-.back div {
+div.back {
     position: absolute;
     right: 30px;
     top: 40px;
@@ -80,7 +81,7 @@ span {
     width: 37px;
 }
 
-.back a {
+a.back {
     font-size: 19px;
     text-align: center;
     background: #efefef;
