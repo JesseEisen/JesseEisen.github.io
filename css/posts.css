@@ -1,3 +1,11 @@
+body {
+    font-family:"Segoe UI", Arial,"Microsoft YaHei", sans-serif, Helvetica
+}
+
+.main {
+    padding:45px;
+}
+
 .post {
     margin: 0 auto;
     word-wrap: break-word;
@@ -68,6 +76,10 @@
      padding-left: 17px;
      font-size: 15px;
  }
+
+pre {
+    background: rgb(248, 248, 248);
+}
 
  code {
      background: #f3f3f3;
