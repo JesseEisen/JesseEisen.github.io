@@ -77,6 +77,10 @@ body {
      font-size: 15px;
  }
 
+pre {
+    margin:0;
+    padding:0;
+}
 pre,code {
      background: #f3f3f3;
      padding: 2px 4px;
@@ -85,4 +89,28 @@ pre,code {
      color: #3a3a3a;
      hyphens: none;
      font-family: Menlo, Monaco, Lucida Console, Liberation Mono, Courier New, monospace, serif;
+ }
+
+ .return div {
+     position: absolute;
+     right: 30px;
+     top: 40px;
+     height: 37px;
+     width: 37px;
+ }
+
+.return  a {
+     font-size: 19px;
+     text-align: center;
+     background: #efefef;
+     font-weight: bold;
+     box-sizing: border-box;
+     color: #000;
+     height: inherit;
+     display: block;
+     width: inherit;
+     line-height: 44px;
+     border-radius: 100%;
+     font-family: 'Courier New', serif;
+     text-decoration: none;
  }

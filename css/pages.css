@@ -71,3 +71,27 @@ span {
         opacity: 1;
     }
 }
+
+.back div {
+    position: absolute;
+    right: 30px;
+    top: 40px;
+    height: 37px;
+    width: 37px;
+}
+
+.back a {
+    font-size: 19px;
+    text-align: center;
+    background: #efefef;
+    font-weight: bold;
+    box-sizing: border-box;
+    color: #000;
+    height: inherit;
+    display: block;
+    width: inherit;
+    line-height: 44px;
+    border-radius: 100%;
+    font-family: 'Courier New', serif;
+    text-decoration: none;
+}
