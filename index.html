@@ -2,23 +2,14 @@
 layout: default
 ---
 
-<div class="header-bar">
-  <h1> λ </h1>
-  <h2> blog and writting </h2>
-  <br/>
-  <hr>
-  <br/>
-</div>
+<section>
+    <h2>Just call me</h2>
+    <h1>J.C.</h1>
+</section>
 
+<nav>
+    <a href="https://twitter.com/JessEisen_LJ">Twitter</a>
+    <a href="{{ site.baseurl}}/_post">Long Thoughts</a>
+    <a href="https://github.com/JesseEisen">Code</a>
+</nav>
 
-<ul class="post-list">
-    {% for post in paginator.posts %}
-      <li>
-        <h2><a class="post-title" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h2>
-        <p class="post-meta">{{ post.date | date: '%B %-d, %Y — %H:%M' }}</p>
-        <p>{{ post.description }}</p>
-        <br/>
-        <hr/>
-      </li>
-    {% endfor %}
-</ul>
