@@ -99,7 +99,7 @@ div.return {
      width: 37px;
  }
 
-a.return {
+.return a  {
      font-size: 19px;
      text-align: center;
      background: #efefef;
