@@ -4,10 +4,10 @@ title: essay
 permalink: /essay/
 ---
 
-<h1>Jesse's Posts</h1>
+<h1><a href="{{ site.baseurl }}">Jesse's Posts </a></h1>
 
 <ul>
-    {% for post in paginator.posts %}
+    {% for post in site.posts %}
       <li>
         <a href="{{ post.url | prepend: site.baseurl }}">
            <b>{{ post.title }}</b>
