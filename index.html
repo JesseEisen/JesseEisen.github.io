@@ -9,7 +9,11 @@ layout: default
 
 <nav>
     <a href="https://twitter.com/JessEisen_LJ">Twitter</a>
-    <a href="{{ site.baseurl}}/_post">Long Thoughts</a>
+    {% for page in site.pages %}
+        {% if page.title %}
+          <a class="page-link" href="{{ page.url | prepend: site.baseurl }}">Long Thought</a>
+        {% endif %}
+    {% endfor %}
     <a href="https://github.com/JesseEisen">Code</a>
 </nav>
 
