@@ -59,6 +59,7 @@ h1 {
     .essays h1 {
         font-size: 40px;
         margin-top: 0;
+        font-weight: 200;
     }
 }
 @media (min-width: 992px) {
