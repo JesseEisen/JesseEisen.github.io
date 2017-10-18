@@ -40,3 +40,7 @@ func main() {
   Hello(T{name: "Stephen"})
 }
 {% endhighlight %}
+
+## 简单示例
+
+<script src="https://gist.github.com/JesseEisen/aec959e6ccf7da486f45fbd19b2bc9e2.js"></script>
