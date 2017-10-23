@@ -11,7 +11,7 @@ github_username:  JesseEisen
 # Build settings
 markdown: kramdown
 
-highlighter: rouge
+#highlighter: rouge
 
 # Pagination
 paginate: 15

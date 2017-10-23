@@ -31,8 +31,7 @@ Lua中的协程的相关实现函数是放在"coroutine"的table中的。一般�
 
 一般这样的几个基本的函数。具体的函数的细节就不细究了，这个主要涉及到Lua的相应的语法了, 会在后续有关Lua的文章中解释这些。下面我们就利用这几个函数实现一下生产-消费的模型，以了解协程的基本使用。
 
-{% highlight lua %}
-
+```
 -- function productor
 local nProductor
 
@@ -71,8 +70,7 @@ end
 --nProductor
 nProductor = coroutine.create(productor)
 consumer()
-
-{% endhighlight %}
+```
 
 上面代码中有一些简短的注释，主要是关于Lua里面相关函数的使用的注释。下面是这个程序的一些基本流程：
 
@@ -104,7 +102,7 @@ C语言函数的调用依赖于栈帧的形式，函数调用是在一个栈结�
 这边需要对上面的四个函数有一定的解释：
 ucontext_t的实现对应于不同的平台，不过至少会包含以下四个
 
-{% highlight c %}
+```
 ucontext_t *uc_link     
    pointer to the context that will be resumed when this context returns
 sigset_t    uc_sigmask  
@@ -113,8 +111,7 @@ stack_t     uc_stack
    the stack used by this context
 mcontext_t  uc_mcontext 
   a machine-specific representation of the saved context
-
-{% endhighlight %}
+```
 
 对于makecontext而言，这个函数会修改通过getconext获取到的上下文,然后给这个上下文设置一下栈空间，以及后继的uc_link.
 
@@ -122,7 +119,7 @@ mcontext_t  uc_mcontext
 
 话不多说，还是代码比较明确：
 
-{% highlight c %}
+```
 void func(void *arg)
 {
 	puts("In child routine");	
@@ -155,15 +152,14 @@ int main()
 
 	return 0;
 }
-
-{% endhighlight %}
+```
 
 执行结果是：
 
-{% highlight shell %}
+```
 In child routine
 Back to main routine
-{% endhighlight %}
+```
 
 因为我们设置了后继上下文，所以程序能够再次回到context_test中，如果将后继设置为NULL，那么程序只会打印出`In child routine`。 
 
@@ -175,7 +171,7 @@ Back to main routine
 
 首先我们需要定义两个结构体，一个是用于保存当前协程信息的，另一个是用于保存调度信息的。
 
-{% highlight c %}
+```
 typedef struct cothread{
 	ucontext_t ctx;
 	Fun func;
@@ -191,8 +187,7 @@ typedef struct schedule{
 	int isrunning;
 	cothread_t **co;
 }schedule_t;
-
-{% endhighlight %}
+```
 
 
 #### create函数

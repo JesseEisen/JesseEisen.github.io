@@ -18,8 +18,7 @@ description: golang learn and think
 很多地方都提到了duck模型，说白了就是只要实现了所有interface定义的方法就表示这个类型实现了这个interface。
 即函数的参数是这个interface的类型的话，任何实现了这个interface的类型都可以传入。一段代码来
 
-{% highlight go %}
-
+```
 type I interface {
   M() string
 }
@@ -39,7 +38,7 @@ func Hello(i I) {
 func main() {
   Hello(T{name: "Stephen"})
 }
-{% endhighlight %}
+```
 
 ## 简单示例
 
