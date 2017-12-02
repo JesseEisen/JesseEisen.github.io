@@ -171,7 +171,7 @@ Back to main routine
 
 首先我们需要定义两个结构体，一个是用于保存当前协程信息的，另一个是用于保存调度信息的。
 
-```
+```c
 typedef struct cothread{
 	ucontext_t ctx;
 	Fun func;
@@ -194,7 +194,7 @@ typedef struct schedule{
 对于create而言，我们需要注册一个函数，同时创建一个协程的信息结构体`cothread_t`,并将这个信息保存到`schedule_t`中.
 
 #### resume函数
-一个协程一般有如下几个状态：`free` `runnable` `running` `suspend`. 从状态的名字上可以看出具体的用途。resume的函数需要处理两个状态下。`runnable`和`suspend`.当时runnable的时候，表明是第一次调用，所以需要使用makecontext进行一些修改和绑定。当为`suspend`的时候，表明此刻需要唤醒挂起的协程，所以只要swapcontext即可。
+一个协程一般有如下几个状态：`free`, `runnable`, `running`, `suspend`. 从状态的名字上可以看出具体的用途。resume的函数需要处理两个状态下。`runnable`和`suspend`.当时runnable的时候，表明是第一次调用，所以需要使用makecontext进行一些修改和绑定。当为`suspend`的时候，表明此刻需要唤醒挂起的协程，所以只要swapcontext即可。
 
 #### yield函数
 这个函数也只是需要对两个上下文进行一个转换，swapcontext即可。

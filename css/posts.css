@@ -7,6 +7,7 @@ body {
 }
 
 .post {
+    font-family: "Segoe UI",Menlo, Monaco, Lucida Console, "Microsoft YaHei",Liberation Mono, Courier New, monospace, Helvetica, serif;
     margin: 0 auto;
     word-wrap: break-word;
     hyphens: auto;
@@ -49,7 +50,7 @@ body {
  }
 
  .post-content ul {
-     font-family: Menlo, Monaco, Lucida Console, Liberation Mono, Courier New, monospace, serif;
+     font-family: "Segoe UI",Menlo, Monaco, Lucida Console, "Microsoft YaHei",Liberation Mono, Courier New, monospace, Helvetica, serif;
      margin: 30px 0;
      list-style-type: none;
      padding: 0 0 0 18px;
@@ -101,22 +102,22 @@ pre{
      border-radius: 3px;
      width:100%;
      white-space: pre-wrap;
-     font-family: Menlo, Monaco, Lucida Console, Liberation Mono, Courier New, monospace, serif;
+     font-family: "Segoe UI",Menlo, Monaco, Lucida Console, "Microsoft YaHei",Liberation Mono, Courier New, monospace, Helvetica, serif;
      overflow: auto;
  }
 
  code {
-    font-family: Menlo, Monaco, Lucida Console, Liberation Mono, Courier New, monospace, serif;
+    font-family: "Segoe UI",Menlo, Monaco, Lucida Console, "Microsoft YaHei",Liberation Mono, Courier New, monospace, Helvetica, serif;
     font-size: 14px;
     color: rgb(189,16,224);
  }
 
  code::before {
-     content: " `";
+     content: "`";
  }
 
  code::after {
-    content: "` ";
+    content: "`";
  }
 
  pre > code::before {
