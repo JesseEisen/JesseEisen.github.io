@@ -10,7 +10,7 @@ body {
     margin: 0 auto;
     word-wrap: break-word;
     hyphens: auto;
-    max-width: 70%;
+    max-width: 60%;
 }
 
 .post-title {
@@ -56,8 +56,8 @@ body {
 
  li {
      font-size: 13px;
-     margin-bottom: 2em;
-     line-height: 1.5em;
+     margin-bottom: 10px;
+     line-height: 24px;
  }
  li.shallow {
      margin-bottom: 10px;
@@ -65,8 +65,8 @@ body {
 
  .post-content p {
      font-size: 14px;
-     line-height: 1.5em;
-     margin: 22px 0;
+     line-height: 1.75em;
+     margin-bottom: 20px;;
  }
 
  .post-content blockquote {
@@ -84,7 +84,7 @@ pre {
 }
 pre{
      padding: 20px 20px;
-     font-size: 0.85em;
+     font-size: 14em;
      color: rgb(189,16,224);
      border:1px solid;
      border-color: rgb(234,234,234);
@@ -96,11 +96,29 @@ pre{
  }
 
  code {
+    font-family: Menlo, Monaco, Lucida Console, Liberation Mono, Courier New, monospace, serif;
     font-size: 14px;
     color: rgb(189,16,224);
  }
 
-div.return {
+ code::before {
+     content: "`";
+ }
+
+ code::after {
+    content: "`";
+ }
+
+ pre > code::before {
+    content: "";
+ }
+
+ pre > code::after {
+    content: "";
+ }
+
+
+ div.return {
      position: absolute;
      right: 30px;
      top: 40px;
@@ -122,4 +140,10 @@ a.returns  {
      border-radius: 100%;
      font-family: 'Courier New', serif;
      text-decoration: none;
+ }
+
+ hr {
+    width: 8%;
+    color: rgb(227, 227, 227);
+    margin: 40px auto;
  }
