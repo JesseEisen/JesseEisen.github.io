@@ -50,22 +50,32 @@ body {
 
  .post-content ul {
      margin: 30px 0;
-     list-style: disc;
+     list-style-type: none;
      padding: 0 0 0 18px;
  }
 
  li {
-     font-size: 13px;
+     font-size: 14px;
+     font-family: Menlo, Monaco, Lucida Console, Liberation Mono, Courier New, monospace, serif;
      margin-bottom: 10px;
      line-height: 24px;
  }
+
+ li::before {
+     content: "-";
+     display: inline-block;
+     color: rgb(153, 153, 153);
+     position: absolute;
+     margin-left: -15px;
+ }
+
  li.shallow {
      margin-bottom: 10px;
  }
 
  .post-content p {
      font-size: 14px;
-     line-height: 1.75em;
+     line-height: 1.9em;
      margin-bottom: 20px;;
  }
 
@@ -84,7 +94,7 @@ pre {
 }
 pre{
      padding: 20px 20px;
-     font-size: 14em;
+     font-size: 14px;
      color: rgb(189,16,224);
      border:1px solid;
      border-color: rgb(234,234,234);
