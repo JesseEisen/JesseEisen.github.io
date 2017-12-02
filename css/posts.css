@@ -10,7 +10,7 @@ body {
     margin: 0 auto;
     word-wrap: break-word;
     hyphens: auto;
-    max-width: 90%;
+    max-width: 70%;
 }
 
 .post-title {
@@ -55,8 +55,9 @@ body {
  }
 
  li {
-     margin-bottom: 15px;
-     line-height: 25px;
+     font-size: 13px;
+     margin-bottom: 2em;
+     line-height: 1.5em;
  }
  li.shallow {
      margin-bottom: 10px;
@@ -92,6 +93,11 @@ pre{
      white-space: pre-wrap;
      font-family: Menlo, Monaco, Lucida Console, Liberation Mono, Courier New, monospace, serif;
      overflow: auto;
+ }
+
+ code {
+    font-size: 14px;
+    color: rgb(189,16,224);
  }
 
 div.return {
