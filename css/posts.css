@@ -129,7 +129,7 @@ pre{
  }
 
  code {
-    font-family: Helvetica, Tahoma, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei";
+    font-family: Menlo, Monaco, Helvetica, Lucida Console,"Segoe UI","Microsoft YaHei",Liberation Mono, Courier New, monospace, serif;
     font-size: 14px;
     color: rgb(189,16,224);
  }
