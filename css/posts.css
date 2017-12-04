@@ -16,17 +16,45 @@ body {
 
 
 .post-title {
-    font-weight: 500;
+    color: rgb(0, 0, 0);
+    font-weight: 200;
+    font-size: 32px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     margin: 0 0 8px 0;
-    font-size: 24px;
     padding-right: 55px;
     line-height: 1.3em;
+    text-align: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 50px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid rgb(234, 234, 234);
 }
 
 .post-date {
-    color: #7c7c7c;
-    font-size: 13px;
+    color: rgb(153, 153, 153);
+    font-size: 12px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    text-align: center;
+    margin: auto;
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 10px;
 } 
+
+.post-author {
+    display: inline-block;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    vertical-align: top;
+    color: rgb(0, 0, 0);
+    font-size: 12px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    margin-top: 3px;
+    margin-left: 10px;
+    margin-bottom: 40px;
+}
 
  @media (min-width: 992px) {
      h1 {
@@ -182,4 +210,5 @@ and (-webkit-min-device-pixel-ratio: 2) {
     pre > code {
       font-size:18px;
     }
+
 }

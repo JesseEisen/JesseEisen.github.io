@@ -9,7 +9,20 @@ layout: posts
     <a class="returns" href="/essay">↩︎</a>
     </div>
     <h1 class="post-title">{{ page.title }}</h1>
-    <span class="post-date">{{ page.date | date: "%B %-d, %Y — %H:%M" }}</span>
+    <span class="post-date">
+        {% assign d = page.date | date: "%-d"  %}
+        {{ page.date | date: "%A, %B" }} 
+        {% case d %}
+          {% when '1' or '21' or '31' %}{{ d }}st
+            {% when '2' or '22' %}{{ d }}nd
+              {% when '3' or '23' %}{{ d }}rd
+                {% else %}{{ d }}th
+                  {% endcase %}, 
+                  {{ page.date | date: "%Y - %H:%M" }}
+    </span>
+    <span class="post-author"> Jesse Chan(<a href="https://twitter.com/JessEisen_LJ" style="
+                text-decoration: none;
+                ">@JesseEisen_LJ</a>)</span>
   </header>
 
   <article class="post-content">
