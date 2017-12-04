@@ -72,6 +72,13 @@ body {
          text-decoration: none;
  }
 
+ .post-content p {
+     font-size: 14px;
+     line-height: 1.9em;
+     margin-bottom: 20px;
+     text-align: justify;
+ }
+
  .post-content ol {
      list-style: decimal;
      margin: 30px 0;
@@ -124,12 +131,6 @@ img {
      margin-bottom: 10px;
  }
 
-.post-content p {
-     font-size: 14px;
-     line-height: 1.9em;
-     margin-bottom: 20px;
-     text-align: justify;
- }
 
 .post-content blockquote {
      margin: 30px 0;
