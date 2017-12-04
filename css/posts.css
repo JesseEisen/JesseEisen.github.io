@@ -22,7 +22,7 @@ and (-webkit-min-device-pixel-ratio: 2) {
         max-width: 90%;
     }
 
-    .post-post p {
+    .post-content p {
       font-size:18px;
     }
 
