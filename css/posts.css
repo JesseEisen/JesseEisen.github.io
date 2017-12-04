@@ -57,7 +57,7 @@ body {
 
  @media (min-width: 992px) {
      h1 {
-         font-size: 28px;
+         font-size: 32px;
          margin-bottom: 7px;
      }
      span {
@@ -84,6 +84,10 @@ body {
      list-style-type: none;
      padding: 0 0 0 18px;
  }
+
+h4 {
+    font-size: 18px;
+}
 
 img {
     display: inherit;
@@ -123,7 +127,8 @@ img {
 .post-content p {
      font-size: 14px;
      line-height: 1.9em;
-     margin-bottom: 20px;;
+     margin-bottom: 20px;
+     text-align: justify;
  }
 
 .post-content blockquote {
@@ -149,6 +154,7 @@ pre{
      white-space: pre-wrap;
      font-family: Helvetica, Tahoma, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei";
      overflow: auto;
+     margin: 40px 0px;
  }
 
  code {
@@ -224,6 +230,10 @@ and (-webkit-min-device-pixel-ratio: 2) {
 
     pre > code {
       font-size:18px;
+    }
+
+    h4 {
+      font-size: 20px;
     }
 
 }
