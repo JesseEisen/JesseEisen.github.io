@@ -22,7 +22,7 @@ and (-webkit-min-device-pixel-ratio: 2) {
         max-width: 90%;
     }
 
-    .post-content p {
+    p {
       font-size:18px;
     }
 
@@ -96,7 +96,7 @@ and (-webkit-min-device-pixel-ratio: 2) {
      margin-bottom: 10px;
  }
 
- .post-content p {
+p {
      font-size: 14px;
      line-height: 1.9em;
      margin-bottom: 20px;;
