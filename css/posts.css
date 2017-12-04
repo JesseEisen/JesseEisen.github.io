@@ -23,15 +23,15 @@ and (-webkit-min-device-pixel-ratio: 2) {
     }
 
     p {
-      font-size:16px;
+      font-size:18px;
     }
 
     ul > li {
-      font-size:16px;
+      font-size:18px;
     }
 
     pre > code {
-      font-size:16px;
+      font-size:18px;
     }
 }
 
@@ -60,9 +60,9 @@ and (-webkit-min-device-pixel-ratio: 2) {
  }
 
  .post-content a {
+         font-size: 15px;
          color: rgb(6, 125, 247);
          text-decoration: none;
-         border-bottom: 1px dashed currentColor;
  }
 
  .post-content ol {
@@ -124,21 +124,23 @@ pre{
      border-radius: 3px;
      width:100%;
      white-space: pre-wrap;
-    font-family: Helvetica, Tahoma, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei";
+     font-family: Helvetica, Tahoma, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei";
      overflow: auto;
  }
 
  code {
-    font-family: Menlo, Monaco, Helvetica, Lucida Console,"Segoe UI","Microsoft YaHei",Liberation Mono, Courier New, monospace, serif;
+    font-family: Menlo, Monaco, Lucida Console,"Segoe UI",Helvetica,"Microsoft YaHei",Liberation Mono, Courier New, monospace, serif;
     font-size: 14px;
     color: rgb(189,16,224);
  }
 
  code::before {
+     font-family: Menlo, Monaco, Lucida Console;
      content: "`";
  }
 
  code::after {
+    font-family: Menlo, Monaco, Lucida Console;
     content: "`";
  }
 
