@@ -14,26 +14,6 @@ body {
     max-width: 55%;
 }
 
-@media only screen 
-and (min-device-width: 375px) 
-and (max-device-width: 667px) 
-and (-webkit-min-device-pixel-ratio: 2) { 
-    .post {
-        max-width: 90%;
-    }
-
-    p {
-      font-size:18px;
-    }
-
-    ul > li {
-      font-size:18px;
-    }
-
-    pre > code {
-      font-size:18px;
-    }
-}
 
 .post-title {
     font-weight: 500;
@@ -96,13 +76,13 @@ and (-webkit-min-device-pixel-ratio: 2) {
      margin-bottom: 10px;
  }
 
-p {
+.post-content p {
      font-size: 14px;
      line-height: 1.9em;
      margin-bottom: 20px;;
  }
 
- .post-content blockquote {
+.post-content blockquote {
      margin: 30px 0;
      color: #9B9B9B;
      font-style: oblique;
@@ -182,3 +162,24 @@ a.returns  {
     color: rgb(227, 227, 227);
     margin: 40px auto;
  }
+
+ @media only screen 
+and (min-device-width: 375px) 
+and (max-device-width: 667px) 
+and (-webkit-min-device-pixel-ratio: 2) { 
+    .post {
+        max-width: 90%;
+    }
+
+   .post-content p {
+      font-size:18px;
+    }
+
+    ul > li {
+      font-size:18px;
+    }
+
+    pre > code {
+      font-size:18px;
+    }
+}
