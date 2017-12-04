@@ -7,7 +7,7 @@ body {
 }
 
 .post {
-    font-family: Helvetica, Tahoma, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei";
+    font-family: Helvetica,"PingFang SC", Arial,sans-serif;
     margin: 0 auto;
     word-wrap: break-word;
     hyphens: auto;
@@ -86,7 +86,6 @@ body {
  }
 
  .post-content ul {
-    font-family: Helvetica, Tahoma, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei";
      margin: 30px 0;
      list-style-type: none;
      padding: 0 0 0 18px;
@@ -102,7 +101,7 @@ img {
     margin: auto;
 }
 
-.iamge .img-title {
+.post-content .img-title {
     color: rgb(153, 153, 153);
     font-size: 12px;
     text-align: center;
@@ -144,7 +143,7 @@ pre {
     margin:0;
     padding:0;
 }
-pre{
+pre {
      padding: 20px 20px;
      font-size: 14px;
      color: rgb(189,16,224);
