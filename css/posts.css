@@ -52,7 +52,6 @@ body {
     font-size: 12px;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     margin-top: 3px;
-    margin-left: 10px;
     margin-bottom: 40px;
 }
 
@@ -86,6 +85,23 @@ body {
      padding: 0 0 0 18px;
  }
 
+img {
+    display: inherit;
+    max-width: 65%;
+    margin: auto;
+}
+
+.img-title {
+    color: rgb(153, 153, 153);
+    font-size: 12px;
+    text-align: center;
+    margin: 0px;
+}
+
+.image {
+    margin-bottom: 30px;
+}
+
  li {
      font-size: 14px;
      margin-bottom: 10px;
@@ -112,11 +128,10 @@ body {
 
 .post-content blockquote {
      margin: 30px 0;
-     color: #9B9B9B;
-     font-style: oblique;
-     border-left: 3px solid #9B9B9B;
+     border-left: 3px solid rgb(0,0,0);
      padding-left: 17px;
      font-size: 15px;
+     color: rgb(136, 136, 136);
  }
 
 pre {
