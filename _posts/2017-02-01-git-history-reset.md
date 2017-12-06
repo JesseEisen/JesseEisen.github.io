@@ -56,9 +56,9 @@ checkout在操作版本的时候就是在操作HEAD.我们的提交历史没有�
 
 <div class="image"> 
 <img src="/static/git_checkout1.jpg">
-<p class="img-title"> 
+<p class="img-title">before checkout</p> 
 <img src="/static/git_checkout2.jpg">
-
+<p class="img-title">after checkout</p> 
 </div>
 
 只是HEAD上下浮动了，不过此时git会提示你现在是游离状态。这一点需要注意。
