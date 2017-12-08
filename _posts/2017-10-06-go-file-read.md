@@ -23,7 +23,7 @@ description: go read relate
 func Open(name string) (*File, error)
 ```
 
-函数返回一个`*File`， 而`File` 实现了`Read`和`Write`这两个方法， 所以Open的返回值可以直接传入以`*io.Reader`和`*io.Writer`为参数的函数中。
+函数返回一个`*File`， 而`File` 实现了`Read`和`Write`这两个方法， 所以Open的返回值可以直接传入以`io.Reader`和`io.Writer`为参数的函数中。
 不过于对于`os.Open`而言，返回的File只能用于读（`Os.O_RDONLY`）。 因此在需要写的情况下，直接`Open`这个函数就不太适合。 可以使用如下：
 
 ```
@@ -41,7 +41,9 @@ func OpenFile(name string, flag int, perm FileMode) (*File, error)
 
 <hr>
 
-`os`包里面包含了`File`，这个type是实现了几个有关文件的读写方法。 比如`Read`,`ReadAt`,`Readdir`等读函数，对应的也有`Write`,`WriteAt`,`WriteString`这些写函数。所以如果使用`os.Open`打开的的文件，可以直接使用自身的方法来进行相应的读取。
+**os**  
+
+这个包里面包含了`File`，这个type是实现了几个有关文件的读写方法。 比如`Read`,`ReadAt`,`Readdir`等读函数，对应的也有`Write`,`WriteAt`,`WriteString`这些写函数。所以如果使用`os.Open`打开的的文件，可以直接使用自身的方法来进行相应的读取。
 
 ```
 f, err := os.Open("test.txt")
@@ -89,7 +91,9 @@ type FileInfo interface {
 
 <hr>
 
-`bufio`这个包里面提供了一些读写相关的内容。先来看看读相关的内容。 在`bufio`中有一个`Reader`的结构体。这个结构体本身实现了一些方法。这些方法的返回值基本上是
+**bufio**  
+
+这个包里面提供了一些读写相关的内容。先来看看读相关的内容。 在`bufio`中有一个`Reader`的结构体。这个结构体本身实现了一些方法。这些方法的返回值基本上是
 `[]byte`或者`rune`这类的。
 
 首先需要创建一个`Reader`的变量， 上面提到过，在`os.Open`打开的文件的返回是`*File`类型的变量实现了`io.Reader`的接口，所以我们可以直接调用。
