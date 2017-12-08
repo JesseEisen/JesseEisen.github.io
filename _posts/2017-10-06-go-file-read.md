@@ -130,3 +130,30 @@ func main() {
 }
 ```
 
+和读相关的函数如下：
+
++ Read
++ ReadByte
++ ReadBytes
++ ReadLine
++ ReadRune
++ ReadSlice
++ ReadString
+
+可以根据实际需要来选择需要的方法， 这里面有一些方法是根据`delim`来作为一个读的分段，比如：
+
+```
+func (b *Reader) ReadBytes(delim byte) ([]byte, error)
+```
+
+这个方法在失败的时候，会返回已经读到的内容。这边有一个需要注意的，返回值`[]byte`的大小，是在创建了`Reader`后会自动分配一个大小。这个大小也许会不够
+比如：在读取一个二进制文件时，将`delim`设置为`\n`. 那么有时会把整个文件都读过去。所以会报错，byte的大小不够存储。 因此这边可以使用`NewReaderSize`来
+设置一个size。
+
+```
+func NewReaderSize(rd io.Reader, size int) *Reader
+```
+
+需要注意的是，如果这个`io.Reader`已经是一个分配了足够大空间的话，就会返回大的那个。
+
+还有一个值得一提的方法，`Reset`。 我们在读取buffer中的内容时，可以使用`Reset`来丢弃所有的已经buffered的内容，相当于从头再来读一遍。
