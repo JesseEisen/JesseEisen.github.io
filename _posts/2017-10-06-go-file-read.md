@@ -12,7 +12,7 @@ description: go read relate
 #### 创建文件
 
 创建文件可以使用`os.Create`来创建，如果这个文件存在，就截断这个文件。如果不存在。则以权限`0666`和`O_RDWR`来创建新的文件。
-其他的也可以使用下面的`OpenFile`来创建文件。 
+其他的也可以使用下面的`OpenFile`来创建文件。
 
 
 #### 打开文件
@@ -157,3 +157,29 @@ func NewReaderSize(rd io.Reader, size int) *Reader
 需要注意的是，如果这个`io.Reader`已经是一个分配了足够大空间的话，就会返回大的那个。
 
 还有一个值得一提的方法，`Reset`。 我们在读取buffer中的内容时，可以使用`Reset`来丢弃所有的已经buffered的内容，相当于从头再来读一遍。
+
+同时，bufio还提供了两个undo函数，`UnreadByte`和`UnreadRune`. 第二个函数需要注意的是，如果最后一次读的操作不是`ReadRune`的话，这个函数就将返回一个错误。
+
+<hr>
+
+**io**
+
+`io`包里面也提供了一些有关的读函数。比如 `ReadAtLeast`. 意思就是至少读这么多个字符。函数签名如下：
+
+```
+func ReadAtLeast(r Reader, buf []byte, min int) (n int, err error)
+```
+
+这里的buf的大小和min的大小是有关系的，如果buf的长度比min的长度要小，那么直接报错，如果一样的大，也会返回一个错误`EOF`。另一个是`ReadFull`这个函数使用来读取`len(buf)`长度的内容，如果读取的内容比`len(buf)`的长度小，那么则返回一个`unexpected EOF`。
+
+io包里面还提供了一些interface，这些iterface类型可以被其他的包实现。比如：strings包下面的Reader。 实现了`io.Reader`,`io.ReaderAt`等接口，所以可以直接调用相应的方法。如下示例：
+
+```
+reader := strings.NewReader("golang")
+p := make([]byte, 6)
+n, err := reader.ReadAt(p, 2)
+if err != nil {
+  log.Fatalln(err)
+}
+fmt.Printf("%s, %d\n", p, n)
+```
