@@ -40,7 +40,7 @@ body {
     display: inline-block;
     width: 100%;
     margin-bottom: 10px;
-} 
+}
 
 .post-author {
     display: inline-block;
@@ -154,6 +154,7 @@ pre {
      white-space: pre-wrap;
      font-family: Helvetica, Tahoma, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei";
      overflow: auto;
+     line-height: 16px;
      margin: 40px 0px;
  }
 
@@ -212,10 +213,10 @@ a.returns  {
     margin: 40px auto;
  }
 
- @media only screen 
-and (min-device-width: 375px) 
-and (max-device-width: 667px) 
-and (-webkit-min-device-pixel-ratio: 2) { 
+ @media only screen
+and (min-device-width: 375px)
+and (max-device-width: 667px)
+and (-webkit-min-device-pixel-ratio: 2) {
     .post {
         max-width: 90%;
     }
