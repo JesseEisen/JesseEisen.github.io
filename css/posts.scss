@@ -32,8 +32,12 @@ body {
     word-wrap: break-word;
     hyphens: auto;
     max-width: 80%;
+    padding-bottom: 50px;
 }
 
+.post-header {
+    padding: 50px 20px 25px 20px;
+}
 
 .post-title {
     color: rgb(0, 0, 0);
@@ -239,6 +243,7 @@ p, ul, ol, table, pre, dl {
 }
 
 h1, h2, h3 {
+  font-family:
   line-height:1.1;
 }
 
