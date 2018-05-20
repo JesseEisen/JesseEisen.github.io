@@ -16,7 +16,8 @@ markdown: kramdown
 # Pagination
 paginate: 15
 paginate_path: "/essay/page:num/"
-
+sass:
+    sass_dir: css
 
 collections:
     #  portfolio:
