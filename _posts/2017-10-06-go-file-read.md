@@ -5,7 +5,7 @@ date: 2017-10-06 18:00:00
 description: go read relate
 ---
 
-最近在写一个Go的文件搜索程序，涉及到一些文件的读写。所以趁此机会来总结一些。根据不同的场景选择最合适的读写函数。
+最近在写一个 Go 的文件搜索程序，涉及到一些文件的读写。所以趁此机会来总结一些。根据不同的场景选择最合适的读写函数。
 
  <hr>
 
@@ -23,27 +23,27 @@ description: go read relate
 func Open(name string) (*File, error)
 ```
 
-函数返回一个`*File`， 而`File` 实现了`Read`和`Write`这两个方法， 所以Open的返回值可以直接传入以`io.Reader`和`io.Writer`为参数的函数中。
-不过于对于`os.Open`而言，返回的File只能用于读（`Os.O_RDONLY`）。 因此在需要写的情况下，直接`Open`这个函数就不太适合。 可以使用如下：
+函数返回一个`*File`， 而`File` 实现了`Read`和`Write`这两个方法， 所以 Open 的返回值可以直接传入以`io.Reader`和`io.Writer`为参数的函数中。
+不过于对于`os.Open`而言，返回的 File 只能用于读（`Os.O_RDONLY`）。 因此在需要写的情况下，直接`Open`这个函数就不太适合。 可以使用如下：
 
 ```
 func OpenFile(name string, flag int, perm FileMode) (*File, error)
 ```
 
-函数中的`flag`和`perm` 这两个参数，可以参考linux下的`open(2)`,通过这两个指定文件打开的权限和读写设置.
+函数中的`flag`和`perm` 这两个参数，可以参考 linux 下的`open(2)`, 通过这两个指定文件打开的权限和读写设置。
 
 
 #### 读写文件
 
-在读写文件的方面,可以有多种方式,可以希望读出来是`[]byte` 可以是`string`. 可以按行读, 也可以一次性读完整个文件. 因此我们可以使用不同的包提供的相关函数.
-这些包有`io`,`ioutil`,`bufio`以及`File`本身的一些方法.
+在读写文件的方面，可以有多种方式，可以希望读出来是`[]byte` 可以是`string`. 可以按行读，也可以一次性读完整个文件。因此我们可以使用不同的包提供的相关函数。
+这些包有`io`,`ioutil`,`bufio`以及`File`本身的一些方法。
 
 
 <hr>
 
-**os**  
+**os**
 
-这个包里面包含了`File`，这个type是实现了几个有关文件的读写方法。 比如`Read`,`ReadAt`,`Readdir`等读函数，对应的也有`Write`,`WriteAt`,`WriteString`这些写函数。所以如果使用`os.Open`打开的的文件，可以直接使用自身的方法来进行相应的读取。
+这个包里面包含了`File`，这个 type 是实现了几个有关文件的读写方法。 比如`Read`,`ReadAt`,`Readdir`等读函数，对应的也有`Write`,`WriteAt`,`WriteString`这些写函数。所以如果使用`os.Open`打开的的文件，可以直接使用自身的方法来进行相应的读取。
 
 ```
 f, err := os.Open("test.txt")
@@ -66,7 +66,7 @@ _, err := f.Read(data)
 func (f *File)ReadAt(b []byte, off int64)(n int, err error)
 ```
 
-使用方法和上面的Read类似。
+使用方法和上面的 Read 类似。
 
 对于`Readdir`方法而言，通过`os.Open`打开一个目录文件，通过设置读取的目录数来读取当前目录下的内容。
 
@@ -74,7 +74,7 @@ func (f *File)ReadAt(b []byte, off int64)(n int, err error)
 func (f *File) Readdir(n int) ([]FileInfo, error)
 ```
 
-这边如果`n`是小于等于0的话，会读取当前目录下所有的内容。返回的`FileInfo`是一个interface。包含了获取文件一些属性的方法。
+这边如果`n`是小于等于 0 的话，会读取当前目录下所有的内容。返回的`FileInfo`是一个 interface。包含了获取文件一些属性的方法。
 
 ```
 type FileInfo interface {
@@ -91,7 +91,7 @@ type FileInfo interface {
 
 <hr>
 
-**bufio**  
+**bufio**
 
 这个包里面提供了一些读写相关的内容。先来看看读相关的内容。 在`bufio`中有一个`Reader`的结构体。这个结构体本身实现了一些方法。这些方法的返回值基本上是
 `[]byte`或者`rune`这类的。
@@ -102,13 +102,13 @@ type FileInfo interface {
 func NewReader(rd io.Reader) *Reader
 ```
 
-有了`*Reader`的变量后，可以通过接口来实现不少东西。我们可以查看当前可以读取的buffer可以读取的byte数。
+有了`*Reader`的变量后，可以通过接口来实现不少东西。我们可以查看当前可以读取的 buffer 可以读取的 byte 数。
 
 ```
 func (b *Reader) Buffered() int
 ```
 
-不过这个函数在buffer还没有被读取的时候会返回0，读取后，再次调用后会用总长度减去已经读取的长度。我们可以用一个简短的程序测试一下：
+不过这个函数在 buffer 还没有被读取的时候会返回 0，读取后，再次调用后会用总长度减去已经读取的长度。我们可以用一个简短的程序测试一下：
 
 ```
 func main() {
@@ -147,8 +147,8 @@ func (b *Reader) ReadBytes(delim byte) ([]byte, error)
 ```
 
 这个方法在失败的时候，会返回已经读到的内容。这边有一个需要注意的，返回值`[]byte`的大小，是在创建了`Reader`后会自动分配一个大小。这个大小也许会不够
-比如：在读取一个二进制文件时，将`delim`设置为`\n`. 那么有时会把整个文件都读过去。所以会报错，byte的大小不够存储。 因此这边可以使用`NewReaderSize`来
-设置一个size。
+比如：在读取一个二进制文件时，将`delim`设置为`\n`. 那么有时会把整个文件都读过去。所以会报错，byte 的大小不够存储。 因此这边可以使用`NewReaderSize`来
+设置一个 size。
 
 ```
 func NewReaderSize(rd io.Reader, size int) *Reader
@@ -156,9 +156,9 @@ func NewReaderSize(rd io.Reader, size int) *Reader
 
 需要注意的是，如果这个`io.Reader`已经是一个分配了足够大空间的话，就会返回大的那个。
 
-还有一个值得一提的方法，`Reset`。 我们在读取buffer中的内容时，可以使用`Reset`来丢弃所有的已经buffered的内容，相当于从头再来读一遍。
+还有一个值得一提的方法，`Reset`。 我们在读取 buffer 中的内容时，可以使用`Reset`来丢弃所有的已经 buffered 的内容，相当于从头再来读一遍。
 
-同时，bufio还提供了两个undo函数，`UnreadByte`和`UnreadRune`. 第二个函数需要注意的是，如果最后一次读的操作不是`ReadRune`的话，这个函数就将返回一个错误。
+同时，bufio 还提供了两个 undo 函数，`UnreadByte`和`UnreadRune`. 第二个函数需要注意的是，如果最后一次读的操作不是`ReadRune`的话，这个函数就将返回一个错误。
 
 <hr>
 
@@ -170,9 +170,9 @@ func NewReaderSize(rd io.Reader, size int) *Reader
 func ReadAtLeast(r Reader, buf []byte, min int) (n int, err error)
 ```
 
-这里的buf的大小和min的大小是有关系的，如果buf的长度比min的长度要小，那么直接报错，如果一样的大，也会返回一个错误`EOF`。另一个是`ReadFull`这个函数使用来读取`len(buf)`长度的内容，如果读取的内容比`len(buf)`的长度小，那么则返回一个`unexpected EOF`。
+这里的 buf 的大小和 min 的大小是有关系的，如果 buf 的长度比 min 的长度要小，那么直接报错，如果一样的大，也会返回一个错误`EOF`。另一个是`ReadFull`这个函数使用来读取`len(buf)`长度的内容，如果读取的内容比`len(buf)`的长度小，那么则返回一个`unexpected EOF`。
 
-io包里面还提供了一些interface，这些iterface类型可以被其他的包实现。比如：strings包下面的Reader。 实现了`io.Reader`,`io.ReaderAt`等接口，所以可以直接调用相应的方法。如下示例：
+io 包里面还提供了一些 interface，这些 iterface 类型可以被其他的包实现。比如：strings 包下面的 Reader。 实现了`io.Reader`,`io.ReaderAt`等接口，所以可以直接调用相应的方法。如下示例：
 
 ```
 reader := strings.NewReader("golang")
