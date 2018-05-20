@@ -1,5 +1,5 @@
 body {
-    font-family:"Segoe UI", Arial,"Microsoft YaHei", sans-serif, Helvetica
+    font-family:"San Francisco","Lucida Grande","Lucida Sans Unicode","helvetica neue",Verdana,tahoma,Aril,PingFangSC-Light,"hiragino sans gb",STXihei,"华文细黑","WenQuanYi Micro Hei","Microsoft YaHei UI","Microsoft YaHei","微软雅黑",Heiti,"黑体",sans-serif;
 }
 
 .main {
@@ -7,7 +7,7 @@ body {
 }
 
 .post {
-    font-family: Helvetica,"PingFang SC", Arial,sans-serif;
+    font-family:"San Francisco","Lucida Grande","Lucida Sans Unicode","helvetica neue",Verdana,tahoma,Aril,PingFangSC-Light,"hiragino sans gb",STXihei,"华文细黑","WenQuanYi Micro Hei","Microsoft YaHei UI","Microsoft YaHei","微软雅黑",Heiti,"黑体",sans-serif;
     margin: 0 auto;
     word-wrap: break-word;
     hyphens: auto;
@@ -40,7 +40,7 @@ body {
     display: inline-block;
     width: 100%;
     margin-bottom: 10px;
-} 
+}
 
 .post-author {
     display: inline-block;
@@ -212,10 +212,10 @@ a.returns  {
     margin: 40px auto;
  }
 
- @media only screen 
-and (min-device-width: 375px) 
-and (max-device-width: 667px) 
-and (-webkit-min-device-pixel-ratio: 2) { 
+ @media only screen
+and (min-device-width: 375px)
+and (max-device-width: 667px)
+and (-webkit-min-device-pixel-ratio: 2) {
     .post {
         max-width: 90%;
     }
