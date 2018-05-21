@@ -190,16 +190,16 @@ typedef struct schedule{
 ```
 
 
-#### create 函数
+### create 函数
 对于 create 而言，我们需要注册一个函数，同时创建一个协程的信息结构体`cothread_t`, 并将这个信息保存到`schedule_t`中。
 
-#### resume 函数
+### resume 函数
 一个协程一般有如下几个状态：`free`, `runnable`, `running`, `suspend`. 从状态的名字上可以看出具体的用途。resume 的函数需要处理两个状态下。`runnable`和`suspend`. 当时 runnable 的时候，表明是第一次调用，所以需要使用 makecontext 进行一些修改和绑定。当为`suspend`的时候，表明此刻需要唤醒挂起的协程，所以只要 swapcontext 即可。
 
-#### yield 函数
+### yield 函数
 这个函数也只是需要对两个上下文进行一个转换，swapcontext 即可。
 
-#### status 函数
+### status 函数
 通过结构体`cothread_t`维护了一个 status 的状态，所以每次只要返回当前上下文的 status 项即可。
 
 我实现了一个简单的协程，基本可用。[https://github.com/JesseEisen/coroutine](https://github.com/JesseEisen/coroutine)

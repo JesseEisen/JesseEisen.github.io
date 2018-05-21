@@ -8,7 +8,7 @@ description: git roll
 我们使用版本控制的一个目的是能够更好的控制项目的进展，同时在某些时候能够后悔一下，回到之前某个正确的版本中。所以版本回退还是比较重要的，在 git 中有两种层面的版本回退。一个是对某次的 commit 的回退，一个是某个 file 的回退。
 下面用 reset, revert, checkout 这三个命令来完成不同的回退。
 
-#### git reset
+### git reset
 顾名思义，reset（重置）。 我们用这个命令来重置我们的提交历史，或者是我们的文件。
 reset 一般辅以参数`--hard`, `--soft`, `--mixed`.
 
@@ -34,7 +34,7 @@ reset 一般辅以参数`--hard`, `--soft`, `--mixed`.
 
 不过这个命令同时还可以将某一个具体的版本中的 file 放到当前的暂存区中。`git reset HEAD~2 file1`. 现在暂存区中的 file1 便是之前的版本中的了。现在你可以先执行一次 commit，形成一个新的版本。
 
-#### 后悔一次
+### 后悔一次
 刚刚提到了，在你使用了`git reset --hard xxx`后，你就完全的回到你想回退的那个版本去了，这也就意味着你的在这个版本之后的提交都将丢失，你使用`git log --pretty=oneline` 你会发现当前的 head/master 都指向了你回退的版本。但是你发现你做错了，你回退的版本不是你想要的版本，你不想回退了。此时还有一个补救方式：
 
 ```shell
@@ -46,7 +46,7 @@ git reset --hard xxx_id  #恢复最开始的场景
 
 <hr>
 
-#### checkout
+### checkout
 
 checkout 大多数情况用在检出 branch 上，你可以很轻松的使用`git checkout branch_name` 检出 branch。不过 checkout 同样可以用在检出版本。
 
@@ -67,7 +67,7 @@ checkout 在操作版本的时候就是在操作 HEAD. 我们的提交历史没�
 
 <hr>
 
-#### revert
+### revert
 
 revert 比较特殊一点，他不会修改当前的提交历史，他只会撤销掉你指定的，同时创建一个新的提交。不过这个撤销的同时会有冲突，可以手动解决冲突重新提交。一般使用`git revert commit_id`
 

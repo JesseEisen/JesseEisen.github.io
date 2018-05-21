@@ -7,7 +7,7 @@ description: redis learn
 
 ## Data Type
 
-#### Redis Keys
+### Redis Keys
 
 Here are few rules about keys:
 
@@ -17,7 +17,7 @@ Here are few rules about keys:
 + try to sick with a schema, For instance "username:name"
 + maximun allowed key size is 512MB
 
-#### Redis Strings
+### Redis Strings
 
 we can use `set` and `get` to set and retrieve a string value. And set will replace any existing value already stored into the key.
 
@@ -52,7 +52,7 @@ OK
 
 As you see, mget will return an array of values.
 
-#### Altering and querying
+### Altering and querying
 
 `Exists` command will return 0 or 1 to signal if the key is exist or not. Here some example:
 
@@ -69,7 +69,7 @@ OK
 
 `Type` command will return the kind of vlaue store at the specify key
 
-#### key with limited time to live
+### key with limited time to live
 
 We can control the time of a value living. We can use `expire` to set the time.
 
@@ -89,7 +89,7 @@ As convient, we can set the expire time as a paramter of `set` command.  And use
 
 If we want set and check expires in milliseconds, use `pexpire` and `pttl`.
 
-#### Lists
+### Lists
 
 Redis lists are implemented via linked list. New node will insert at the head of the list or at the tail of the list.
 
@@ -104,16 +104,16 @@ The two index is the start and end index of this list, both of them can be negat
 
 If we want to get an element from list, we can use `lpop` or `rpop`. Both of them will pop element from left and right.
 
-#### Common use cases for lists
+### Common use cases for lists
 
 + remember the latest updates posted by user into a social network
 + communication between process
 
-#### Capped lists
+### Capped lists
 
 `Ltrim` command is similar to `lrange`, but **instead of displaying the specified range of elements** it sets this range as the new list value.All the elements outside the given range are removed.
 
-#### Blocking operations on lists
+### Blocking operations on lists
 
 redist implements commands called `brpop` and `blpop` to block if the list is empty: they'll return to the caller only when a new element is added to the list, or when a user-specified timeout is reached.
 
@@ -127,4 +127,4 @@ The option above means: "wait for elements in the list `task`, but return if aft
 
 Use `0` as timeout to wait for elements forever.  And the return value of `brpop` is different from `rpop`, the first is the name of the key. and next is the value.
 
-#### Automatic creation and removal of keys
+### Automatic creation and removal of keys

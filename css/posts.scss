@@ -411,6 +411,10 @@ footer {
 }
 
 @media print, screen and (max-width:580px) {
+  .wrapper {
+  	width: 100%;	
+  }
+
   header ul {
     display:none;
   }
