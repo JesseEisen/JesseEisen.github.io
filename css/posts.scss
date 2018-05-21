@@ -80,6 +80,13 @@ body {
     margin-bottom: 40px;
 }
 
+.img-title {
+	color: rgb(153, 153, 153);
+	font-size: 14px;
+	text-align: center;
+	margin: 10px 0px 15px 0px;
+}
+
 .return {
    position: absolute;
    right: 30px;
@@ -272,7 +279,9 @@ blockquote {
 }
 
 img {
-  max-width:100%;
+	display: inherit;
+	max-width: 65%;
+	margin: auto;
 }
 
 code, pre {
