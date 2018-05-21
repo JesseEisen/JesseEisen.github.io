@@ -21,14 +21,14 @@ Here are few rules about keys:
 
 we can use `set` and `get` to set and retrieve a string value. And set will replace any existing value already stored into the key.
 
-With two options, we can change this act. 
+With two options, we can change this act.
 
 + nx: if key alread exists failed
 + xx: **only** successful when key alread exists
 
 if strings are the basic value of redis, Here are some useful options can perform to that.
 
-```
+```shell
 > set counter 100
 OK
 > incr counter
@@ -41,7 +41,7 @@ There are a number of commands for operating on strings. For instance: `getset` 
 
 Here a interesting command like `mset` and `mget` for set and retrieve the value of multiple keys in a single command.
 
-```
+```shell
 > mset a 10 b 20 c 30
 OK
 > mget a b c
@@ -56,7 +56,7 @@ As you see, mget will return an array of values.
 
 `Exists` command will return 0 or 1 to signal if the key is exist or not. Here some example:
 
-```
+```shell
 > set greeting hello
 OK
 > exists greeting
@@ -73,12 +73,12 @@ OK
 
 We can control the time of a value living. We can use `expire` to set the time.
 
-```
+```shell
 > set mykey 5
 OK
 > expire mykey 5
 (integer) 1
-> get key 
+> get key
 5
 //wait 5s and type
 > get key
@@ -87,7 +87,7 @@ OK
 
 As convient, we can set the expire time as a paramter of `set` command.  And use `persist` to cancel the expire time, make this value persist forever. Use command `ttl` to check remaining time to live for the key.
 
-If we want set and check expires in milliseconds, use `pexpire` and `pttl`. 
+If we want set and check expires in milliseconds, use `pexpire` and `pttl`.
 
 #### Lists
 
@@ -95,7 +95,7 @@ Redis lists are implemented via linked list. New node will insert at the head of
 
 We use `lpush` command adds a new elememt into a list, on the left(or say at head). While `rpush` command adds elements into a list, on the right(or say at the tail). And we use `lrange` to travle this list.
 
-```
+```shell
 < lrange mylist 0 -1
 ...  //all the elements in this list
 ```
@@ -117,7 +117,7 @@ If we want to get an element from list, we can use `lpop` or `rpop`. Both of the
 
 redist implements commands called `brpop` and `blpop` to block if the list is empty: they'll return to the caller only when a new element is added to the list, or when a user-specified timeout is reached.
 
-```
+```shell
 > brpop tasks 5
 1) "tasks"
 2) "element"

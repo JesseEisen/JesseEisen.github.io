@@ -11,7 +11,7 @@ description: go read relate
 
 #### 创建文件
 
-创建文件可以使用`os.Create`来创建，如果这个文件存在，就截断这个文件。如果不存在。则以权限`0666`和`O_RDWR`来创建新的文件。
+创建文件可以使用`os.Create`来创建，如果这个文件存在，就截断这个文件。如果不存在,则会通过相应的读写权限和打开的用途来创建新的文件。
 其他的也可以使用下面的`OpenFile`来创建文件。
 
 
@@ -19,14 +19,14 @@ description: go read relate
 
 `os` 包里提供了一个`Open`函数，函数签名为：
 
-```
+```go
 func Open(name string) (*File, error)
 ```
 
 函数返回一个`*File`， 而`File` 实现了`Read`和`Write`这两个方法， 所以 Open 的返回值可以直接传入以`io.Reader`和`io.Writer`为参数的函数中。
 不过于对于`os.Open`而言，返回的 File 只能用于读（`Os.O_RDONLY`）。 因此在需要写的情况下，直接`Open`这个函数就不太适合。 可以使用如下：
 
-```
+```go
 func OpenFile(name string, flag int, perm FileMode) (*File, error)
 ```
 
@@ -45,7 +45,7 @@ func OpenFile(name string, flag int, perm FileMode) (*File, error)
 
 这个包里面包含了`File`，这个 type 是实现了几个有关文件的读写方法。 比如`Read`,`ReadAt`,`Readdir`等读函数，对应的也有`Write`,`WriteAt`,`WriteString`这些写函数。所以如果使用`os.Open`打开的的文件，可以直接使用自身的方法来进行相应的读取。
 
-```
+```go
 f, err := os.Open("test.txt")
 ...... //err check
 
@@ -62,7 +62,7 @@ _, err := f.Read(data)
 
 这个方法的返回值是读取的字节数。 这个读取是可控制的，可以一次性读入整个文件，也可以只读入指定长度的内容，即指定`[]byte`的大小即可。比较灵活一点。同时可以使用`ReadAt`来做一个偏移后再读取。
 
-```
+```go
 func (f *File)ReadAt(b []byte, off int64)(n int, err error)
 ```
 
@@ -70,13 +70,13 @@ func (f *File)ReadAt(b []byte, off int64)(n int, err error)
 
 对于`Readdir`方法而言，通过`os.Open`打开一个目录文件，通过设置读取的目录数来读取当前目录下的内容。
 
-```
+```go
 func (f *File) Readdir(n int) ([]FileInfo, error)
 ```
 
 这边如果`n`是小于等于 0 的话，会读取当前目录下所有的内容。返回的`FileInfo`是一个 interface。包含了获取文件一些属性的方法。
 
-```
+```go
 type FileInfo interface {
     Name() string       // base name of the file
     Size() int64        // length in bytes for regular files; system-dependent for others
@@ -98,19 +98,19 @@ type FileInfo interface {
 
 首先需要创建一个`Reader`的变量， 上面提到过，在`os.Open`打开的文件的返回是`*File`类型的变量实现了`io.Reader`的接口，所以我们可以直接调用。
 
-```
+```go
 func NewReader(rd io.Reader) *Reader
 ```
 
 有了`*Reader`的变量后，可以通过接口来实现不少东西。我们可以查看当前可以读取的 buffer 可以读取的 byte 数。
 
-```
+```go
 func (b *Reader) Buffered() int
 ```
 
 不过这个函数在 buffer 还没有被读取的时候会返回 0，读取后，再次调用后会用总长度减去已经读取的长度。我们可以用一个简短的程序测试一下：
 
-```
+```go
 func main() {
     br := bufio.NewReader(f)
 
@@ -142,7 +142,7 @@ func main() {
 
 可以根据实际需要来选择需要的方法， 这里面有一些方法是根据`delim`来作为一个读的分段，比如：
 
-```
+```go
 func (b *Reader) ReadBytes(delim byte) ([]byte, error)
 ```
 
@@ -150,7 +150,7 @@ func (b *Reader) ReadBytes(delim byte) ([]byte, error)
 比如：在读取一个二进制文件时，将`delim`设置为`\n`. 那么有时会把整个文件都读过去。所以会报错，byte 的大小不够存储。 因此这边可以使用`NewReaderSize`来
 设置一个 size。
 
-```
+```go
 func NewReaderSize(rd io.Reader, size int) *Reader
 ```
 
@@ -166,7 +166,7 @@ func NewReaderSize(rd io.Reader, size int) *Reader
 
 `io`包里面也提供了一些有关的读函数。比如 `ReadAtLeast`. 意思就是至少读这么多个字符。函数签名如下：
 
-```
+```go
 func ReadAtLeast(r Reader, buf []byte, min int) (n int, err error)
 ```
 
@@ -174,7 +174,7 @@ func ReadAtLeast(r Reader, buf []byte, min int) (n int, err error)
 
 io 包里面还提供了一些 interface，这些 iterface 类型可以被其他的包实现。比如：strings 包下面的 Reader。 实现了`io.Reader`,`io.ReaderAt`等接口，所以可以直接调用相应的方法。如下示例：
 
-```
+```go
 reader := strings.NewReader("golang")
 p := make([]byte, 6)
 n, err := reader.ReadAt(p, 2)
