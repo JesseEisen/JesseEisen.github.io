@@ -269,6 +269,12 @@ h3 {
     font-size:20px;
 }
 
+h3::before {
+	content: "# ";
+	left: -1em;
+	color: #f72d84;
+}
+
 blockquote {
   margin:10px 5px;
   padding:10px 20px 1px 20px;
