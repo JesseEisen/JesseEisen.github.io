@@ -104,3 +104,22 @@ style 属性可以用来指定图形的多种样式。属性值使用逗号分�
 + filled    填充, 填充的颜色可已使用 fillcolor 指定。
 + diagonals 在图形的四个角上添加斜线
 + rounded   圆角
+
+Edge 有一个 `dir` 的属性来设置箭头的样式。可以设置值： `forward`, `back`, `both`, `none`。同时对于 arrow 的样式还有两个额外的属性： `arrowhead` 和 `arrowtail`。 可以设置如下的值：
+
++ normal
++ inv
++ dot
++ invdot
++ odot
++ invodot
++ none
+
+此外，arrowsize 设置了箭头的大小，值表示箭头放大的倍数。
+
+### 绘图方向，大小和空白
+
+
+
+
+
