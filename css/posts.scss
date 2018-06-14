@@ -1,7 +1,7 @@
 ---
 ---
 
-@import "rouge-base16-dark";
+/*@import "rouge-base16-dark";*/
 @import url('https://fonts.googleapis.com/css?family=Lato:300italic,700italic,300,700');
 
 html {
@@ -294,7 +294,7 @@ code, pre {
   font-family:Monaco, Bitstream Vera Sans Mono, Lucida Console, Terminal;
   color:#069;
   font-size:14px;
-  overflow-x:auto;
+  /*overflow-x:auto;*/
 }
 
 code::before {
@@ -306,13 +306,12 @@ code::after {
 }
 
 pre {
-  padding:20px;
-  background: #3A3C42;
-  color:#f8f8f2;
+  padding:15px 60px;
+  color:black;
   margin:0 -20px 20px;
 
   code {
-    color:#f8f8f2;
+    color:black;
   }
 
   code::before {
