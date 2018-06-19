@@ -383,7 +383,10 @@ footer {
   }
 }
 
-@media print, screen and (max-width: 740px) {
+@media only screen 
+and (min-device-width: 768px) 
+and (max-device-width: 1024px)
+and (-webkit-min-device-pixel-ratio: 1) {
   body {
     padding:0;
   }
@@ -392,6 +395,10 @@ footer {
     border-radius: 0;
     box-shadow: none;
     width:100%;
+  }
+	
+  .post {
+  	width: 85%;
   }
 
   footer {
@@ -410,9 +417,16 @@ footer {
   }
 }
 
-@media print, screen and (max-width:580px) {
+@media only screen 
+and (min-device-width: 375px) 
+and (max-device-width: 667px) 
+and (-webkit-min-device-pixel-ratio: 2) {
   .wrapper {
   	width: 100%;	
+  }
+
+  .post {
+  	width: 90%;
   }
 
   header ul {
