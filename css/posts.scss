@@ -390,6 +390,14 @@ and (-webkit-min-device-pixel-ratio: 1) {
   body {
     padding:0;
   }
+  
+  p {
+  	font-size: 32px;
+  }
+  
+  code {
+  	font-size: 28px;
+  }
 
   .wrapper {
     border-radius: 0;
@@ -422,6 +430,10 @@ and (min-device-width: 375px)
 and (max-device-width: 667px) 
 and (-webkit-min-device-pixel-ratio: 2) {
   body {
+  	font-size: 32px;
+  }
+
+  p {
   	font-size: 32px;
   }
 
