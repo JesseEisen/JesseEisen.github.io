@@ -254,3 +254,162 @@ fi
 ```
 
 shell 中的数学计算基本上就是这些，还有其他的内容后续继续增加。
+
+
+
+###  正则表达式
+
+我们在写脚本时，可以使用 `sed`, `awk`, `perl` 等工具自带的正则。但是如果不是很复杂的情况， 单独使用 bash 自带的正则就可以了。bash 本身支持的是 ERE 语法，同时也支持 group 匹配。RE 的语法在这里不多说了，正则表达式在有时候会比较清晰一些。比如下面的这个例子：
+
+```shell
+$ ls 
+1_abc.txt  245_def.txt 
+```
+
+将上述的文件名中的数字转换成16进制的。 这个问题解决的办法很多，我们尝试使用 RE 来解决这个问题。
+
+```shell
+convert() {
+    filename="$1"
+    rx='^([0-9]+)_(.*)$'
+    if [[ "$filename" =~ $rx ]]; then
+    	mv "$filename" "$(printf '%04x%s' "${BASH_REMATCH[1]}" "${BASH_REMATCH[2]}")"
+    fi
+}
+```
+
+匹配到数字部分和字符串部分然后将其通过 `printf` 输出。匹配到的分组部分保存在 `BASH_REMATCH `中， 不过通过 bash 的字符串子串操作也可以轻松完成。不过在获取子串这块语法会存在一些混淆，这个后面再说，现在看看使用子串如何解决这个问题。
+
+```shell
+# bad， not safe
+convert() {
+    number=${1%%_*}
+    other=${1##*_}
+    mv "$1" "$(printf '%04x%s' "$number" "$other")"
+}
+```
+
+实际上通过子串分割更加的快捷，不过需要保证每个文件都是统一的格式，不存在其他的格式。所以使用正则的好处是对于不符合条件的文件名不进行分割，在一定程度上更加的安全一些。
+
+###  字符串子串
+
+bash 中有不少的扩展，其中包括 `paramater expand` 。 先不讨论有关变量赋值的扩展，只讨论和子串有关的部分。首先和其他脚本语言中比较类似的切片语法。
+
++ ${parameter:offset[:length]}
+
+这个扩展很好理解，返回值为 parameter 从 offset 处开始的 length 个字符。 这个 offset 可以为负数，其中 length 是可选。 parameter 可以为位置参数，在这种情况下索引是默认从 1 开始的。其他的情况下索引是从 0 开始的。一个简单的例子展示一下这个是如何扩展的。
+
+```shell
+$ cat substring.sh
+#!/usr/bin/env bash
+str="This is a string"
+printf "%s\n" "${@:2:2}"
+printf "%s\n" "${str:5}"
+$ ./substring.sh 1 2 3 4 5
+2 
+3
+is a string
+```
+
+这个扩展对数组也是可以使用的，不过如果使用在关系型数组上，其结果是未定义的。
+
++ ${parameter#word}
++ ${parameter##word}
+
+移除掉匹配的前缀，所谓的前缀就是 word 所表示的。word 部分可以使用通配符来表示，有关通配符的内容见后面。 这个匹配一般在获取后缀名或者是目录名比较有用。 比如下面的例子：
+
+```shell
+$ mypath=$(pwd)
+$ echo "$mypath"
+/home/user/work/shell
+$ echo ${mypath#*/}
+home/user/work/shell
+$ echo ${mypath##*/}
+shell
+```
+
+一个 `#` 表明匹配最短的前缀； 两个 `##` 表明匹配最长的前缀。 前缀部分的内容需根据实际情况来决定。
+
++ ${parameter%word}
++ ${parameter%%word}
+
+移除掉后缀，原理同上面的。word 部分支持通配符的表示。这个一般在获取文件名或者目录的 path 比较有用。所以我们可以这样使用：
+
+```shell
+$ myfile=base.name.txt
+$ echo "${myfile%.*}"
+base.name
+$ echo "${myfile%%.*}"
+base
+```
+
+但是也能看到这个扩展的局限性，就是匹配的结果要么最少，要么最多，没有达到一个平衡，不过这些都需要我们自己去衡量与选择。
+
++ ${parameter/pattern/string}
+
+模式替换，实际上就是将匹配到的内容用 string 替换掉。这个功能有一些使用的技巧，整理如下：
+
+| 场景               | 结果                         |
+| :----------------- | ---------------------------- |
+| pattern 以`/ `开头 | 替换掉所有匹配的 pattern     |
+| pattern 以`#` 开头 | 必须是头部就匹配到 pattern   |
+| pattern 以`%` 开头 | 必须是尾部开始匹配到 pattern |
+| string 为空        | 删除掉匹配到的 pattern       |
+
+除此之外，如果参数是 `@` 或者  `*` 的话，则对每一个参数都使用这样的匹配。下面通过几个例子来简单说明下:
+
+```shell
+$ target="This is a string"
+$ echo "${target/is/IS}"  # only first matched will be replaced
+ThIS is a string
+$ echo "${target//is/IS}" # each matched will be replaced
+ThIS IS a string
+$ echo "${target/#T/t}" # replace first character
+this is a string
+$ echo "${target/%sting/STRING}" # repalce end if the string
+This is a STRING
+$ echo "${target/is}" # delete first matched
+Th is a string
+$ echo "${target//is}" # delete all matched
+Th  a string
+```
+
+主要是需要记住一些符号的使用，其他的内容，现在不在这边过多的涉及，讨论过多后更加容易混淆，这边只介绍和子串相关的内容，至于大小写转换的功能，这些提及的比较少，所以也不整理了。
+
+###  通配符
+
+要完整的理清统配符的内容，得单独理出一篇。不过在这边主要是说明一些最基本的。至于通过 `shopt` 打开相关的扩展之类的，暂时不涉及。
+
+实际上通配符只是一个低配版的 RE，语法标记上简化了很多。注意  `.` 在通配符中没有特殊含义，仍然代表的是原本的含义。 在 bash 中一般是如下的几个标记：
+
++ `*`  匹配一个或者多个字符
++ `?`  匹配一个字符
++ `[...]` 匹配这个集合中的任意一个字符
+
+我们使用的最多的是 `*` ，这在遍历文件是最常用到：
+
+```shell
+for file in *; do
+	......
+done
+```
+
+除此之外，我们在 case 中经常会使用到这个，比如验证输入Yes/NO。 我们可以这样做：
+
+```shell
+case "$input" in
+	[Yy]|'')  end=1;
+	[Nn]*)    end=0;
+	*)        echo "unknown character"
+esac
+```
+
+实际上我们在使用  `[[`时也可以使用通配符，比如下面这样的方式：
+
+```shell
+if [[ $input = [Ee]rror ]]; then 
+	... 
+fi
+```
+
+此外还有一些范围相关的通配符，比如: `[a-h]`, `[[:alnum:]]`，`[[:digit:]_.]` 等，这些用法是合法的。如果你熟悉 RE，这些应该不会太陌生。 至于取反操作有的是 `!` , 表示非。
