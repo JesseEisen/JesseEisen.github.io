@@ -9,3 +9,6 @@ description: create and use dynamic in c
 <hr>
 
 首先我们需要了解一些基本的概念，动态链接文件是`ELF`文件的一种类型，其他两种是`重定位文件`, `可执行文件`。一个 ELF 文件是有相应的结构的，从这些结构中我们能读取到很多信息。
+
+常用的来分析 ELF 文件的工具有 `readelf`, `nm`， `strip` 等。而动态链接
+
