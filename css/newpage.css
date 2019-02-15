@@ -12,6 +12,12 @@
     font-size: 36px;
     font-weight: 600;
     margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.essay-title > a {
+    text-decoration: none;
+    color: #000;
 }
 
 .post-list {
@@ -25,6 +31,10 @@
 .post-item {
     border-bottom: 1px solid #eaeaea;
     padding: 30px 0;
+}
+
+.post-item:nth-child(odd) {
+    background: #fafafa;
 }
 
 .post-specify {

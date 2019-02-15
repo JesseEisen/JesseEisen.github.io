@@ -13,7 +13,7 @@ permalink: /essay/
       <div class="post-item">
         <div class="post-specify">
           <div class="date"><span>{{ post.date | date: '%B %-d, %Y — %H:%M' }}</span></div>
-          <a class="title" href="{{ post.url | prepend: site.baseurl }}"><b>{{ post.title }}</b></a>
+          <a class="title" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
         </div>
       </div>
     {% endfor %}
