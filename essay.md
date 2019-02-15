@@ -1,21 +1,21 @@
 ---
-layout: page
+layout: essay
 title: essay
 permalink: /essay/
 ---
 
 <div class="essays"> 
-<h1><a href="{{ site.url }}">Jesse's Posts </a></h1>
+<div class="essay-title"><a href="{{ site.url }}"> Blog </a></div>
 
 
-<ul>
+<div class="post-list">
     {% for post in site.posts %}
-      <li>
-        <a href="{{ post.url | prepend: site.baseurl }}">
-           <b>{{ post.title }}</b>
-           <span>{{ post.date | date: '%B %-d, %Y — %H:%M' }}</span>
-        </a>
-      </li>
+      <div class="post-item">
+        <div class="post-specify">
+          <div class="date"><span>{{ post.date | date: '%B %-d, %Y — %H:%M' }}</span></div>
+          <a class="title" href="{{ post.url | prepend: site.baseurl }}"><b>{{ post.title }}</b></a>
+        </div>
+      </div>
     {% endfor %}
-</ul>
+</div>
 </div>
