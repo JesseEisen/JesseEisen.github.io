@@ -5,11 +5,12 @@ layout: posts
 <div class="post">
 
   <header class="post-header">
-    <div class="return">
+    <!-- <div class="return">
     <a class="returns" href="/essay">↩︎</a>
-    </div>
-    <h1 class="post-title">{{ page.title }}</h1>
-    <span class="post-date">
+    </div> -->
+    <div class="post-title">{{ page.title }}</div>
+    <div class="post-date">
+       <span>
         {% assign d = page.date | date: "%-d"  %}
         {{ page.date | date: "%A, %B" }} 
         {% case d %}
@@ -19,10 +20,14 @@ layout: posts
                 {% else %}{{ d }}th
                   {% endcase %}, 
                   {{ page.date | date: "%Y - %H:%M" }}
-    </span>
-    <span class="post-author"> Jesse Chan(<a href="https://twitter.com/JessEisen_LJ" style="
+      </span>
+    </div>
+    <div class="post-author">
+    <span> Jesse Chan(<a href="https://twitter.com/JessEisen_LJ" style="
                 text-decoration: none;
                 ">@JesseEisen_LJ</a>)</span>
+    </div>
+    <div class="separator"></div>
   </header>
 
   <article class="post-content">
