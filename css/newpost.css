@@ -1,3 +1,8 @@
+::selection {
+    background-color: #ff79b8;
+    color: #000;
+}
+
 .page-content {
     margin:0 auto 100px;
 }
