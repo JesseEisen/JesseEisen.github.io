@@ -1,8 +1,11 @@
 .page-content {
-    margin-bottom: 100px;
-    font-family:
+    margin:0 auto 100px;
 }
 
+.post-content {
+    width: 850px;
+    margin: 50px auto;
+}
 
 .post-header {
     margin-top: 50px;
@@ -41,6 +44,17 @@
     border-bottom: 1px solid #eaeaea;
 }
 
+.return {
+    position: absolute;
+    right: 30px;
+    top: 65px;
+    height: 25px;
+    width: 25px;
+    border: 1px solid #eaeaea;
+    border-radius: 50%;
+    text-align:center;
+  }
+
 a {
     color: #067df7;
     text-decoration: none;
@@ -48,8 +62,9 @@ a {
 
 p {
     font-weight: 400;
-    font-size: 16px;
+    font-size: 15px;
     line-height: 26px;
+    text-align: justify;
 }
 
 b {
@@ -67,13 +82,14 @@ h2 {
 }
 
 h3 {
+    margin: 40px 0 0 0;
     font-weight: bold;
-    font-size: 18px; 
+    font-size: 20px; 
 }
 
 h4 {
     font-weight: bold;
-    font-size: 16px;
+    font-size: 18px;
 }
 
 blockquote {
@@ -86,6 +102,7 @@ blockquote {
 }
 
 code {
+    font-family: Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif;
     color: #d400ff;
     font-size: 0.9em;
     white-space: pre-wrap;
@@ -131,7 +148,7 @@ pre {
 }
 
 pre > code {
-    font-family: Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif;
+    color: #000;
     font-size: 13px;
     line-height: 20px;
 }
