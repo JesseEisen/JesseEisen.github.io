@@ -127,7 +127,7 @@ code::after {
 
 ul {
     list-style-type: none;
-    margin-left: 15px;
+    margin-left: 20px;
     padding: 0px;
 }
 
@@ -171,6 +171,7 @@ pre > code::after{
 }
 
 img {
+    display: block;
 	max-width: 75%;
 	margin: auto;
 }
@@ -226,3 +227,28 @@ img {
     font-weight: 500;
     color: #ff001f;
 }
+
+a:hover{
+    text-decoration: underline;
+}
+
+table {
+    width:80%;
+    margin:auto;
+    border-collapse:collapse;
+  }
+  
+th, td {
+    text-align:left;
+    padding:5px 10px;
+    border-bottom:1px solid #aaa;
+}
+  
+dt {
+    color:#222;
+    font-weight:700;
+}
+  
+th {
+    color:#222;
+s}
