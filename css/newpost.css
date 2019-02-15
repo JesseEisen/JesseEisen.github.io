@@ -240,8 +240,8 @@ table {
   
 th, td {
     text-align:left;
-    padding:5px 10px;
-    border-bottom:1px solid #aaa;
+    padding:10px 10px 5px;
+    border-bottom:1px solid #eaeaea;
 }
   
 dt {
@@ -250,5 +250,6 @@ dt {
 }
   
 th {
+    font-weight: 500;
     color:#222;
-s}
+}

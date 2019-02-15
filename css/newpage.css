@@ -64,6 +64,6 @@
     text-align: left;
 }
 
-title:hover{
+.title:hover{
     text-decoration: underline;
 }
