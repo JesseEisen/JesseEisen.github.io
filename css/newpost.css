@@ -5,7 +5,7 @@
 
 html {
     color:#333;
-    background: #fff1f1;
+    background: #f1efef;
     font-family: 'PingFang HK',Helvetica,Arial,sans-serif;
 }
 
@@ -128,7 +128,7 @@ hr {
    }
 
 code {
-    font-family: Menlo, Monaco, 'PingFang HK',"Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif;
+    font-family: 'PingFang HK',Menlo, Monaco,"Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif;
     color: #d400ff;
     font-size: 0.9em;
     white-space: pre-wrap;
@@ -144,12 +144,12 @@ code::after {
 
 ul {
     list-style-type: none;
-    margin-left: 20px;
+    margin: 20px 25px;
     padding: 0px;
 }
 
 li {
-    font-size: 16px;
+    font-size: 18px;
     line-height: 26px;
     margin-bottom: 10px;
 }
@@ -174,6 +174,7 @@ pre {
 }
 
 pre > code {
+    font-family: Menlo, Monaco, 'PingFang HK',"Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif;
     color: #000;
     font-size: 15px;
     line-height: 20px;
@@ -271,6 +272,19 @@ th {
     color:#222;
 }
 
+blockquote::before {
+    font-family: Georgia,serif;
+    font-size: 60px;
+    font-weight: 700;
+    line-height: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0 12px 0 3px;
+    content: '\201C';
+    text-align: center;
+    color: #666;
+}
 
 @media only screen and (max-width: 500px) {
     .post-content {
@@ -359,18 +373,6 @@ th {
         font-size: 0.95em;
     }
 
-    blockquote::before {
-        font-family: Georgia,serif;
-        font-size: 60px;
-        font-weight: 700;
-        line-height: 1;
-        position: absolute;
-        top: 0;
-        left: 0;
-        padding: 0 12px 0 3px;
-        content: '\201C';
-        text-align: center;
-        color: #666;
-    }
+   
     
 }
