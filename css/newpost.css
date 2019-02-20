@@ -3,6 +3,12 @@
     color: #000;
 }
 
+html {
+    color:#333;
+    background: #fff1f1;
+    font-family: 'PingFang HK',Helvetica,Arial,sans-serif;
+}
+
 .page-content {
     margin:0 auto 100px;
 }
@@ -72,9 +78,10 @@ a {
 }
 
 p {
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 26px;
+    font-weight: 300;
+    color: #333;
+    font-size: 18px;
+    line-height: 32px;
     text-align: justify;
 }
 
@@ -84,32 +91,31 @@ b {
 
 h1 {
     font-weight: bold;
-    font-size:32px;
+    font-size:34px;
 }
 
 h2 {
     font-weight: bold;
-    font-size: 24px;
+    font-size: 30px;
 }
 
 h3 {
     margin: 40px 0 0 0;
     font-weight: bold;
-    font-size: 20px; 
+    font-size: 26px; 
 }
 
 h4 {
     font-weight: bold;
-    font-size: 18px;
+    font-size: 24px;
 }
 
 blockquote {
-    margin:10px 5px;
-    padding:10px 20px 1px 20px;
-    font-style:italic;
-    color:rgb(136,136,136);
-    border-left:3px solid rgb(0,0,0);
-    font-size: 15px;
+    font-size: 18px;
+    position: relative;
+    margin-left: 0;
+    padding: 0 0 0 60px;
+    color: #585858;
 }
 
 hr {
@@ -122,7 +128,7 @@ hr {
    }
 
 code {
-    font-family: Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif;
+    font-family: Menlo, Monaco, 'PingFang HK',"Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif;
     color: #d400ff;
     font-size: 0.9em;
     white-space: pre-wrap;
@@ -151,7 +157,7 @@ li {
 li::before {
     content: "-";
     display: inline-block;
-    color: #999999;
+    color: #6b6b6b;
     position: absolute;
     margin-left: -15px;
 }
@@ -169,7 +175,7 @@ pre {
 
 pre > code {
     color: #000;
-    font-size: 13px;
+    font-size: 15px;
     line-height: 20px;
 }
 
@@ -352,4 +358,19 @@ th {
     blockquote, .hint, .note, .warn {
         font-size: 0.95em;
     }
+
+    blockquote::before {
+        font-family: Georgia,serif;
+        font-size: 60px;
+        font-weight: 700;
+        line-height: 1;
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 0 12px 0 3px;
+        content: '\201C';
+        text-align: center;
+        color: #666;
+    }
+    
 }
