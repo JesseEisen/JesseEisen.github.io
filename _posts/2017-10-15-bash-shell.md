@@ -1,8 +1,12 @@
 ---
 layout: post
-title: Bash Shell Detail
-date: 2017-10-15 18:00:00
-description: some details for bash using
+title: "Bash Shell Script 杂记"
+subtitle: "记录和解释难以顺畅使用的Shell"
+author: "L.K."
+header-img: "img/inpost/post-bash-script.jpg"
+tags:
+    - bash
+    - 笔记
 ---
 
 
