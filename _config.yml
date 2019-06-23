@@ -101,7 +101,7 @@ page-mathjax: false
 
 
 # Friends
-friends: [
+#friends: [
     # {
     # #     title: "Su",
     # #     href: "http://su.gallery/"
@@ -136,4 +136,4 @@ friends: [
     #     title: "解旻的博客",
     #     href: "http://xieminis.me/"
     # }
-]
+#]
