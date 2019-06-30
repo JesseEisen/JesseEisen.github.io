@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="description" content="">
+    <meta name="keywords"  content="blog, note, life, 博客, 生活, reading">
+    <meta name="theme-color" content="#000000">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="SystemTap Syntax 初探 - 林康的博客 | L.K. Blog">
+    
+    <meta property="og:type" content="article">
+    <meta property="og:description" content="SystemTap 是一个调试追踪工具，提供了一系列可以用来监测 Linux 性能和细节分析的基本部件。本文作为一个 SystemTap 的基本入门梳理。从安装到正式上手自定义一些脚本从而使用到日常编程调试中。
+
+">
+    
+    <meta property="article:published_time" content="2018-12-12T00:00:00Z">
+    
+    
+    <meta property="article:author" content="L.K.">
+    
+    
+    <meta property="article:tag" content="Linux">
+    
+    <meta property="article:tag" content="动态追踪">
+    
+    
+    <meta property="og:image" content="http://localhost:4000/img/sc.jpg">
+    <meta property="og:url" content="http://localhost:4000/2018/12/12/systemtap/">
+    <meta property="og:site_name" content="林康的博客 | L.K. Blog">
+    
+    <title>SystemTap Syntax 初探 - 林康的博客 | L.K. Blog</title>
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/pwa/manifest.json">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="http://localhost:4000/2018/12/12/systemtap/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">L.K. Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li>
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                    
+                    
+                    <li>
+                        <a href="/archive/">Archive</a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    var __HuxNav__ = {
+        close: function(){
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        },
+        open: function(){
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+
+    // Bind Event
+    $toggle.addEventListener('click', function(e){
+        if ($navbar.className.indexOf('in') > 0) {
+            __HuxNav__.close()
+        }else{
+            __HuxNav__.open()
+        }
+    })
+
+    /**
+     * Since Fastclick is used to delegate 'touchstart' globally
+     * to hack 300ms delay in iOS by performing a fake 'click',
+     * Using 'e.stopPropagation' to stop 'touchstart' event from 
+     * $toggle/$collapse will break global delegation.
+     * 
+     * Instead, we use a 'e.target' filter to prevent handler
+     * added to document close HuxNav.  
+     *
+     * Also, we use 'click' instead of 'touchstart' as compromise
+     */
+    document.addEventListener('click', function(e){
+        if(e.target == $toggle) return;
+        if(e.target.className == 'icon-bar') return;
+        __HuxNav__.close();
+    })
+</script>
+
+
+    <!-- Image to hack wechat -->
+<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="/img/inpost/post-dynamic-bg.jpg" width="0" height="0"> -->
+
+<!-- Post Header -->
+
+
+
+<style type="text/css">
+    header.intro-header{
+        position: relative;
+        background-image: url('/img/inpost/post-dynamic-bg.jpg');
+        background: ;
+    }
+
+    
+</style>
+
+<header class="intro-header" >
+
+    <div class="header-mask"></div>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/archive/?tag=Linux" title="Linux">Linux</a>
+                        
+                        <a class="tag" href="/archive/?tag=%E5%8A%A8%E6%80%81%E8%BF%BD%E8%B8%AA" title="动态追踪">动态追踪</a>
+                        
+                    </div>
+                    <h1>SystemTap Syntax 初探</h1>
+                    
+                    <h2 class="subheading">动态追踪调试技术试水</h2>
+                    <span class="meta">Posted by L.K. on December 12, 2018</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <!-- Multi-Lingual -->
+                
+
+				<p>SystemTap 是一个调试追踪工具，提供了一系列可以用来监测 Linux 性能和细节分析的基本部件。本文作为一个 SystemTap 的基本入门梳理。从安装到正式上手自定义一些脚本从而使用到日常编程调试中。</p>
+
+<h3 id="安装">安装</h3>
+
+<p>SystemTap 是由 RedHat 开发的，因此在 RedHat 系列的 Linux 发行版上一般会或多或少的直接支持。首先需要明确一点的是：SystemTap 是一款调试追踪工具，支撑其正常工作的条件是需要一定的 debuginfo 存在，一般内核是不会自带这些信息的，因此需要手动安装对应版本的 debuginfo 以更好的使用 SystemTap。</p>
+
+<p>由于不同的操作系统所安装的方式不一样，因此在此就不详细描述安装过程,如果你使用的是 RedHat 系的系统，可以参考: <a href="https://sourceware.org/systemtap/SystemTap_Beginners_Guide/using-systemtap.html#installproper">安装 SystemTap</a> 和 <a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html-single/systemtap_beginners_guide/index#using-setup">Install and Setup</a> 这两个链接。</p>
+
+<p>如果你的系统对应的版本没有对应的 debuginfo，那需要升级一下 kernel。 具体的升级方式参考对应系统的官网升级方式。</p>
+
+<h3 id="systemtap-工作方式">SystemTap 工作方式</h3>
+
+<p>在真正深入到 SystemTap 的具体内容前，我们可以了解一下 SystemTap 的基本工作方式，这样更有利于我们使用。</p>
+
+<p>首先，SystemTap 会检查脚本是否合法，同时替换匹配到 tapset 定义。这一步和 C 语言中的预编译过程一样。 接着 SystemTap 将脚本翻译成 C 代码，同时编译成一个 kernel module。完成之后，SystemTap 加载这些模块，并激活脚本中涉及到的探针。这些探针是原先就存在 Kernel 中，使能之后，当有事件发生，对应的探针就会执行我们脚本定义的这些 handler。当 SystemTap 结束后，这些探针会立即被关闭，同时这些 kernel module 也会被销毁。</p>
+
+<p>从上述的工作原理也能看出， SystemTap 是需要 kernel 支持的。 同时，需要做一步代码翻译和编译，所以在运行速度上，最开始时比较耗时的。</p>
+
+<h3 id="运行-systemtap-脚本">运行 SystemTap 脚本</h3>
+
+<p>脚本的运行一般是通过 <code class="highlighter-rouge">stap</code> 命令进行，不过并不是所有的用户都能执行该命令， 如果你有超级用户权限，那自然是可以跑的，如果没有我们可以通过将对应的用户添加到组 <code class="highlighter-rouge">stapdev</code> 和 <code class="highlighter-rouge">stapusr</code>。 前者的权限比较大一点，后者的权限只能运行 <code class="highlighter-rouge">staprun</code>。</p>
+
+<p>staprun 是运行通过 stap 编译生成的 <code class="highlighter-rouge">instrumentation module</code>。 其不能直接运行 stap 脚本。</p>
+
+<p>此外 stap 还有几个通用的选项需要了解一下，这样会让你更好的使用 SystemTap。</p>
+
+<ul>
+  <li><code class="highlighter-rouge">-v</code></li>
+</ul>
+
+<p>提供更加详细的输出，这个在出错的情况下打开比较有用，可以提供更多的信息。比如 <code class="highlighter-rouge">stap -vvv xxx.stp</code></p>
+
+<ul>
+  <li><code class="highlighter-rouge">-o filename</code></li>
+</ul>
+
+<p>将输出到标准输出的内容写到文件中。</p>
+
+<ul>
+  <li><code class="highlighter-rouge">-S size,count</code></li>
+</ul>
+
+<p>限制文件大小为 size MB，同时限制文件数为 count 个。 这个选项一般用在管理日志文件上。</p>
+
+<ul>
+  <li><code class="highlighter-rouge">-x process id</code></li>
+</ul>
+
+<p>设置 <code class="highlighter-rouge">target()</code> 为指定的 process ID。</p>
+
+<ul>
+  <li><code class="highlighter-rouge">-c command</code></li>
+</ul>
+
+<p>设置 <code class="highlighter-rouge">target()</code> 为指定的命令。 注意需要指定完整的命令路径。</p>
+
+<ul>
+  <li><code class="highlighter-rouge">-e script</code></li>
+</ul>
+
+<p>注意 script 指的是字符串型的 systemtap 语句， 而不是脚本文件。</p>
+
+<ul>
+  <li><code class="highlighter-rouge">-F</code></li>
+</ul>
+
+<p>后台运行脚本并记录结果，一般有两种模式: in-memory flight recorder、 File Fligh Recorder。 从名称上可以直接看出，前者是内容保存在 memory 中， 另一个是保存在文件中。针对后者我们可以这么用 <code class="highlighter-rouge">stap -F -o /tmp/temp.log -S 1,2 temp.stp</code>。</p>
+
+<ul>
+  <li><code class="highlighter-rouge">-l</code></li>
+</ul>
+
+<p>用于列出对应模块或者 kernel 中支持的 probe。比如 <code class="highlighter-rouge">stap -l 'kernel.function("*")'</code> 会列出当前所有 kernel 的 function probe：</p>
+
+<h3 id="systemtap-脚本">SystemTap 脚本</h3>
+
+<p>systemTap 脚本是由两个最基本的内容组成：<em>event</em> 和 <em>handler</em> 。这两者我们通常组合在一快称为 <code class="highlighter-rouge">probe</code>，即探针。</p>
+
+<p>我们书写脚本的目的是更好的处理我们的需求，最基本的就是我们根据需要写出我们想要捕获的事件，并给出对应的 handler。</p>
+
+<p>SystemTap 脚本一般以 <code class="highlighter-rouge">.stp</code> 结尾，脚本内容一般是由 probe 组成。详细的语法如下：</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>probe <span class="o">{</span>kernel|module<span class="o">(</span><span class="s2">"module-pattern"</span><span class="o">)}</span>.function<span class="o">(</span><span class="s2">"function-pattern"</span><span class="o">)[</span>.<span class="o">{</span>call|return[.maxactive<span class="o">(</span>VALUE<span class="o">)]</span>|inline<span class="o">}]</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>通常一个脚本中的 probe 可以有多个，而同一个 probe 可以有多个事件，事件以逗号隔开。如果同一个 probe 指定了多个事件，那么只要有一个 event 发生，SystemTap 就会执行 handler。statement 的语法和 C 语言的语法比较接近。</p>
+
+<p>针对 <code class="highlighter-rouge">call</code>, <code class="highlighter-rouge">return</code>, <code class="highlighter-rouge">maxactive</code>, <code class="highlighter-rouge">inline</code> 的解释如下：</p>
+
+<blockquote>
+  <p>call is used to attach entry point non-inlined function, while .inline is used to attach first instruction of inlined function;</p>
+</blockquote>
+
+<blockquote>
+  <p>maxactive specifies how many instances of the specified function can be probed simultaneously. You can leave off .maxactive in most cases, as the default (KRETACTIVE) should be sufficient. However, if you notice an excessive number of skipped probes, try setting .maxactive to incrementally higher values to see if the number of skipped probes decreases.</p>
+</blockquote>
+
+<blockquote>
+  <p>.return is used for return points of non-inlined functions;</p>
+</blockquote>
+
+<blockquote>
+  <p>empty suffix is treated as combination of .call and .inline suffixes.</p>
+</blockquote>
+
+<p>上述的 <code class="highlighter-rouge">function-pattern</code> 的具体定义如下：</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="k">function</span><span class="nt">-name</span><span class="o">[</span>@source-path[<span class="o">{</span>:line-number|:first-line-last-line|+relative-line-number<span class="o">}]]</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>举个例子：</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="c"># 函数名@文件名：指定行</span>
+kernel.function<span class="o">(</span><span class="s2">"AUDIT_MODE@../security/apparmor/include/policy.h:401"</span><span class="o">)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>此外，我们也可以自定义函数，这个好处就是可以避免重复代码。格式如下：</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="k">function </span>function_name<span class="o">(</span>arguments<span class="o">)</span> <span class="o">{</span>statements<span class="o">}</span>
+probe event <span class="o">{</span>function_name<span class="o">(</span>arguments<span class="o">)}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="target-variable">target variable</h3>
+
+<p>首先 probe event 是映射到代码中的实际位置的。 而target variable 的作用是去获取代码中该位置的可见变量的值。 一般我们可以使用 <code class="highlighter-rouge">-L</code> 列出当前可以查看的 target variable 值。</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>stap <span class="nt">-L</span> <span class="s1">'kernel.function("vfs_read")'</span>
+<span class="c">#输出</span>
+kernel.function<span class="o">(</span><span class="s2">"vfs_read@../fs/read_write.c:381"</span><span class="o">)</span> <span class="nv">$file</span>:struct file<span class="k">*</span> <span class="nv">$buf</span>:char<span class="k">*</span> <span class="nv">$count</span>:size_t <span class="nv">$pos</span>:loff_t<span class="k">*</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>注意，这个功能需要安装对应的 kernel debuginfo 才能支持。 上面的输出是什么意思呢？每个 target variable 都是以 <code class="highlighter-rouge">$</code> 开头， <code class="highlighter-rouge">:</code> 后面跟着变量的类型。</p>
+
+<p>对于 target variable 不属于当前 probe 的本地变量，可以使用 <code class="highlighter-rouge">@var("varname@src/file.c")</code> 来访问。</p>
+
+<p>正常情况下如果我们要访问某个 target variable， 可以使用 <code class="highlighter-rouge">-&gt;</code> ，同时 target variable 是可以链式使用的。 下面有一例子可以用来展示一下：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>stap -e 'probe kernel.function("vfs_read") {
+           printf ("current files_stat max_files: %d\n",
+                   @var("files_stat@fs/file_table.c")-&gt;max_files);
+           exit(); }'
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>除此之外，如果知道了当前数据的地址，可以通过下面的几个函数，更快的获取到内容：</p>
+
+<ul>
+  <li>
+    <p>kernel_char(address)     <br />
+Obtain the character at address from kernel memory.</p>
+  </li>
+  <li>
+    <p>kernel_short(address) <br />
+Obtain the short at address from kernel memory.</p>
+  </li>
+  <li>
+    <p>kernel_int(address) <br />
+Obtain the int at address from kernel memory.</p>
+  </li>
+  <li>
+    <p>kernel_long(address)  <br />
+Obtain the long at address from kernel memory</p>
+  </li>
+  <li>
+    <p>kernel_string(address)  <br />
+Obtain the string at address from kernel memory.</p>
+  </li>
+  <li>
+    <p>kernel_string_n(address, n)  <br />
+Obtain the string at address from the kernel memory and limits the string to n bytes.</p>
+  </li>
+</ul>
+
+<p>有时如果我们不清楚有哪些变量可以输出，或者变量较多时，可以使用一些快捷的预定义变量进行输出：</p>
+
+<ul>
+  <li>$$vars  当前定义域内存在的所有变量</li>
+  <li><script type="math/tex">locals</script>vars 的子集，只包含本地变量</li>
+  <li><script type="math/tex">parms</script>vars 的子集，只包含函数变量</li>
+  <li>$$return  只可以在 .return 的 probe 中使用，如果被探测的函数是有返回值的话，则打印出该返回值。</li>
+</ul>
+
+<p>在上述的变量后面还可以添加 <code class="highlighter-rouge">$</code> 或者 <code class="highlighter-rouge">$$</code> 这两个后缀。以此来输出更加详细的内容，比如 <code class="highlighter-rouge">$$var$</code> 或者 <code class="highlighter-rouge">$$var$$</code></p>
+
+<p><code class="highlighter-rouge">@defined</code> 和 <code class="highlighter-rouge">@choose_defined</code> 是用检查 target variable 是否存在。后者是前者的一个语法糖。什么意思呢？ 一般代码是会改变的，有些变量可能在某些版本上是不存在的，因此我们可以使用 <code class="highlighter-rouge">@defined</code> 进行判断。惯用法是：</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>write_access <span class="o">=</span> <span class="o">(</span>@defined<span class="o">(</span><span class="nv">$flags</span><span class="o">)</span> ? <span class="nv">$flags</span> : <span class="nv">$write_access</span><span class="o">)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>这和 C 语言中的三元符是一个道理。而 <code class="highlighter-rouge">@choose_define</code> 则是对三元符的一个语法糖。即：</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>@defined<span class="o">(</span><span class="nv">$a</span><span class="o">)</span>?<span class="nv">$a</span>:<span class="nv">$b</span>  等价于 @choose_defined（<span class="nv">$a</span>, <span class="nv">$b</span>）
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="event">event</h3>
+
+<p>SystemTap 将事件大致分为：同步事件和异步事件。所谓的同步事件指的是，在内核代码中某一处的指令被执行后，则会触发的事件。异步事件指的是不和内核代码相互绑定的事件，比如 <code class="highlighter-rouge">timer</code> 事件。</p>
+
+<p>我们大多数情况下需要使用的是同步事件，大致有如下几种：</p>
+
+<ul>
+  <li>syscall.system_call</li>
+</ul>
+
+<p>这样的事件是捕捉的系统调用，监测的是指定系统调用的动作。当调用了该系统调用，SystemTap就会执行我们指定的 statement。此外，也可以监控系统调用退出的动作，只需要在后面加上 <code class="highlighter-rouge">.return</code> 即可。比如： <code class="highlighter-rouge">syscall.close</code> 和 <code class="highlighter-rouge">syscall.close.return</code>。如果有返回值，一般会存在 <code class="highlighter-rouge">$return</code> 中。</p>
+
+<ul>
+  <li>vfs.file_operation</li>
+</ul>
+
+<p>监测的是虚拟文件系统的相关动作。和 syscall 类似，也有一个 <code class="highlighter-rouge">.return</code> 的动作。</p>
+
+<ul>
+  <li>kernel.function(“function”)</li>
+</ul>
+
+<p>监测内核函数 <code class="highlighter-rouge">function</code>。当内核中任意的线程调用了 <code class="highlighter-rouge">function</code>，都会触发对应的 event。同样可以指定 <code class="highlighter-rouge">.return</code> 来捕获退出时的事件。</p>
+
+<p><code class="highlighter-rouge">function</code> 中可以使用 <code class="highlighter-rouge">*</code>,同样如果想追踪指定文件中的函数，可以使用如下的方式：</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>probe kernel.function<span class="o">(</span><span class="s2">"*@net/socket.c"</span><span class="o">)</span> <span class="o">{</span> <span class="o">}</span>
+probe kernel.function<span class="o">(</span><span class="s2">"*@net/socket.c"</span><span class="o">)</span>.return <span class="o">{}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>简单说明一下，第一条语句的意思是： 监控内核源文件 net/socket.c 中所有的函数。 第二条语句的意思是当这些函数退出时捕获对应 event。</p>
+
+<ul>
+  <li>kernel.trace(“tracepoint”)</li>
+</ul>
+
+<p>现在的 kernel 中会有一些特定的指令事件。这些事件被静态地标记为 tracepoint。比如 <code class="highlighter-rouge">kernel.trace("kfree_skb")</code>。 这个追踪点就是表明 network 缓存被释放，此时就会触发对应的事件。</p>
+
+<ul>
+  <li>module(“module”).function(“function”)</li>
+</ul>
+
+<p>系统的内核模块在 <code class="highlighter-rouge">/lib/modules/kernel_version</code> 并以 <code class="highlighter-rouge">.ko</code> 结尾。 这些模块也是可以被 SystemTap 追踪的。比如：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>probe module("ext3").function("*") {}
+probe module("ext3").function("*").return {}
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>下面说一说异步事件, 异步事件大致有如下几个：</p>
+
+<ul>
+  <li>begin</li>
+  <li>end</li>
+</ul>
+
+<p>这两个可以类比 awk 中的 BEGIN 和 END 。 在 SystemTap 开始之前，会执行 begin 中的内容，在结束之前会执行 end 中内容。</p>
+
+<ul>
+  <li>timer</li>
+</ul>
+
+<p>用来周期性的处理内容，这个一般用在定期的输出收集到的内容。一般有如下的衍生：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre>+ timer.s(xxx)
++ timer.ms(xxx)
++ timer.us(xxx)
++ timer.ns(xxx)
++ timer.hz(hertz)
++ timer.jiffies(jiffies)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>一个基本的例子：</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td><td class="rouge-code"><pre>
+probe begin
+<span class="o">{</span>
+    <span class="nb">printf</span><span class="o">(</span><span class="s2">"Enter</span><span class="se">\n</span><span class="s2">"</span><span class="o">)</span>
+<span class="o">}</span>
+
+probe timer.s<span class="o">(</span>2<span class="o">)</span>
+<span class="o">{</span>
+    <span class="nb">printf</span><span class="o">(</span><span class="s2">"2s later"</span><span class="o">)</span>
+    <span class="nb">exit</span><span class="o">()</span>
+<span class="o">}</span>
+
+probe end
+<span class="o">{</span>
+    <span class="nb">printf</span><span class="o">(</span><span class="s2">"Exit"</span><span class="o">)</span>
+<span class="o">}</span>
+
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>我们可以通过 <code class="highlighter-rouge">man stapprobes</code> 查看 stap 所支持的 event。 同时在 SEE ALSO 中可以看到其他相关的 man page。</p>
+
+<h3 id="内置-function">内置 function</h3>
+
+<p>SystemTap 内置了一些可以直接使用的函数，比如 printf() 使用方式和 C 语言中的 printf 一样。除此之外还有如下几个：</p>
+
+<ul>
+  <li>tid()</li>
+  <li>uid()</li>
+  <li>cpu()  当前 cpu 个数</li>
+  <li>gettimeofday_s()  从 1970/1/1 起的秒</li>
+  <li>ctime() 转换上述时间</li>
+  <li>pp()  用来描述当前被处理的 probe point 的字符串</li>
+  <li>thread_indent() 更好的输出结果，可以接受一个参数，参数表示的是 indent 变化，可正可负。</li>
+  <li>name  标记当前系统调用的名字。</li>
+  <li>target()  在一开始我们提到这个，主要使用与绑定 pid 或者 command 名称</li>
+</ul>
+
+<h3 id="基本语法">基本语法</h3>
+
+<p>SystemTap 和 awk 类似，可以自动识别变量的类型，不过需要区分局部变量和全局变量，全局变量需要在 probe 外通过 <code class="highlighter-rouge">global</code> 关键字定义。局部变量是被初始化过的。 支持 <code class="highlighter-rouge">++</code> 操作符。</p>
+
+<ul>
+  <li>条件语句</li>
+</ul>
+
+<p>条件语句和 C 类似，如下：</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="k">if</span> <span class="o">(</span>condition<span class="o">)</span>
+    statement1
+<span class="k">else
+    </span>statement2
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>如果有多条语句，需要使用 <code class="highlighter-rouge">{}</code> 包裹。</p>
+
+<ul>
+  <li>循环语句</li>
+</ul>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="k">while</span><span class="o">(</span>condition<span class="o">)</span>
+    statement
+
+<span class="c"># for </span>
+<span class="k">for</span><span class="o">(</span>initial<span class="p">;</span> condition<span class="p">;</span> increment<span class="o">)</span>
+    statement
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>一般我们写脚本需要传入一下命令行的参数， SystemTap 通过 <code class="highlighter-rouge">@1， @2</code> 等表示命令行参数。 使用时直接传入指定的函数中。</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>probe kernel.function<span class="o">(</span>@1<span class="o">)</span> <span class="o">{</span> <span class="o">}</span>
+probe kernel.function<span class="o">(</span>@1<span class="o">)</span>.return <span class="o">{</span> <span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h4 id="关联数组">关联数组</h4>
+
+<p>关联数组和 awk 中的关联数组很像，使用上也没多少区别。 需要注意的一点是，我们需要在使用前通过 <code class="highlighter-rouge">global</code> 定义下数组。</p>
+
+<p>需要着重说明的是， SystemTap 中支持多个 index。一般情况下，我们的索引是单个的字符串。比如:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>arr[<span class="s2">"stephen"</span><span class="o">]</span> <span class="o">=</span> 30
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>但是在 SystemTap 中我们最多可以对同一个 value 设置 9 个 index， 比如：</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>device[pid<span class="o">()</span>,execname<span class="o">()</span>,uid<span class="o">()</span>,ppid<span class="o">()</span>,<span class="s2">"W"</span><span class="o">]</span> <span class="o">=</span> devname
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>这么做的好处是什么呢？ 显而易见的是提供了更多的信息，当我们在遍历关联数组时，这些 index 都可以作为我们的信息输出。</p>
+
+<p>比如：</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>foreach<span class="o">([</span>pid, execname, uid, ppid, status] <span class="k">in </span>device<span class="o">)</span>
+    <span class="nb">printf</span><span class="o">(</span><span class="s2">"%4s %5s %d %d %s %s</span><span class="se">\n</span><span class="s2">"</span>, pid, execname, uid, ppid, status, device[pid,execname,uid,ppid,status]<span class="o">)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>数组的读写和我们平常的使用一致，没有太多的区别，同样是通过取下标进行的。如果想要遍历关联数组，可以通过上面的 <code class="highlighter-rouge">foreach</code> 进行。 使用也比较简单。单个 index 的情况如下使用：</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>foreach<span class="o">(</span>index <span class="k">in </span>arrays<span class="o">)</span>
+    statements
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>这里面还需要着重说的是，<code class="highlighter-rouge">foreach</code> 有一个特别的语法，支持排序和个数限制。这样可以让代码更加的简洁。具体的语法如下：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>foreach(index in array+ limit 10)
+#or
+foreach(index in array- limit 10)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>在数组名后面添加 <code class="highlighter-rouge">+</code> 表示增序或者 <code class="highlighter-rouge">-</code> 表示逆序。 后面的 limit 表示限制 10 个元素输出。此外如果想要删除数组的元素或者清空整个组可以使用 <code class="highlighter-rouge">delete</code> 关键字。</p>
+
+<p>我们还可以判断一个元素是否存在于关联数组中，语法如下：</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="k">if</span><span class="o">([</span><span class="s2">"key"</span><span class="o">]</span> <span class="k">in </span>array<span class="o">)</span> <span class="o">{</span>
+    statement
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h4 id="总量统计">总量统计</h4>
+
+<p>statistical aggregate 是用来统计一组数据，使用 <code class="highlighter-rouge">&lt;&lt;&lt; value</code> 将 value 加到集合中。操作的对象可以是一个全局变量也可以是数组的一个元素。 这个统计是独立于操作对象本身的，怎么理解呢？举个例子。</p>
+
+<p>比如我们有一个数组 <code class="highlighter-rouge">readbytes[execname()] &lt;&lt;&lt; 2</code>。如果我们一直操作这样的语句，最后 <code class="highlighter-rouge">readbytes[execname]</code> 的值都是初始值，而不是我们想象中的 <code class="highlighter-rouge">2</code>。<code class="highlighter-rouge">&lt;&lt;&lt;</code> 不是赋值的意思，他是存在另一个结构中，不会修改操作对象本生。</p>
+
+<p>那如何获取到这个统计的具体内容呢？ SystemTap 提供了几个运算符，可以方便的来获取统计内容，在说到运算符之前，我们简单的看个例子： 假定有一个空集合，我们往里面添加一个 <code class="highlighter-rouge">&lt;&lt;&lt; 1</code>, 此时集合中就有一个元素了， 我们继续添加一个 <code class="highlighter-rouge">&lt;&lt;&lt; 2</code>。那此时集合中就有了 1 和 2 两个元素。 有了这样的印象后，下面看看几个获取统计的函数, 语法是：<code class="highlighter-rouge">@extractor(variable/array_index expression)</code></p>
+
+<p>extractor 可以是如下几个：</p>
+
+<ul>
+  <li>count  返回统计集合中元素的个数</li>
+  <li>sum    返回统计集合中元素值的总和</li>
+  <li>min    返回统计集合中元素的最小值</li>
+  <li>max    返回统计集合中元素的最大值</li>
+  <li>avg    返回统计集合中元素的平均值</li>
+</ul>
+
+<p>对于 <code class="highlighter-rouge">count</code> 和 <code class="highlighter-rouge">sum</code> 而言，按照上面的例子而言，执行 count 后， 返回的是 2， 而执行 sum 之后，返回的是 3。</p>
+
+<h3 id="tapset">tapset</h3>
+
+<p>SystemTap 提供了 tapset 库，可以类比下 C 的 libc。 tapset 中提供了相应的全局变量和函数可以直接在 SystemTap 脚本中使用。 具体的手册可以参考 <a href="https://sourceware.org/systemtap/tapsets/index.html">tapset</a></p>
+
+<h3 id="其他内容">其他内容</h3>
+
+<p>probe 后一般可以跟上 <code class="highlighter-rouge">?</code> 或者 <code class="highlighter-rouge">!</code>。 这两个符号的意思是： <code class="highlighter-rouge">?</code> 表示 probe 是可选的，如果不存在对应的 probe ，程序也不会出错。而 <code class="highlighter-rouge">!</code> 表明 probe 一旦解析成功，则不会继续解析后面的 probe。</p>
+
+<h3 id="用户态的探针">用户态的探针</h3>
+
+<p>说了这么多，大多都是涉及到的是内核相关的监测。这些监测会让我们更好的了解系统，但是如何将 SystemTap 应用到 user 模式中呢？ SystemTap 使用 <code class="highlighter-rouge">uprobes</code> 模块来支持用户态的探测。</p>
+
+<p>一般内核版本在 3.5 以上的都默认包含了 <code class="highlighter-rouge">uprobes</code>。 可以通过 <code class="highlighter-rouge">grep CONFIG_UPROBES /boot/config-\</code>uname -r`<code class="highlighter-rouge"> 验证一下是否包含。输出结果为 </code>CONFIG_UPROBES=y`。</p>
+
+<p>所有的用户态的事件监测都是用过 <code class="highlighter-rouge">process</code> 打头的。一般有如下的几个调用方式：</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td><td class="rouge-code"><pre>process.begin
+process<span class="o">(</span><span class="s2">"PATH"</span><span class="o">)</span>.begin
+process<span class="o">(</span>PID<span class="o">)</span>.begin
+
+process.thread.begin
+process<span class="o">(</span><span class="s2">"PATH"</span><span class="o">)</span>.thread.begin
+process<span class="o">(</span>PID<span class="o">)</span>.thread.begin
+
+process.end
+process<span class="o">(</span><span class="s2">"PATH"</span><span class="o">)</span>.end
+process<span class="o">(</span>PID<span class="o">)</span>.end
+
+process.thread.end
+process<span class="o">(</span><span class="s2">"PATH"</span><span class="o">)</span>.thread.end
+process<span class="o">(</span>PID<span class="o">)</span>.thread.end
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>相关的解释如下：</p>
+
+<blockquote>
+  <p>The .begin variant is called when a new process described by PID or PATH is created. If no PID or PATH argument is specified (for example process.begin), the probe flags any new process being spawned.
+The .thread.begin variant is called when a new thread described by PID or PATH is created.
+The .end variant is called when a process described by PID or PATH dies.
+The .thread.end variant is called when a thread described by PID or PATH dies.</p>
+</blockquote>
+
+<p>除此之外还有一个 <code class="highlighter-rouge">syscall</code> 是比较好用的。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre>process.syscall
+process("PATH").syscall
+process(PID).syscall
+
+process.syscall.return
+process("PATH").syscall.return
+process(PID).syscall.return
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>在处理 syscall 的 probe 时，我们可以使用 <code class="highlighter-rouge">$syscall</code> 获取系统调用数。 前六个该系统调用的参数可以通过 <code class="highlighter-rouge">$arg1, $arg2... $arg6</code> 等等获取到。</p>
+
+
+                <hr style="visibility: hidden;">
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2018/07/23/fat-pointer/" data-toggle="tooltip" data-placement="top" title="C 语言中的 Fat Pointer">
+                        Previous<br>
+                        <span>C 语言中的 Fat Pointer</span>
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+                <hr style="visibility: hidden;">
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
+                
+
+                
+            </div>  
+
+    <!-- Side Catalog Container -->
+        
+
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+
+
+<section>
+    
+        <hr class="hidden-sm hidden-xs">
+    
+    <h5><a href="/archive/">FEATURED TAGS</a></h5>
+    <div class="tags">
+        
+        
+        
+        
+        
+    </div>
+</section>
+
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+<!-- add support for mathjax by voleking-->
+
+
+
+
+
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "jesseeisen";
+    var disqus_identifier = "/2018/12/12/systemtap";
+    var disqus_url = "http://localhost:4000/2018/12/12/systemtap/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <!-- SNS Link -->
+                
+
+
+<ul class="list-inline text-center">
+
+
+  
+  
+  
+  <li>
+    <a target="_blank" href="https://www.zhihu.com/people/jessechen-52">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa  fa-stack-1x fa-inverse">知</i>
+      </span>
+    </a>
+  </li>
+  
+  
+  <li>
+    <a target="_blank" href="http://weibo.com/linkangchen">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  
+  
+  
+  <li>
+    <a target="_blank" href="https://github.com/JesseEisen">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  
+  
+</ul>
+
+                <p class="copyright text-muted">
+                    Copyright &copy; L.K. Blog 2019
+                    <br>
+                    Powered by <a href="https://jesseeisen.github.io">L.K. Blog</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=jesseeisen&repo=jesseeisen.github.io&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<!-- Currently, only navbar scroll-down effect at desktop still depends on this -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js "></script>
+
+<!-- Service Worker -->
+
+<script src="/js/snackbar.js "></script>
+<script src="/js/sw-registration.js "></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+     - https://github.com/jneen/rouge/wiki/list-of-supported-languages-and-lexers
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+
+
+
+<!--fastClick.js -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+<!-- Side Catalog -->
+
+
+
+<!-- Multi-Lingual -->
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

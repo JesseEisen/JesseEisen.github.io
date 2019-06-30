@@ -203,6 +203,62 @@
             ">
     			
 <div class="post-preview">
+    <a href="/2018/12/12/systemtap/">
+        <h2 class="post-title">
+            SystemTap Syntax 初探
+        </h2>
+        
+        <h3 class="post-subtitle">
+            动态追踪调试技术试水
+        </h3>
+        
+        <div class="post-content-preview">
+            
+                SystemTap 是一个调试追踪工具，提供了一系列可以用来监测 Linux 性能和细节分析的基本部件。本文作为一个 SystemTap 的基本入门梳理。从安装到正式上手自定义一些脚本从而使用到日常编程调试中。
+
+安装
+
+SystemTap 是由 RedHat 开发的，因此在 RedHat 系列的 Linux 发行版上一般会或多或少的直接支持。首先需要明确一点的是：SystemTap 是一款...
+            
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by L.K. on December 12, 2018
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2018/07/23/fat-pointer/">
+        <h2 class="post-title">
+            C 语言中的 Fat Pointer
+        </h2>
+        
+        <h3 class="post-subtitle">
+            一种隐藏控制信息的指针方法
+        </h3>
+        
+        <div class="post-content-preview">
+            
+                在正式讨论这篇文章的主角前，我想讨论一下在 C 编程中经常容易出现的错误，就是当数组传入函数后，实际该数组就退化成指针，而作为数组所具有的维度的属性就丢失了。
+
+通常我们会使用下面的一个宏来计算数组的长度：
+
+1
+#define nelem(x) (sizeof(x)/sizeof((x)[0]))
+
+
+注意这个宏统计的是当前数组所有元素的个数，并不是当前数组被赋值了多少。当我们对函数参数使...
+            
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by L.K. on July 23, 2018
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
     <a href="/2018/06/27/command-line/">
         <h2 class="post-title">
             命令行解析
