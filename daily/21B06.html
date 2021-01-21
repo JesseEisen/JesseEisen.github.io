@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>
+      21B06 | Chan
+    </title>
+    <meta name="description" content="A PKM Site">
+    <link rel="stylesheet" href="/assets/style.9094c090.css">
+    <link rel="modulepreload" href="/assets/framework.ab59a038.js">
+    <link rel="modulepreload" href="/assets/daily_21B06.md.c8b15d5d.lean.js">
+    <link rel="modulepreload" href="/assets/app.d6af0a19.js">
+    
+    
+  </head>
+  <body>
+    <div id="app"><div><main class="max-w-4xl mx-auto px-4 sm:px-6 xl:max-w-5xl xl:px-0"><div class="pt-6 pb-8 space-y-2 md:space-y-5"><h3 class="text-xl leading-9 font-extrabold text-gray-900 tracking-tight sm:leading-10 md:leading-14"><a aria-label="Chan" href="/">Chan</a></h3></div><article class="xl:divide-y xl:divide-gray-200" data-v-f48e88ee><header class="pt-6 xl:pb-10 space-y-1 text-center" data-v-f48e88ee><h3 class="text-xl leading-9 font-bold text-gray-900 tracking-tigh" data-v-f48e88ee>21B06 - Use CSS the correct way</h3></header><div class="prose max-w-none pt-10 pb-8" data-v-f48e88ee><p><div class="table-of-contents"><ul><li><a href="#marker">marker</a></li></ul></div></p><hr><p>本篇主要记录下一些可以直接通过 css 而无需过多使用 js 的例子，同时也会记录一些 css 的技巧等等。</p><h2 id="marker"><a class="header-anchor" href="#marker" aria-hidden="true">#</a> marker</h2><p>这是一个伪元素，通常是在<code>&lt;li&gt;</code>或者<code>&lt;summary&gt;</code> 上使用，用于修饰列表之前的标记样式，比如：</p><div class="language-html"><pre><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>item a<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>item b<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>item c<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">&gt;</span></span>
+
+/*css*/
+ul li {
+    list-style-type: decimal-leading-zero;
+}
+
+ul li::marker {
+    color:#777;
+    font-variant-numeric: tabular-nums;
+}
+</code></pre></div><p>这个样式会修饰列表前的数字为灰色，且按照数字等宽，易于像表格那样对齐的形式显示。</p></div></article></main></div></div>
+    <script>__VP_HASH_MAP__ = JSON.parse("{\"index.md\":\"4ba7c645\",\"daily_21b04.md\":\"7c3783e8\",\"daily_21b05.md\":\"cb63fc78\",\"daily_21b06.md\":\"c8b15d5d\",\"daily_21b07.md\":\"2d3d745b\",\"posts_first_post.md\":\"1eb64573\"}")</script>
+    <script type="module" async src="/assets/app.d6af0a19.js"></script>
+  </body>
+</html>

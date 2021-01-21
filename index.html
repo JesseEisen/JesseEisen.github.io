@@ -1,46 +1,22 @@
----
-layout: page
-description: "每当我找到生命的意义，它就又变了"
----
-
-{% for post in paginator.posts %}
-<div class="post-preview">
-    <a href="{{ post.url | prepend: site.baseurl }}">
-        <h2 class="post-title">
-            {{ post.title }}
-        </h2>
-        {% if post.subtitle %}
-        <h3 class="post-subtitle">
-            {{ post.subtitle }}
-        </h3>
-        {% endif %}
-        <div class="post-content-preview">
-            {% if post.lang == 'en' %}
-                {{ post.content | strip_html | truncate:300 }}
-            {% else %}
-                {{ post.content | strip_html | truncate:200 }}
-            {% endif %}
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by {% if post.author %}{{ post.author }}{% else %}{{ site.title }}{% endif %} on {{ post.date | date: "%B %-d, %Y" }}
-    </p>
-</div>
-<hr>
-{% endfor %}
-
-<!-- Pager -->
-{% if paginator.total_pages > 1 %}
-<ul class="pager">
-    {% if paginator.previous_page %}
-    <li class="previous">
-        <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr; Newer Posts</a>
-    </li>
-    {% endif %}
-    {% if paginator.next_page %}
-    <li class="next">
-        <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Older Posts &rarr;</a>
-    </li>
-    {% endif %}
-</ul>
-{% endif %}
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>
+      Chan | Chan
+    </title>
+    <meta name="description" content="A PKM Site">
+    <link rel="stylesheet" href="/assets/style.9094c090.css">
+    <link rel="modulepreload" href="/assets/framework.ab59a038.js">
+    <link rel="modulepreload" href="/assets/index.md.4ba7c645.lean.js">
+    <link rel="modulepreload" href="/assets/app.d6af0a19.js">
+    
+    
+  </head>
+  <body>
+    <div id="app"><div><main class="max-w-4xl mx-auto px-4 sm:px-6 xl:max-w-5xl xl:px-0"><div class="pt-6 pb-8 space-y-2 md:space-y-5"><h3 class="text-xl leading-9 font-extrabold text-gray-900 tracking-tight sm:leading-10 md:leading-14"><a aria-label="Chan" href="/">Chan</a></h3></div><div data-v-3c885d92><!-- <div class="grid grid-cols-1 gap-4 grid-flow-col md:grid-cols-2 sm:grid-cols-2"> --><div class="md:flex" data-v-3c885d92><div class="md:flex-shrink-0 sm:flex-shrink-0 md:w-3/6 sm:w-full" data-v-3c885d92><h4 class="my-3 text-xl leading-9" data-v-3c885d92>Notes</h4><ul data-v-3c885d92><!--[--><li class="py-0.5" data-v-3c885d92><article class="spance-y-2 xl:grid xl:grid-cols-4 xl:space-y-0 xl:items-baseline" data-v-3c885d92><!-- <Date :date="date" /> --><div class="space-y-5 xl:col-span-3" data-v-3c885d92><div class="space-y-6" data-v-3c885d92><p class="text-base leading-8 tracking-tight" data-v-3c885d92><span data-v-3c885d92><a class="list-link text-black hover:bg-black hover:text-white" href="/daily/21B07.html" data-v-3c885d92>python</a> - last update 21B07</span></p><!-- <div v-if="excerpt" class="prose max-w-none text-gray-500" v-html="excerpt"></div> --></div></div></article></li><li class="py-0.5" data-v-3c885d92><article class="spance-y-2 xl:grid xl:grid-cols-4 xl:space-y-0 xl:items-baseline" data-v-3c885d92><!-- <Date :date="date" /> --><div class="space-y-5 xl:col-span-3" data-v-3c885d92><div class="space-y-6" data-v-3c885d92><p class="text-base leading-8 tracking-tight" data-v-3c885d92><span data-v-3c885d92><a class="list-link text-black hover:bg-black hover:text-white" href="/daily/21B06.html" data-v-3c885d92>css</a> - last update 21B06</span></p><!-- <div v-if="excerpt" class="prose max-w-none text-gray-500" v-html="excerpt"></div> --></div></div></article></li><li class="py-0.5" data-v-3c885d92><article class="spance-y-2 xl:grid xl:grid-cols-4 xl:space-y-0 xl:items-baseline" data-v-3c885d92><!-- <Date :date="date" /> --><div class="space-y-5 xl:col-span-3" data-v-3c885d92><div class="space-y-6" data-v-3c885d92><p class="text-base leading-8 tracking-tight" data-v-3c885d92><span data-v-3c885d92><a class="list-link text-black hover:bg-black hover:text-white" href="/daily/21B05.html" data-v-3c885d92>literal</a> - last update 21B05</span></p><!-- <div v-if="excerpt" class="prose max-w-none text-gray-500" v-html="excerpt"></div> --></div></div></article></li><li class="py-0.5" data-v-3c885d92><article class="spance-y-2 xl:grid xl:grid-cols-4 xl:space-y-0 xl:items-baseline" data-v-3c885d92><!-- <Date :date="date" /> --><div class="space-y-5 xl:col-span-3" data-v-3c885d92><div class="space-y-6" data-v-3c885d92><p class="text-base leading-8 tracking-tight" data-v-3c885d92><span data-v-3c885d92><a class="list-link text-black hover:bg-black hover:text-white" href="/daily/21B04.html" data-v-3c885d92>shell script</a> - last update 21B04</span></p><!-- <div v-if="excerpt" class="prose max-w-none text-gray-500" v-html="excerpt"></div> --></div></div></article></li><!--]--></ul></div><div class="flex-2 md:w-3/6 sm:w-full" data-v-3c885d92><h4 class="my-0.5 text-xl leading-9" data-v-3c885d92>Posts</h4><ul data-v-3c885d92><!--[--><li class="py-1" data-v-3c885d92><article class="spance-y-2 flex xl:space-y-0 xl:items-baseline" data-v-3c885d92><!-- <article class="spance-y-2 xl:grid xl:grid-cols-4 xl:space-y-0 xl:items-baseline"> --><dl data-v-3c885d92><dt class="sr-only">Published on</dt><dd class="text-base leading-8 font-medium text-gray-500"><time datetime="2021-01-11T12:00:00.000Z">January 11, 2021</time></dd></dl><div class="space-y-5 mx-5" data-v-3c885d92><div class="space-y-6" data-v-3c885d92><p class="text-base leading-8 tracking-tight" data-v-3c885d92><a class="post-link text-gray-900 hover:bg-black hover:text-white" href="/posts/first_post.html" data-v-3c885d92>Hi there, a new site</a></p><!-- <div v-if="excerpt" class="prose max-w-none text-gray-500" v-html="excerpt"></div> --></div></div></article></li><!--]--></ul></div></div></div></main></div></div>
+    <script>__VP_HASH_MAP__ = JSON.parse("{\"index.md\":\"4ba7c645\",\"daily_21b04.md\":\"7c3783e8\",\"daily_21b05.md\":\"cb63fc78\",\"daily_21b06.md\":\"c8b15d5d\",\"daily_21b07.md\":\"2d3d745b\",\"posts_first_post.md\":\"1eb64573\"}")</script>
+    <script type="module" async src="/assets/app.d6af0a19.js"></script>
+  </body>
+</html>

@@ -1,1 +1,0 @@
->  All Right, No English Version of About me. ^_^
