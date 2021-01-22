@@ -9,7 +9,7 @@
     <meta name="description" content="A PKM Site">
     <link rel="stylesheet" href="/assets/style.9094c090.css">
     <link rel="modulepreload" href="/assets/framework.ab59a038.js">
-    <link rel="modulepreload" href="/assets/daily_21B07.md.39b53fad.lean.js">
+    <link rel="modulepreload" href="/assets/daily_21B07.md.1b2539a7.lean.js">
     <link rel="modulepreload" href="/assets/app.0e5b1c46.js">
     
     
@@ -25,18 +25,18 @@ def execute(gt, prefix):
        gt: xxxx
        prefix: xxxxx
     &quot;&quot;&quot;
-</code></pre></div><h2 id="progess-bar"><a class="header-anchor" href="#progess-bar" aria-hidden="true">#</a> progess bar</h2><p>使用 <a href="https://tqdm.github.io/docs/cli/" target="_blank" rel="noopener noreferrer">tqdm</a> 搭配各种场景使用，比如在 requests 中显示现在的进度时，可以有如下的方式：</p><div class="language-python"><pre><code>r <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span>url<span class="token punctuation">,</span> stream<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> allow_redirects<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
-<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token comment"># status code check </span>
-path <span class="token operator">=</span> pathlib<span class="token punctuation">.</span>Path<span class="token punctuation">(</span>filename<span class="token punctuation">)</span><span class="token punctuation">.</span>expanduser<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>resolve<span class="token punctuation">(</span><span class="token punctuation">)</span>
-path<span class="token punctuation">.</span>parent<span class="token punctuation">.</span>mkdir<span class="token punctuation">(</span>parents<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> exist_ok<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+</code></pre></div><h2 id="progess-bar"><a class="header-anchor" href="#progess-bar" aria-hidden="true">#</a> progess bar</h2><p>使用 <a href="https://tqdm.github.io/docs/cli/" target="_blank" rel="noopener noreferrer">tqdm</a> 搭配各种场景使用，比如在 requests 中显示现在的进度时，可以有如下的方式：</p><div class="language-"><pre><code>r = requests.get(url, stream=True, allow_redirects=True)
+... # status code check 
+path = pathlib.Path(filename).expanduser().resolve()
+path.parent.mkdir(parents=True, exist_ok=True)
 
-desc <span class="token operator">=</span> filename<span class="token punctuation">.</span>ljust<span class="token punctuation">(</span><span class="token number">22</span><span class="token punctuation">,</span> <span class="token string">&#39; &#39;</span><span class="token punctuation">)</span> <span class="token comment"># 22 is the lenght bigger than filename, should change</span>
-r<span class="token punctuation">.</span>raw<span class="token punctuation">.</span>read <span class="token operator">=</span> functools<span class="token punctuation">.</span>partial<span class="token punctuation">(</span>r<span class="token punctuation">.</span>raw<span class="token punctuation">.</span>read<span class="token punctuation">,</span> decode_content<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>  <span class="token comment"># Decompress if needed</span>
-<span class="token keyword">with</span> tqdm<span class="token punctuation">.</span>tqdm<span class="token punctuation">.</span>wrapattr<span class="token punctuation">(</span>r<span class="token punctuation">.</span>raw<span class="token punctuation">,</span> <span class="token string">&quot;read&quot;</span><span class="token punctuation">,</span> total<span class="token operator">=</span>file_size<span class="token punctuation">,</span> desc<span class="token operator">=</span>desc<span class="token punctuation">)</span> <span class="token keyword">as</span> r_raw<span class="token punctuation">:</span>
-     <span class="token keyword">with</span> path<span class="token punctuation">.</span><span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">&quot;wb&quot;</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
-            shutil<span class="token punctuation">.</span>copyfileobj<span class="token punctuation">(</span>r_raw<span class="token punctuation">,</span> f<span class="token punctuation">)</span>
+desc = filename.ljust(22, &#39; &#39;) # 22 is the lenght bigger than filename, should change
+r.raw.read = functools.partial(r.raw.read, decode_content=True)  # Decompress if needed
+with tqdm.tqdm.wrapattr(r.raw, &quot;read&quot;, total=file_size, desc=desc) as r_raw:
+     with path.open(&quot;wb&quot;) as f:
+            shutil.copyfileobj(r_raw, f)
 </code></pre></div></div></article></main></div></div>
-    <script>__VP_HASH_MAP__ = JSON.parse("{\"index.md\":\"4ba7c645\",\"daily_21b04.md\":\"7c3783e8\",\"daily_21b05.md\":\"cb63fc78\",\"daily_21b06.md\":\"c8b15d5d\",\"daily_21b07.md\":\"39b53fad\",\"posts_first_post.md\":\"1eb64573\"}")</script>
+    <script>__VP_HASH_MAP__ = JSON.parse("{\"index.md\":\"4ba7c645\",\"daily_21b04.md\":\"7c3783e8\",\"daily_21b05.md\":\"cb63fc78\",\"daily_21b06.md\":\"c8b15d5d\",\"daily_21b07.md\":\"1b2539a7\",\"posts_first_post.md\":\"1eb64573\"}")</script>
     <script type="module" async src="/assets/app.0e5b1c46.js"></script>
   </body>
 </html>
