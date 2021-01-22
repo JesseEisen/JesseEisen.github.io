@@ -1,1 +1,0 @@
-import{l as t,f as e}from"./framework.ab59a038.js";const a='{"title":"21B07","description":"","frontmatter":{"title":"21B07","subtitle":"python hard way","category":"python","date":"2021-01-21T00:00:00.000Z"},"relativePath":"daily/21B07.md","lastUpdated":1611200396409}',r={};r.render=function(a,r,o,d,i,n){return t(),e("div")};export default r;export{a as __pageData};
