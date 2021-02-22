@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>
+      20X11 | Chan
+    </title>
+    <meta name="description" content="A PKM Site">
+    <link rel="stylesheet" href="/assets/style.722ee15e.css">
+    <link rel="modulepreload" href="/assets/framework.ab59a038.js">
+    <link rel="modulepreload" href="/assets/daily_20X11.md.16c672b8.lean.js">
+    <link rel="modulepreload" href="/assets/app.99fa0b8e.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/github-markdown-css/2.2.1/github-markdown.css">
+    
+  </head>
+  <body>
+    <div id="app"><div><main class="max-w-4xl mx-auto px-4 sm:px-6 xl:max-w-5xl xl:px-0"><div class="pt-6 pb-8 space-y-2 md:space-y-5"><h3 class="text-xl leading-9 font-extrabold text-gray-900 tracking-tight sm:leading-10 md:leading-14"><a aria-label="Chan" href="/">Chan</a></h3></div><!--[--><article class="xl:divide-y xl:divide-gray-200" data-v-c3fd59da><header class="pt-6 xl:pb-10 space-y-1 text-center" data-v-c3fd59da><h3 class="text-xl leading-9 font-bold text-gray-900 tracking-tigh" data-v-c3fd59da>20X11 - Html Make Fun</h3></header><div class="prose max-w-none pt-10 pb-8" data-v-c3fd59da><p><div class="table-of-contents"><ul><li><a href="#progress-bar">progress bar</a></li><li><a href="#ruby">ruby</a></li></ul></div></p><hr><p><i class="releated">incoming(1):</i> {<a href="/daily/21B06.html">css</a>}</p><p>单纯的 HTML 标记似乎在无法表达更多的样式，但是往往也会有一个令人惊奇的东西存在。这篇文章主要用来记录下这些内容。</p><h2 id="progress-bar"><a class="header-anchor" href="#progress-bar" aria-hidden="true">#</a> progress bar</h2><p><code>&lt;meter&gt;</code> 是一个原生的标签用来表示已知范围的标量或者分数值。近似的我们可以用这个来表示一个进度条的样式：</p><p><label for="fuel">Fuel level:</label><meter id="fuel" min="0" max="100" low="33" high="66" optimum="80" value="50"> at 50/100 </meter></p><div class="language-"><pre><code>&lt;label for=&quot;fuel&quot;&gt;Fuel level:&lt;/label&gt;
+
+&lt;meter id=&quot;fuel&quot;
+       min=&quot;0&quot; max=&quot;100&quot;
+       low=&quot;33&quot; high=&quot;66&quot; optimum=&quot;80&quot;
+       value=&quot;50&quot;&gt;
+    at 50/100
+&lt;/meter&gt;
+</code></pre></div><p>目前大部分浏览器都支持这个，除了IE。这个标签的所有属性都在上面的例子中了，这些参数会把区间分为 <code>[min, low]</code> 和 <code>[high, max]</code> 这两个。 value 在这两个区间的某个一个里面时呈现出不同的外貌样式。 同时 <code>optimun</code> 的值在哪个区间内，那个区间会被认为是更佳的取值范围。</p><h2 id="ruby"><a class="header-anchor" href="#ruby" aria-hidden="true">#</a> ruby</h2><p>ruby 标签在 HTML 中用于东亚字符的注音使用，形式类似于 <ruby>汉<rp>(</rp><rt>han</rt><rp>)</rp></ruby> 这样的形式。基本的语法如下：</p><div class="language-"><pre><code>&lt;ruby&gt;汉&lt;rp&gt;(&lt;/rp&gt;&lt;rt&gt;han&lt;/rt&gt;&lt;rp&gt;)&lt;/rp&gt;&lt;/ruby&gt;
+</code></pre></div><p>其中<code>rp</code> 是用于在不支持 ruby 标签的情况下使用包裹的字符去替代，上面例子是括号。 <code>rt</code> 中间的内容是注音的具体内容。</p></div></article><footer class="text-right my-12" data-v-c3fd59da><p class="author-show" data-v-c3fd59da>L.K</p></footer><!--]--></main></div></div>
+    <script>__VP_HASH_MAP__ = JSON.parse("{\"index.md\":\"4ba7c645\",\"daily_20d10.md\":\"880ab452\",\"daily_20q01.md\":\"6dfd4483\",\"daily_20x11.md\":\"16c672b8\",\"daily_21b04.md\":\"4291f926\",\"daily_21b05.md\":\"af3c3d26\",\"daily_21b06.md\":\"89c066ca\",\"daily_21b07.md\":\"b786a751\",\"daily_21b11.md\":\"0a33a466\",\"daily_21b12.md\":\"4c306d93\",\"daily_21c04.md\":\"76d4df30\",\"daily_21d09.md\":\"7541a9c0\",\"posts_19x14.md\":\"74b0704d\",\"posts_20e01.md\":\"610cf89c\",\"posts_draw.md\":\"40330124\",\"posts_first_post.md\":\"1eb64573\",\"posts_openssl.md\":\"93f5bec6\",\"posts_tpp.md\":\"c2b801c7\"}")</script>
+    <script type="module" async src="/assets/app.99fa0b8e.js"></script>
+  </body>
+</html>

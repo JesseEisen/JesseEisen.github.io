@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>
+      20D10 | Chan
+    </title>
+    <meta name="description" content="A PKM Site">
+    <link rel="stylesheet" href="/assets/style.722ee15e.css">
+    <link rel="modulepreload" href="/assets/framework.ab59a038.js">
+    <link rel="modulepreload" href="/assets/daily_20D10.md.880ab452.lean.js">
+    <link rel="modulepreload" href="/assets/app.99fa0b8e.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/github-markdown-css/2.2.1/github-markdown.css">
+    
+  </head>
+  <body>
+    <div id="app"><div><main class="max-w-4xl mx-auto px-4 sm:px-6 xl:max-w-5xl xl:px-0"><div class="pt-6 pb-8 space-y-2 md:space-y-5"><h3 class="text-xl leading-9 font-extrabold text-gray-900 tracking-tight sm:leading-10 md:leading-14"><a aria-label="Chan" href="/">Chan</a></h3></div><!--[--><article class="xl:divide-y xl:divide-gray-200" data-v-c3fd59da><header class="pt-6 xl:pb-10 space-y-1 text-center" data-v-c3fd59da><h3 class="text-xl leading-9 font-bold text-gray-900 tracking-tigh" data-v-c3fd59da>20D10 - command line tool</h3></header><div class="prose max-w-none pt-10 pb-8" data-v-c3fd59da><p><div class="table-of-contents"><ul><li><a href="#fold-1">fold(1)</a></li></ul></div></p><hr><p><i class="releated">incoming(2):</i> {<a href="/daily/21B04.html">shell script</a>}, {<a href="/posts/19X14.html">redirection</a>}</p><p>Linux 的命令行工具一直在发展，一些内置的工具也在不断的进化，单论GNU分支出来的工具，增加了很多选项，所以在日常使用的时候，同样的工具在不同的发行版上的选项和行为会略有不同。我们正常能掌握的工具使用也是有限的，一个好的方式是在实践中不断积累，以期在有问题时快速组合不同工具的输入输出并解决问题。</p><p>本篇主要是记录工作中遇到的一些命令的使用，单纯的去看这些工具的 man page 往往不太能想到一些创造性的使用方式，或者只能知其是什么，但遇到问题时并不会想到如何去用。</p><p>P.S. 记得将一些复杂的单行命令写在脚本里。</p><h2 id="fold-1"><a class="header-anchor" href="#fold-1" aria-hidden="true">#</a> fold(1)</h2><p>这个命令主要是为了将输出的行转换到指定的宽度。类似于文档中的软换行。这在显示一个超长文本时很有用。但是如果遇到下面这个问题时，fold 可以很轻松的解决。</p><div class="language-"><pre><code>Input:  aaaabbbcca
+Output: [(&quot;a&quot;, 4), (&quot;b&quot;, 3), (&quot;c&quot;, 2), (&quot;a&quot;, 1)]
+</code></pre></div><p>忽略最终输出的数组形式，使用 fold 搭配 uniq 只需要一行就可以解决。</p><div class="language-"><pre><code>$ echo &quot;aaaabbbcca&quot; | fold -w 1 | uniq -c
+4 a
+3 b
+2 c
+1 a
+</code></pre></div><p><code>-w 1</code> 表示的一行的宽度是多少，默认是 80，当指定成 1 时，表示一行只输出一个字符。这样就可以通过 uniq 进行统计了。</p></div></article><footer class="text-right my-12" data-v-c3fd59da><p class="author-show" data-v-c3fd59da>L.K</p></footer><!--]--></main></div></div>
+    <script>__VP_HASH_MAP__ = JSON.parse("{\"index.md\":\"4ba7c645\",\"daily_20d10.md\":\"880ab452\",\"daily_20q01.md\":\"6dfd4483\",\"daily_20x11.md\":\"16c672b8\",\"daily_21b04.md\":\"4291f926\",\"daily_21b05.md\":\"af3c3d26\",\"daily_21b06.md\":\"89c066ca\",\"daily_21b07.md\":\"b786a751\",\"daily_21b11.md\":\"0a33a466\",\"daily_21b12.md\":\"4c306d93\",\"daily_21c04.md\":\"76d4df30\",\"daily_21d09.md\":\"7541a9c0\",\"posts_19x14.md\":\"74b0704d\",\"posts_20e01.md\":\"610cf89c\",\"posts_draw.md\":\"40330124\",\"posts_first_post.md\":\"1eb64573\",\"posts_openssl.md\":\"93f5bec6\",\"posts_tpp.md\":\"c2b801c7\"}")</script>
+    <script type="module" async src="/assets/app.99fa0b8e.js"></script>
+  </body>
+</html>
