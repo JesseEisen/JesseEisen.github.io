@@ -7,16 +7,16 @@
       21B06 | Chan
     </title>
     <meta name="description" content="A PKM Site">
-    <link rel="stylesheet" href="/assets/style.d7943dd3.css">
+    <link rel="stylesheet" href="/assets/style.24207c44.css">
     <link rel="modulepreload" href="/assets/framework.ab59a038.js">
-    <link rel="modulepreload" href="/assets/daily_21B06.md.89c066ca.lean.js">
-    <link rel="modulepreload" href="/assets/app.9bbc2295.js">
+    <link rel="modulepreload" href="/assets/daily_21B06.md.9363a8c2.lean.js">
+    <link rel="modulepreload" href="/assets/app.f759e2ae.js">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/github-markdown-css/2.2.1/github-markdown.css">
     
   </head>
   <body>
-    <div id="app"><div><main class="max-w-4xl mx-auto px-4 sm:px-6 xl:max-w-5xl xl:px-0"><div class="pt-6 pb-8 space-y-2 md:space-y-5"><h3 class="text-xl leading-9 font-extrabold text-gray-900 tracking-tight sm:leading-10 md:leading-14"><a aria-label="Chan" href="/">Chan</a></h3></div><!--[--><article class="xl:divide-y xl:divide-gray-200" data-v-c3fd59da><header class="pt-6 xl:pb-10 space-y-1 text-center" data-v-c3fd59da><h3 class="text-xl leading-9 font-bold text-gray-900 tracking-tigh" data-v-c3fd59da>21B06 - Use CSS the correct way</h3></header><div class="prose max-w-none pt-10 pb-8" data-v-c3fd59da><p><div class="table-of-contents"><ul><li><a href="#marker">marker</a></li></ul></div></p><hr><p><i class="releated">incoming(1):</i> {<a href="/daily/20X11.html">html</a>}</p><p>本篇主要记录下一些可以直接通过 css 而无需过多使用 js 的例子，同时也会记录一些 css 的技巧等等。</p><h2 id="marker"><a class="header-anchor" href="#marker" aria-hidden="true">#</a> marker</h2><p>这是一个伪元素，通常是在<code>&lt;li&gt;</code>或者<code>&lt;summary&gt;</code> 上使用，用于修饰列表之前的标记样式，比如：</p><div class="language-html"><pre><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">&gt;</span></span>
+    <div id="app"><div><main class="max-w-4xl mx-auto px-4 sm:px-6 xl:max-w-5xl xl:px-0"><div class="pt-6 pb-8 space-y-2 md:space-y-5"><h3 class="text-xl leading-9 font-extrabold text-gray-900 tracking-tight sm:leading-10 md:leading-14"><a aria-label="Chan" href="/">Chan</a></h3></div><!--[--><article class="xl:divide-y xl:divide-gray-200" data-v-c3fd59da><header class="pt-6 xl:pb-10 space-y-1 text-center" data-v-c3fd59da><h3 class="text-xl leading-9 font-bold text-gray-900 tracking-tigh" data-v-c3fd59da>21B06 - Use CSS the correct way</h3></header><div class="prose max-w-none pt-10 pb-8" data-v-c3fd59da><p><div class="table-of-contents"><ul><li><a href="#marker">marker</a></li><li><a href="#outline">outline</a></li><li><a href="#text-decoration">text-decoration</a></li></ul></div></p><hr><p><i class="releated">incoming(1):</i> {<a href="/daily/20X11.html">html</a>}</p><p>本篇主要记录下一些可以直接通过 css 而无需过多使用 js 的例子，同时也会记录一些 css 的技巧等等。</p><h2 id="marker"><a class="header-anchor" href="#marker" aria-hidden="true">#</a> marker</h2><p>这是一个伪元素，通常是在<code>&lt;li&gt;</code>或者<code>&lt;summary&gt;</code> 上使用，用于修饰列表之前的标记样式，比如：</p><div class="language-html"><pre><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">&gt;</span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>item a<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>item b<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>item c<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
@@ -31,8 +31,77 @@ ul li::marker {
     color:#777;
     font-variant-numeric: tabular-nums;
 }
-</code></pre></div><p>这个样式会修饰列表前的数字为灰色，且按照数字等宽，易于像表格那样对齐的形式显示。</p></div></article><footer class="text-right my-12" data-v-c3fd59da><p class="author-show" data-v-c3fd59da>L.K</p></footer><!--]--></main></div></div>
-    <script>__VP_HASH_MAP__ = JSON.parse("{\"index.md\":\"4ba7c645\",\"daily_20d10.md\":\"ca3edd83\",\"daily_20q01.md\":\"6dfd4483\",\"daily_20x11.md\":\"16c672b8\",\"daily_21b04.md\":\"4291f926\",\"daily_21b05.md\":\"e11b2b95\",\"daily_21b06.md\":\"89c066ca\",\"daily_21b07.md\":\"5ec50885\",\"daily_21b11.md\":\"5b41b59e\",\"daily_21b12.md\":\"4c306d93\",\"daily_21c04.md\":\"9db68789\",\"daily_21d09.md\":\"7541a9c0\",\"daily_21d13.md\":\"cffd3403\",\"daily_21d14.md\":\"de8825ae\",\"posts_19x14.md\":\"74b0704d\",\"posts_20e01.md\":\"610cf89c\",\"posts_draw.md\":\"40330124\",\"posts_first_post.md\":\"1eb64573\",\"posts_openssl.md\":\"93f5bec6\",\"posts_tpp.md\":\"b532556d\"}")</script>
-    <script type="module" async src="/assets/app.9bbc2295.js"></script>
+</code></pre></div><p>这个样式会修饰列表前的数字为灰色，且按照数字等宽，易于像表格那样对齐的形式显示。</p><h2 id="outline"><a class="header-anchor" href="#outline" aria-hidden="true">#</a> outline</h2><p><code>outline</code> 是元素的轮廓，悬浮在元素边框之上，元素和轮廓之间是透明的，也就是说如果 outline 和元素之间有了空隙时，颜色会继承父元素的背景色。</p><p>可以通过简单的例子看下：</p><div class="language-"><pre><code>&lt;div class=&quot;content&quot;&gt;
+  &lt;button class=&quot;btn btn-1&quot;&gt;Click me&lt;/button&gt;
+  &lt;button class=&quot;btn btn-2&quot;&gt;Click me&lt;/button&gt;
+&lt;/div&gt;
+
+/* scss */
+
+.btn {
+  display: inline-block;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: inherit;
+  border: 0;
+  line-height: 1;
+  background: none;
+  padding: .75em 1.5em;
+}
+
+.btn-1 {
+  --clr: #386397;
+  --outline: 2px solid var(--clr);
+  color: var(--clr);
+  outline: var(--outline);
+  border: var(--outline);
+  outline-offset: -2px;
+  transition: outline-offset 200ms ease;
+}
+
+.btn-1:hover,
+.btn-1:focus {
+  outline: var(--outline);
+  outline-offset: 2px;
+}
+
+.btn-2 {
+  --clr: rgb(156, 17, 255);
+  --outline: 2px solid rgb(156, 17, 255);
+  color: var(--clr);
+  outline: var(--outline);
+  border: var(--outline);
+  outline-offset: -2px;
+  transition: outline-width 200ms ease, outline-offset 200ms ease;
+}
+
+.btn-2:hover,
+.btn-2:focus {
+  outline: var(--outline);
+  outline-width: 8px;
+  outline-offset: -8px;
+}
+</code></pre></div><p>主要关注 <code>.btn-1</code> 中的 border 和 outline-offset 的宽度，outline-offset 为负数时，外边框向内收缩，当为正数时，会向外扩张。搭配 transition 会形成一个简单的动态效果。</p><p>此外如果父元素带有了背景色之后，在变化过程中同样会展现出来，可以通过这个来实现通过修改背景色达按钮变色提示的效果。outline 的一些单独的选项有:</p><ul><li>outline-color</li><li>outline-style</li></ul><div class="language-"><pre><code>outline-style: auto;
+outline-style: none;
+outline-style: dotted;
+outline-style: dashed;
+outline-style: solid;
+outline-style: double;
+outline-style: groove;
+outline-style: ridge;
+outline-style: inset;
+outline-style: outset;
+</code></pre></div><ul><li>outline-width</li></ul><div class="language-"><pre><code>/* Keyword values */
+outline-width: thin;
+outline-width: medium;
+outline-width: thick;
+
+/* &lt;length&gt; values */
+outline-width: 1px;
+outline-width: 0.1em;
+</code></pre></div><h2 id="text-decoration"><a class="header-anchor" href="#text-decoration" aria-hidden="true">#</a> text-decoration</h2><p>我们可以文本进行一些样式的修改，比如常见的对段落进行划线。除了直线，也可以用波浪线。比如 <span style="text-decoration:underline wavy #e11d47 2px;">这段文字会被红色波浪线标记</span></p><p>实现很简单，如下：</p><div class="language-"><pre><code>&lt;span style=&quot;text-decoration: underline wavy #e11d47 2px;&quot;&gt;这段文字会被红色波浪线标记&lt;/span&gt;
+</code></pre></div><ul><li>[<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-decoration" target="_blank" rel="noopener noreferrer">MDN CSS text-decroration</a>]</li></ul></div></article><footer class="text-right my-12" data-v-c3fd59da><p class="author-show" data-v-c3fd59da>L.K</p></footer><!--]--></main></div></div>
+    <script>__VP_HASH_MAP__ = JSON.parse("{\"index.md\":\"4ba7c645\",\"daily_20d10.md\":\"ca3edd83\",\"daily_20q01.md\":\"6dfd4483\",\"daily_20x11.md\":\"16c672b8\",\"daily_21b04.md\":\"061190bb\",\"daily_21b05.md\":\"e11b2b95\",\"daily_21b06.md\":\"9363a8c2\",\"daily_21b07.md\":\"39afec0a\",\"daily_21b11.md\":\"5b41b59e\",\"daily_21b12.md\":\"4c306d93\",\"daily_21c04.md\":\"a882783a\",\"daily_21d09.md\":\"7541a9c0\",\"daily_21d13.md\":\"cffd3403\",\"daily_21d14.md\":\"de8825ae\",\"daily_21eo8.md\":\"2c2dc784\",\"daily_21f03.md\":\"af88893b\",\"daily_21f06.md\":\"3b89681a\",\"daily_21f08.md\":\"1eed810e\",\"daily_21f11.md\":\"84e47fdf\",\"daily_21f13.md\":\"ff550821\",\"posts_19x14.md\":\"74b0704d\",\"posts_20e01.md\":\"610cf89c\",\"posts_draw.md\":\"40330124\",\"posts_first_post.md\":\"1eb64573\",\"posts_openssl.md\":\"93f5bec6\",\"posts_tpp.md\":\"b532556d\"}")</script>
+    <script type="module" async src="/assets/app.f759e2ae.js"></script>
   </body>
 </html>
