@@ -1,0 +1,1 @@
+import{p as a,f as s,e as o,o as e,a as r,b as t}from"./vendor.484b0ba9.js";a("data-v-b9001c8a");const c={class:"outer"},d=t("div",{class:"short-hr"},null,-1);s();var p=o({expose:[],setup:a=>(a,s)=>(e(),r("div",c,[d]))});p.__scopeId="data-v-b9001c8a";export{p as _};

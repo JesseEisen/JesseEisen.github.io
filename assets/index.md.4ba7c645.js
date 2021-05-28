@@ -1,1 +1,0 @@
-import{l as t,f as e}from"./framework.ab59a038.js";const a='{"title":"Chan","description":"","frontmatter":{"title":"Chan","subtext":"GTD & PKM & Daily"},"relativePath":"index.md","lastUpdated":1611067501534}',r={};r.render=function(a,r,i,n,o,d){return t(),e("div")};export default r;export{a as __pageData};
