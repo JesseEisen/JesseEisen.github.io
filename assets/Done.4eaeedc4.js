@@ -1,0 +1,1 @@
+import{p as a,f as e,e as s,o,a as c}from"./vendor.5a394a79.js";a("data-v-b226cb7a");const p={type:"checkbox",checked:"",readonly:""};e();var t=s({expose:[],setup:a=>(a,e)=>(o(),c("input",p))});t.__scopeId="data-v-b226cb7a";export{t as _};
