@@ -114,25 +114,37 @@
     "/assets/virtual_pwa-register.3d629c73.js"
   ],
   "/Users/chan/playground/doc/gsite/pages/notes/waitlist.md": [
-    "/assets/waitlist.26fe9b58.js"
+    "/assets/waitlist.54396e7b.js"
+  ],
+  "/Users/chan/playground/doc/gsite/src/components/Code.vue?vue&type=script&setup=true&lang.ts": [
+    "/assets/Code.65580723.js",
+    "/assets/Code.1ebb05a2.css"
+  ],
+  "/Users/chan/playground/doc/gsite/src/components/Code.vue?vue&type=style&index=0&scoped=true&lang.postcss": [
+    "/assets/Code.65580723.js",
+    "/assets/Code.1ebb05a2.css"
+  ],
+  "/Users/chan/playground/doc/gsite/src/components/Code.vue": [
+    "/assets/Code.65580723.js",
+    "/assets/Code.1ebb05a2.css"
   ],
   "/Users/chan/playground/doc/gsite/pages/notes/trick.md": [
-    "/assets/trick.ed8d95ef.js"
+    "/assets/trick.31683920.js"
   ],
   "/Users/chan/playground/doc/gsite/src/components/Describe.vue?vue&type=script&setup=true&lang.ts": [
-    "/assets/Describe.ab9db2d8.js",
-    "/assets/Describe.05899b58.css"
+    "/assets/Describe.da5d5d6e.js",
+    "/assets/Describe.47cc0a7a.css"
   ],
   "/Users/chan/playground/doc/gsite/src/components/Describe.vue?vue&type=style&index=0&scoped=true&lang.postcss": [
-    "/assets/Describe.ab9db2d8.js",
-    "/assets/Describe.05899b58.css"
+    "/assets/Describe.da5d5d6e.js",
+    "/assets/Describe.47cc0a7a.css"
   ],
   "/Users/chan/playground/doc/gsite/src/components/Describe.vue": [
-    "/assets/Describe.ab9db2d8.js",
-    "/assets/Describe.05899b58.css"
+    "/assets/Describe.da5d5d6e.js",
+    "/assets/Describe.47cc0a7a.css"
   ],
   "/Users/chan/playground/doc/gsite/pages/notes/time.md": [
-    "/assets/time.ec59106d.js"
+    "/assets/time.1e229eac.js"
   ],
   "/Users/chan/playground/doc/gsite/src/components/LinkItem.vue?vue&type=script&setup=true&lang.ts": [
     "/assets/LinkItem.c8df38c8.js",
@@ -165,50 +177,50 @@
     "/assets/MarkerPattern.vue_vue&type=script&setup=true&lang.8ee34414.js"
   ],
   "/Users/chan/playground/doc/gsite/pages/notes/system_issue.md": [
-    "/assets/system_issue.f91c5a23.js"
+    "/assets/system_issue.9653a426.js"
   ],
   "/Users/chan/playground/doc/gsite/pages/notes/sites.md": [
-    "/assets/sites.4b1a3e22.js"
+    "/assets/sites.0f24303b.js"
   ],
   "/Users/chan/playground/doc/gsite/src/components/ShPoem.vue?vue&type=script&setup=true&lang.ts": [
-    "/assets/shuntarou.039d1474.js",
+    "/assets/shuntarou.8e96f0bc.js",
     "/assets/shuntarou.95b48bad.css"
   ],
   "/Users/chan/playground/doc/gsite/src/components/ShPoem.vue?vue&type=style&index=0&scoped=true&lang.postcss": [
-    "/assets/shuntarou.039d1474.js",
+    "/assets/shuntarou.8e96f0bc.js",
     "/assets/shuntarou.95b48bad.css"
   ],
   "/Users/chan/playground/doc/gsite/src/components/ShPoem.vue": [
-    "/assets/shuntarou.039d1474.js",
+    "/assets/shuntarou.8e96f0bc.js",
     "/assets/shuntarou.95b48bad.css"
   ],
   "/Users/chan/playground/doc/gsite/pages/notes/shuntarou.md": [
-    "/assets/shuntarou.039d1474.js",
+    "/assets/shuntarou.8e96f0bc.js",
     "/assets/shuntarou.95b48bad.css"
   ],
   "/Users/chan/playground/doc/gsite/pages/notes/shortcuts.md": [
-    "/assets/shortcuts.9ca0663c.js"
+    "/assets/shortcuts.35bf9262.js"
   ],
   "/Users/chan/playground/doc/gsite/pages/notes/shell_script.md": [
-    "/assets/shell_script.956bba3c.js"
+    "/assets/shell_script.b4755958.js"
   ],
   "/Users/chan/playground/doc/gsite/src/components/InComing.vue?vue&type=script&setup=true&lang.ts": [
     "/assets/InComing.vue_vue&type=script&setup=true&lang.8324b6a6.js"
   ],
   "/Users/chan/playground/doc/gsite/pages/notes/sed.md": [
-    "/assets/sed.c5ac65c7.js"
+    "/assets/sed.13faa466.js"
   ],
   "/Users/chan/playground/doc/gsite/pages/notes/scribbles.md": [
-    "/assets/scribbles.1982d7c7.js"
+    "/assets/scribbles.3b321093.js"
   ],
   "/Users/chan/playground/doc/gsite/pages/notes/pythondoc.md": [
-    "/assets/pythondoc.b693f25d.js"
+    "/assets/pythondoc.2a66da5f.js"
   ],
   "/Users/chan/playground/doc/gsite/pages/notes/python.md": [
-    "/assets/python.16e9d17d.js"
+    "/assets/python.27ae0754.js"
   ],
   "/Users/chan/playground/doc/gsite/pages/notes/postgresl.md": [
-    "/assets/postgresl.49b0e50d.js"
+    "/assets/postgresl.73ead918.js"
   ],
   "/Users/chan/playground/doc/gsite/src/components/Comment.vue?vue&type=script&setup=true&lang.ts": [
     "/assets/Comment.9d697db2.js",
@@ -223,144 +235,147 @@
     "/assets/Comment.ef8b45f2.css"
   ],
   "/Users/chan/playground/doc/gsite/pages/notes/network.md": [
-    "/assets/network.129bd611.js"
+    "/assets/network.04bef414.js"
   ],
   "/Users/chan/playground/doc/gsite/src/components/MusicItem.vue?vue&type=script&setup=true&lang.ts": [
-    "/assets/music.a780cca0.js",
+    "/assets/music.77e7c230.js",
     "/assets/music.49a5a990.css"
   ],
   "/Users/chan/playground/doc/gsite/src/components/MusicItem.vue?vue&type=style&index=0&scoped=true&lang.postcss": [
-    "/assets/music.a780cca0.js",
+    "/assets/music.77e7c230.js",
     "/assets/music.49a5a990.css"
   ],
   "/Users/chan/playground/doc/gsite/src/components/MusicItem.vue": [
-    "/assets/music.a780cca0.js",
+    "/assets/music.77e7c230.js",
     "/assets/music.49a5a990.css"
   ],
   "/Users/chan/playground/doc/gsite/pages/notes/music.md": [
-    "/assets/music.a780cca0.js",
+    "/assets/music.77e7c230.js",
     "/assets/music.49a5a990.css"
   ],
   "/Users/chan/playground/doc/gsite/pages/notes/kubernetes.md": [
-    "/assets/kubernetes.b779360a.js"
+    "/assets/kubernetes.86936484.js"
   ],
   "/Users/chan/playground/doc/gsite/pages/notes/jsbase.md": [
-    "/assets/jsbase.5c487a86.js"
+    "/assets/jsbase.591a8fc6.js"
   ],
   "/Users/chan/playground/doc/gsite/pages/notes/jq.md": [
-    "/assets/jq.3d82cb4e.js"
+    "/assets/jq.1d0caec1.js"
   ],
   "/Users/chan/playground/doc/gsite/pages/notes/javascript.md": [
-    "/assets/javascript.c71fa84c.js"
+    "/assets/javascript.e8d72a55.js"
   ],
   "/Users/chan/playground/doc/gsite/src/components/ShortNoteList.vue?vue&type=script&setup=true&lang.ts": [
-    "/assets/index.e2f2413c.js",
+    "/assets/index.5a49c350.js",
     "/assets/index.81bc716c.css"
   ],
   "/Users/chan/playground/doc/gsite/pages/notes/index.vue?vue&type=script&setup=true&lang.ts": [
-    "/assets/index.e2f2413c.js",
+    "/assets/index.5a49c350.js",
     "/assets/index.81bc716c.css"
   ],
   "/Users/chan/playground/doc/gsite/pages/notes/index.vue?vue&type=style&index=0&scoped=true&lang.postcss": [
-    "/assets/index.e2f2413c.js",
+    "/assets/index.5a49c350.js",
     "/assets/index.81bc716c.css"
   ],
   "/Users/chan/playground/doc/gsite/pages/notes/index.vue": [
-    "/assets/index.e2f2413c.js",
+    "/assets/index.5a49c350.js",
     "/assets/index.81bc716c.css"
   ],
   "/Users/chan/playground/doc/gsite/src/components/ShortNoteItem.vue?vue&type=script&setup=true&lang.ts": [
-    "/assets/ShortNoteItem.6f67c6e4.js",
-    "/assets/ShortNoteItem.f9d3cb87.css"
+    "/assets/ShortNoteItem.bf7909a3.js",
+    "/assets/ShortNoteItem.0d586527.css"
   ],
   "/Users/chan/playground/doc/gsite/src/components/ShortNoteItem.vue?vue&type=style&index=0&scoped=true&lang.postcss": [
-    "/assets/ShortNoteItem.6f67c6e4.js",
-    "/assets/ShortNoteItem.f9d3cb87.css"
+    "/assets/ShortNoteItem.bf7909a3.js",
+    "/assets/ShortNoteItem.0d586527.css"
   ],
   "/Users/chan/playground/doc/gsite/src/components/ShortNoteItem.vue": [
-    "/assets/ShortNoteItem.6f67c6e4.js",
-    "/assets/ShortNoteItem.f9d3cb87.css"
+    "/assets/ShortNoteItem.bf7909a3.js",
+    "/assets/ShortNoteItem.0d586527.css"
   ],
   "/Users/chan/playground/doc/gsite/pages/notes/html.md": [
-    "/assets/html.b01180b9.js"
+    "/assets/html.c1d68e28.js"
   ],
   "/Users/chan/playground/doc/gsite/pages/notes/hardware.md": [
-    "/assets/hardware.d2f34643.js"
+    "/assets/hardware.2de55b2c.js"
   ],
   "/Users/chan/playground/doc/gsite/src/components/HaiKuItem.vue?vue&type=script&setup=true&lang.ts": [
-    "/assets/haiku.da1255d1.js",
+    "/assets/haiku.b45408af.js",
     "/assets/haiku.cf316bdd.css"
   ],
   "/Users/chan/playground/doc/gsite/src/components/HaiKuItem.vue?vue&type=style&index=0&scoped=true&lang.postcss": [
-    "/assets/haiku.da1255d1.js",
+    "/assets/haiku.b45408af.js",
     "/assets/haiku.cf316bdd.css"
   ],
   "/Users/chan/playground/doc/gsite/src/components/HaiKuItem.vue": [
-    "/assets/haiku.da1255d1.js",
+    "/assets/haiku.b45408af.js",
     "/assets/haiku.cf316bdd.css"
   ],
   "/Users/chan/playground/doc/gsite/pages/notes/haiku.md": [
-    "/assets/haiku.da1255d1.js",
+    "/assets/haiku.b45408af.js",
     "/assets/haiku.cf316bdd.css"
   ],
   "/Users/chan/playground/doc/gsite/pages/notes/grpc.md": [
-    "/assets/grpc.05d13e64.js"
+    "/assets/grpc.30645a75.js"
   ],
   "/Users/chan/playground/doc/gsite/pages/notes/goodies.md": [
-    "/assets/goodies.04f31c76.js"
+    "/assets/goodies.0da0a860.js"
   ],
   "/Users/chan/playground/doc/gsite/pages/notes/golang.md": [
-    "/assets/golang.f8320c0a.js"
+    "/assets/golang.569bb4ef.js"
+  ],
+  "/Users/chan/playground/doc/gsite/pages/notes/ffmpeg.md": [
+    "/assets/ffmpeg.d7bf53b7.js"
   ],
   "/Users/chan/playground/doc/gsite/pages/notes/eating.md": [
-    "/assets/eating.154ade33.js"
+    "/assets/eating.2e2f3005.js"
   ],
   "/Users/chan/playground/doc/gsite/pages/notes/docker.md": [
-    "/assets/docker.c460e22c.js"
+    "/assets/docker.6e57c379.js"
   ],
   "/Users/chan/playground/doc/gsite/pages/notes/css.md": [
-    "/assets/css.783869fa.js"
+    "/assets/css.533c0a17.js"
   ],
   "/Users/chan/playground/doc/gsite/pages/notes/command.md": [
-    "/assets/command.b40f9d0d.js"
+    "/assets/command.4383d34d.js"
   ],
   "/Users/chan/playground/doc/gsite/pages/notes/codes.md": [
-    "/assets/codes.7775546a.js"
+    "/assets/codes.d72a8718.js"
   ],
   "/Users/chan/playground/doc/gsite/pages/notes/books.md": [
-    "/assets/books.a504b86b.js"
+    "/assets/books.1e3c0a59.js"
   ],
   "/Users/chan/playground/doc/gsite/src/components/ShortDailyList.vue?vue&type=script&setup=true&lang.ts": [
-    "/assets/index.7ff7635f.js",
+    "/assets/index.e7b98e89.js",
     "/assets/index.164bd969.css"
   ],
   "/Users/chan/playground/doc/gsite/node_modules/.pnpm/js-md5@0.7.3/node_modules/js-md5/src/md5.js": [
-    "/assets/index.7ff7635f.js",
+    "/assets/index.e7b98e89.js",
     "/assets/index.164bd969.css"
   ],
   "/Users/chan/playground/doc/gsite/pages/daily/index.vue?vue&type=script&setup=true&lang.ts": [
-    "/assets/index.7ff7635f.js",
+    "/assets/index.e7b98e89.js",
     "/assets/index.164bd969.css"
   ],
   "/Users/chan/playground/doc/gsite/pages/daily/index.vue?vue&type=style&index=0&scoped=true&lang.postcss": [
-    "/assets/index.7ff7635f.js",
+    "/assets/index.e7b98e89.js",
     "/assets/index.164bd969.css"
   ],
   "/Users/chan/playground/doc/gsite/pages/daily/index.vue": [
-    "/assets/index.7ff7635f.js",
+    "/assets/index.e7b98e89.js",
     "/assets/index.164bd969.css"
   ],
   "/Users/chan/playground/doc/gsite/pages/daily/20220324.md": [
-    "/assets/20220324.596a3535.js"
+    "/assets/20220324.3f09928a.js"
   ],
   "/Users/chan/playground/doc/gsite/pages/daily/20220322.md": [
-    "/assets/20220322.975ca8f4.js"
+    "/assets/20220322.581b61f6.js"
   ],
   "/Users/chan/playground/doc/gsite/pages/daily/20220318.md": [
-    "/assets/20220318.0f4f2b4a.js"
+    "/assets/20220318.dbdc8a78.js"
   ],
   "/Users/chan/playground/doc/gsite/pages/daily/20220314.md": [
-    "/assets/20220314.638a9ead.js"
+    "/assets/20220314.a710b75c.js"
   ],
   "/Users/chan/playground/doc/gsite/src/components/Done.vue?vue&type=script&setup=true&lang.ts": [
     "/assets/Done.4eaeedc4.js",
@@ -387,86 +402,22 @@
     "/assets/TODO.75058c1b.css"
   ],
   "/Users/chan/playground/doc/gsite/pages/daily/20211126.md": [
-    "/assets/20211126.56310fb0.js"
+    "/assets/20211126.0080914e.js"
   ],
   "/Users/chan/playground/doc/gsite/pages/daily/20210716.md": [
-    "/assets/20210716.18b38868.js"
+    "/assets/20210716.57a46443.js"
   ],
   "/Users/chan/playground/doc/gsite/pages/daily/20210624.md": [
-    "/assets/20210624.7c3c0949.js"
+    "/assets/20210624.fcb4124b.js"
   ],
   "/Users/chan/playground/doc/gsite/pages/daily/20210623.md": [
-    "/assets/20210623.36ef1a60.js"
+    "/assets/20210623.6d7a5e33.js"
   ],
   "/Users/chan/playground/doc/gsite/pages/daily/20210622.md": [
-    "/assets/20210622.cb7f7298.js"
+    "/assets/20210622.24178556.js"
   ],
   "/Users/chan/playground/doc/gsite/pages/daily/20210621.md": [
-    "/assets/20210621.e7aaad8d.js"
-  ],
-  "/bookcovers.png": [
-    "/assets/what_for.ba0c7f8a.js"
-  ],
-  "/Users/chan/playground/doc/gsite/pages/blogs/what_for.md": [
-    "/assets/what_for.ba0c7f8a.js"
-  ],
-  "/Users/chan/playground/doc/gsite/src/components/NoteItem.vue?vue&type=script&setup=true&lang.ts": [
-    "/assets/index.bc140bb0.js",
-    "/assets/index.f220294d.css"
-  ],
-  "/Users/chan/playground/doc/gsite/src/components/NoteItem.vue?vue&type=style&index=0&scoped=true&lang.postcss": [
-    "/assets/index.bc140bb0.js",
-    "/assets/index.f220294d.css"
-  ],
-  "/Users/chan/playground/doc/gsite/src/components/NoteItem.vue": [
-    "/assets/index.bc140bb0.js",
-    "/assets/index.f220294d.css"
-  ],
-  "/Users/chan/playground/doc/gsite/src/components/NotesList.vue?vue&type=script&setup=true&lang.ts": [
-    "/assets/index.bc140bb0.js",
-    "/assets/index.f220294d.css"
-  ],
-  "/Users/chan/playground/doc/gsite/pages/blogs/index.vue?vue&type=script&setup=true&lang.ts": [
-    "/assets/index.bc140bb0.js",
-    "/assets/index.f220294d.css"
-  ],
-  "/Users/chan/playground/doc/gsite/pages/blogs/index.vue?vue&type=style&index=0&scoped=true&lang.postcss": [
-    "/assets/index.bc140bb0.js",
-    "/assets/index.f220294d.css"
-  ],
-  "/Users/chan/playground/doc/gsite/pages/blogs/index.vue": [
-    "/assets/index.bc140bb0.js",
-    "/assets/index.f220294d.css"
-  ],
-  "/draw/pic_ex.png": [
-    "/assets/draw.f5ed434a.js"
-  ],
-  "/draw/dformat_ex.png": [
-    "/assets/draw.f5ed434a.js"
-  ],
-  "/draw/grap_ex.png": [
-    "/assets/draw.f5ed434a.js"
-  ],
-  "/draw/rand.png": [
-    "/assets/draw.f5ed434a.js"
-  ],
-  "/draw/node.png": [
-    "/assets/draw.f5ed434a.js"
-  ],
-  "/draw/ast.png": [
-    "/assets/draw.f5ed434a.js"
-  ],
-  "/draw/git.png": [
-    "/assets/draw.f5ed434a.js"
-  ],
-  "/draw/first_plantuml.png": [
-    "/assets/draw.f5ed434a.js"
-  ],
-  "/draw/puml_json.png": [
-    "/assets/draw.f5ed434a.js"
-  ],
-  "/Users/chan/playground/doc/gsite/pages/blogs/draw.md": [
-    "/assets/draw.f5ed434a.js"
+    "/assets/20210621.9f055f2b.js"
   ],
   "/Users/chan/playground/doc/gsite/src/components/BookItem.vue?vue&type=script&setup=true&lang.ts": [
     "/assets/index.f2bd3c91.js",
@@ -504,12 +455,76 @@
     "/assets/index.f2bd3c91.js",
     "/assets/index.5b6aab13.css"
   ],
+  "/bookcovers.png": [
+    "/assets/what_for.285edd53.js"
+  ],
+  "/Users/chan/playground/doc/gsite/pages/blogs/what_for.md": [
+    "/assets/what_for.285edd53.js"
+  ],
+  "/Users/chan/playground/doc/gsite/src/components/NoteItem.vue?vue&type=script&setup=true&lang.ts": [
+    "/assets/index.919cbe8b.js",
+    "/assets/index.0a9d3aca.css"
+  ],
+  "/Users/chan/playground/doc/gsite/src/components/NoteItem.vue?vue&type=style&index=0&scoped=true&lang.postcss": [
+    "/assets/index.919cbe8b.js",
+    "/assets/index.0a9d3aca.css"
+  ],
+  "/Users/chan/playground/doc/gsite/src/components/NoteItem.vue": [
+    "/assets/index.919cbe8b.js",
+    "/assets/index.0a9d3aca.css"
+  ],
+  "/Users/chan/playground/doc/gsite/src/components/NotesList.vue?vue&type=script&setup=true&lang.ts": [
+    "/assets/index.919cbe8b.js",
+    "/assets/index.0a9d3aca.css"
+  ],
+  "/Users/chan/playground/doc/gsite/pages/blogs/index.vue?vue&type=script&setup=true&lang.ts": [
+    "/assets/index.919cbe8b.js",
+    "/assets/index.0a9d3aca.css"
+  ],
+  "/Users/chan/playground/doc/gsite/pages/blogs/index.vue?vue&type=style&index=0&scoped=true&lang.postcss": [
+    "/assets/index.919cbe8b.js",
+    "/assets/index.0a9d3aca.css"
+  ],
+  "/Users/chan/playground/doc/gsite/pages/blogs/index.vue": [
+    "/assets/index.919cbe8b.js",
+    "/assets/index.0a9d3aca.css"
+  ],
+  "/draw/pic_ex.png": [
+    "/assets/draw.e0c7c8eb.js"
+  ],
+  "/draw/dformat_ex.png": [
+    "/assets/draw.e0c7c8eb.js"
+  ],
+  "/draw/grap_ex.png": [
+    "/assets/draw.e0c7c8eb.js"
+  ],
+  "/draw/rand.png": [
+    "/assets/draw.e0c7c8eb.js"
+  ],
+  "/draw/node.png": [
+    "/assets/draw.e0c7c8eb.js"
+  ],
+  "/draw/ast.png": [
+    "/assets/draw.e0c7c8eb.js"
+  ],
+  "/draw/git.png": [
+    "/assets/draw.e0c7c8eb.js"
+  ],
+  "/draw/first_plantuml.png": [
+    "/assets/draw.e0c7c8eb.js"
+  ],
+  "/draw/puml_json.png": [
+    "/assets/draw.e0c7c8eb.js"
+  ],
+  "/Users/chan/playground/doc/gsite/pages/blogs/draw.md": [
+    "/assets/draw.e0c7c8eb.js"
+  ],
   "/Users/chan/playground/doc/gsite/pages/aboutme.vue?vue&type=style&index=0&lang.css": [
-    "/assets/aboutme.d69868ad.js",
+    "/assets/aboutme.42081007.js",
     "/assets/aboutme.48972994.css"
   ],
   "/Users/chan/playground/doc/gsite/pages/aboutme.vue": [
-    "/assets/aboutme.d69868ad.js",
+    "/assets/aboutme.42081007.js",
     "/assets/aboutme.48972994.css"
   ],
   "/Users/chan/playground/doc/gsite/pages/[...all].vue?vue&type=script&setup=true&lang.ts": [
