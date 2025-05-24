@@ -1,0 +1,1 @@
+import{e as s,o as e,a,b as r,t as n,F as l,A as o}from"./vendor.80607e96.js";var i=s({expose:[],props:{comings:{type:Array,required:!0}},setup:s=>(i,p)=>(e(),a("div",null,[r("span",null,[r("i",null,"incoming ("+n(s.comings.length)+"): ",1)]),(e(!0),a(l,null,o(s.comings,(s=>(e(),a("span",{key:s.url},[r("a",{href:s.url},n(s.text),9,["href"])])))),128))]))});export{i as _};

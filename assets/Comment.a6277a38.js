@@ -1,0 +1,1 @@
+import{p as s,f as a,e as o,o as e,a as t,r as p,k as r}from"./vendor.80607e96.js";s("data-v-7c811930");const c={class:"outer"},d=r("comment: ");a();var v=o({expose:[],setup:s=>(s,a)=>(e(),t("p",c,[d,p(s.$slots,"default",{},void 0,!0)]))});v.__scopeId="data-v-7c811930";export{v as _};

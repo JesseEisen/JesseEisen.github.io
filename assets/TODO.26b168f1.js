@@ -1,0 +1,1 @@
+import{p as a,f as e,e as s,o,a as p}from"./vendor.80607e96.js";a("data-v-73165b46");const t={type:"checkbox",readonly:""};e();var r=s({expose:[],setup:a=>(a,e)=>(o(),p("input",t))});r.__scopeId="data-v-73165b46";export{r as _};
